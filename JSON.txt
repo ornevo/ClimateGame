@@ -1,13 +1,20 @@
 
-Dillema
+OptionsEvent
 
 props:
 
+isGood: bool,
 ID: int,
 title: str,
 thresholds: theresholds,
 description: str,
 placement: enum,
+category: enum,
+
+
+
+
+(what happens if you don't treat it)
 
 
 
@@ -19,7 +26,8 @@ year: int,
 money: int,
 emissions: int,
 life_quality: int,
-necessary_previous_choice:
+necessary_previous_choice: int array,
+time_passed_since_previous_choice: int
 
 places
 props:
@@ -27,5 +35,41 @@ props:
 places: enum(an enum of cities and regions coupled to numbers)
 
 
-options
-props
+option
+props:
+
+ID: int,
+content: str,
+money_cost: int
+
+
+NoneOptionsEvent:
+props:
+
+ID: int,
+Effect: Effect,
+title: str,
+description: str,
+theresholds: thresholds
+
+
+Effect
+props:
+money_delta: int,
+emissions_delta: int,
+life_quality_delta: int
+money_delta_per_tick: int,
+emissions_delta_per_tick: int,
+life_quality_delta_per_tick: int,
+ticks_amount: int
+
+
+state:
+props:
+
+active_events: Event list,
+emissions: int,
+money: int,
+quality_of_life: int,
+Effects_and_placements: list of tuples,
+none_option_events: list of None Option events

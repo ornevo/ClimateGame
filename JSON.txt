@@ -1,0 +1,31 @@
+
+Dillema
+
+props:
+
+ID: int,
+title: str,
+thresholds: theresholds,
+description: str,
+placement: enum,
+
+
+
+
+
+thresholds
+props(min):
+year: int,
+money: int,
+emissions: int,
+life_quality: int,
+necessary_previous_choice:
+
+places
+props:
+
+places: enum(an enum of cities and regions coupled to numbers)
+
+
+options
+props

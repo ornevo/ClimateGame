@@ -1,60 +1,46 @@
 
-OptionsEvent
-
-props:
-
+== OptionsEvent ==
 isGood: bool,
 ID: int,
 title: str,
-thresholds: theresholds,
 description: str,
 placement: enum,
 category: enum,
+unhandled_money_delta: int,
+unhandled_emissions_delta: int,
+unhandled_life_quality_delta: int
+option_ids: array of option object ids
+threshold: Threshold
 
-
-
-
-(what happens if you don't treat it)
-
-
-
-
-
-thresholds
-props(min):
+== Threshold ==
 year: int,
+is_year_max: bool, // if true, requires year <= threshold.year, else year > threshold.year
 money: int,
+is_money_max: bool,
 emissions: int,
+is_emissions_max: bool,
 life_quality: int,
+is_life_quality_max: bool,
 necessary_previous_choice: int array,
 time_passed_since_previous_choice: int
 
-places
-props:
-
+=== Places ===
 places: enum(an enum of cities and regions coupled to numbers)
 
-
-option
-props:
-
+=== Option ===
 ID: int,
 content: str,
-money_cost: int
+Effect: Effect,
 
 
-NoneOptionsEvent:
-props:
-
+=== NoneOptionsEvent ===
 ID: int,
 Effect: Effect,
 title: str,
 description: str,
 theresholds: thresholds
 
-
-Effect
-props:
+=== Effect ===
 money_delta: int,
 emissions_delta: int,
 life_quality_delta: int
@@ -63,10 +49,7 @@ emissions_delta_per_tick: int,
 life_quality_delta_per_tick: int,
 ticks_amount: int
 
-
-state:
-props:
-
+=== State ===
 active_events: Event list,
 emissions: int,
 money: int,

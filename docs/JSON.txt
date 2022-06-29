@@ -1,11 +1,13 @@
 
-== OptionsEvent ==
-isGood: bool,
+== Event ==
+is_good: bool,
 ID: int,
 title: str,
 description: str,
 placement: enum,
-category: enum,
+category: enum, // if 0, this is a choice-less event. This means it's `unhandled_*`, 
+                //     `is_good` and `placement` fields are ignored. It is expected to have
+                //     a single option, with the desired effects
 unhandled_money_delta: int,
 unhandled_emissions_delta: int,
 unhandled_life_quality_delta: int
@@ -31,14 +33,6 @@ places: enum(an enum of cities and regions coupled to numbers)
 ID: int,
 content: str,
 Effect: Effect,
-
-
-=== NoneOptionsEvent ===
-ID: int,
-Effect: Effect,
-title: str,
-description: str,
-theresholds: thresholds
 
 === Effect ===
 money_delta: int,

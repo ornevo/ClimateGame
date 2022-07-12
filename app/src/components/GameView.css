@@ -1,6 +1,6 @@
 #game-view-container {
     height: 100%;
-    background-color: red;
+    background-color: #FAF8F0;
 }
 
 #map-img {
@@ -8,4 +8,9 @@
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0%);
+}
+
+.area {
+    position: fixed;
+    background-color: rgba(0, 0, 0, .25);
 }

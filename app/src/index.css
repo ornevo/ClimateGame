@@ -3,7 +3,7 @@ html, body, #root {
   padding: 0;
   height: 100vh;
   overflow: hidden;
-  background-color: green;
+  background-color: #FAF8F0;
 }
 
 body {

@@ -96,7 +96,7 @@ router.route("/submit").post((req, res) => {
   var options = {};
 
   // some checkbox fillups
-  req.body['event-is-good'] = req.body.hasOwnProperty('event-is-good');
+  req.body['event-is-surprise'] = req.body.hasOwnProperty('event-is-surprise');
   req.body['threshold-is-year-max'] = req.body.hasOwnProperty('threshold-is-year-max');
   req.body['threshold-is-money-max'] = req.body.hasOwnProperty('threshold-is-money-max');
   req.body['threshold-is-emissions-max'] = req.body.hasOwnProperty('threshold-is-emissions-max');

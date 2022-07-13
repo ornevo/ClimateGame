@@ -50,7 +50,7 @@
     background: white;
     left: 2px;
     animation-name: bar-container-appear;
-    animation-duration: 0.3s;
+    animation-duration: 1s;
 }
 
 .progress-bar-container span {

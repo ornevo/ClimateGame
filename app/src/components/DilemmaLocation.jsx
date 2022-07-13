@@ -10,7 +10,7 @@ function DilemmaLocation(props) {
         }}>
             <img class='location-pin-img' src="location-pin.svg" />
             <div className="progress-bar-container">
-                <span></span>
+                <span class="progress-bar-inner" style={{animationDuration: props.lifetime + 's'}}></span>
             </div>
         </div>
     )

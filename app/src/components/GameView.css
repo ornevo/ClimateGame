@@ -30,11 +30,13 @@
   
 .dilemma-location {
     position: relative;
+    cursor: pointer;
 }
 
 .location-pin-img {
     width: 30px;
-    margin: 0 auto;
+    display: inline;
+    position: absolute;
     animation-name: location-pin-appear;
     animation-duration: 0.3s;
 }
@@ -46,14 +48,15 @@
     border: 1px solid black;
     overflow: hidden;
     position: relative;
-    top: -14px;
+    top: 10px;
     background: white;
-    left: 2px;
+    left: 0px;
     animation-name: bar-container-appear;
-    animation-duration: 1s;
+    animation-duration: 0.3s;
+    display: inline-block;
 }
 
-.progress-bar-container span {
+.progress-bar-inner {
     height: 100%;
     display: block;
     color: rgb(255, 251, 251);
@@ -62,5 +65,4 @@
     position: absolute;
     text-align: end;
     animation-name: dilemma-time-progress;
-    animation-duration: 15s;
 }

@@ -8,11 +8,13 @@ export default function Area(props) {
         w: props.area.w * props.scale
     }
     return (
-        <div class="area" onClick={_ => alert(props.area.name)} style={{
+        <div className="area" style={{
             top: newBox.y + "px",
             left: newBox.x + "px",
             height: newBox.h + "px",
             width: newBox.w + "px"
-        }}></div>
+        }}>
+            { props.children }
+        </div>
     )
 }

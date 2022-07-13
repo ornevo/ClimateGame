@@ -12,5 +12,55 @@
 
 .area {
     position: fixed;
-    background-color: rgba(0, 0, 0, .25);
+    background-color: rgba(0, 0, 0, .02);
+}
+
+@keyframes dilemma-time-progress {
+    from { width: 0px; }
+    to { width: 27px; }
+}
+@keyframes location-pin-appear {
+    from { width: 0px; }
+    to { width: 30px; }
+}
+@keyframes bar-container-appear {
+    from { width: 0px; }
+    to { width: 27px; }
+}
+  
+.dilemma-location {
+    position: relative;
+}
+
+.location-pin-img {
+    width: 30px;
+    margin: 0 auto;
+    animation-name: location-pin-appear;
+    animation-duration: 0.3s;
+}
+
+.progress-bar-container {
+    width: 27px;
+    height: 2px;
+    border-radius: 2px;
+    border: 1px solid black;
+    overflow: hidden;
+    position: relative;
+    top: -14px;
+    background: white;
+    left: 2px;
+    animation-name: bar-container-appear;
+    animation-duration: 0.3s;
+}
+
+.progress-bar-container span {
+    height: 100%;
+    display: block;
+    color: rgb(255, 251, 251);
+    background: #e0441d;
+    line-height: 8px;
+    position: absolute;
+    text-align: end;
+    animation-name: dilemma-time-progress;
+    animation-duration: 15s;
 }

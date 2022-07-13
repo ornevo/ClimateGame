@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Area from './Area';
+import DilemmaLocation from './DilemmaLocation';
 
 
 const AREAS = [
@@ -18,7 +20,7 @@ const AREAS = [
 const baselineSize = {w:1307.22, h:1708};
 
 
-export default class Map extends React.Component {
+class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,12 +46,28 @@ export default class Map extends React.Component {
             <div>
                 <img src="israel-map.svg" id="map-img" useMap="#image-map" />
                 {
-                    AREAS.map((area, i) => 
-                        <Area key={'map-area-' + i} area={area} scale={this.state.scale}
-                              rightOffset={this.state.imageRightOffset}/>
+                    AREAS.map((area, areaI) => 
+                        <Area key={'map-area-' + areaI} area={area} scale={this.state.scale}
+                              rightOffset={this.state.imageRightOffset}>
+                                  {
+                                      this.props.dilemmas.map((dilemma, dilI) => 
+                                        dilemma.placement - 1 === areaI &&
+                                        <DilemmaLocation key={'dilemma_' + dilI} x={10} y={10} lifetime={dilemma.lifetime} dilemmaId={dilemma._id}
+                                                        onClick={dId => this.props.onDilemmaLocationClick(dId)} />
+                                        )
+                                  }
+                        </Area>
                     )
                 }
             </div>
         );
     }
 }
+
+
+Map.propTypes = {
+    dilemmas: PropTypes.array.isRequired, // An array of dilemma objects
+    onDilemmaLocationClick: PropTypes.func.isRequired, // receives the dilemma id as a param
+}
+
+export default Map;

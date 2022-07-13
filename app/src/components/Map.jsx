@@ -53,7 +53,7 @@ class Map extends React.Component {
                                       this.props.dilemmas.map((dilemma, dilI) => 
                                         dilemma.placement - 1 === areaI &&
                                         <DilemmaLocation key={'dilemma_' + dilI} x={10} y={10} lifetime={dilemma.lifetime} dilemmaId={dilemma._id}
-                                                        onClick={dId => this.props.onDilemmaLocationClick(dId)} />
+                                                        isDeleted={dilemma.isDeleted} onClick={dId => this.props.onDilemmaLocationClick(dId)} />
                                         )
                                   }
                         </Area>

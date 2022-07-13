@@ -8,9 +8,15 @@ function DilemmaLocation(props) {
             top: props.y + "px",
             left: props.x + "px",
         }}>
-            <img class='location-pin-img' src="location-pin.svg" />
-            <div className="progress-bar-container">
-                <span class="progress-bar-inner" style={{animationDuration: props.lifetime + 's'}}></span>
+            <img className='location-pin-img' src="location-pin.svg" style={{
+                animationName: props.isDeleted ? "location-pin-disappear" : "location-pin-appear"
+            }} />
+            <div className="progress-bar-container" style={{
+                animationName: props.isDeleted ? "bar-container-disappear" : "bar-container-appear"
+            }}>
+                <span className="progress-bar-inner" style={{
+                    animationDuration: props.lifetime + 's',
+                }}></span>
             </div>
         </div>
     )
@@ -22,6 +28,7 @@ DilemmaLocation.propTypes = {
     y: PropTypes.number.isRequired, // The y offset from the parent area
     lifetime: PropTypes.number.isRequired, // The number of seconds until this dilemma expires
     dilemmaId: PropTypes.string.isRequired, // The dilemma id to be passed to callback
+    isDeleted: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired, // Parameter is dilemmaId
 }
 

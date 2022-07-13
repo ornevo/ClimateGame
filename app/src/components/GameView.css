@@ -19,14 +19,25 @@
     from { width: 0px; }
     to { width: 27px; }
 }
+
 @keyframes location-pin-appear {
-    from { width: 0px; }
-    to { width: 30px; }
+    from { width: 0px; top: 30px; }
+    to { width: 30px; top: 0px; }
 }
+@keyframes location-pin-disappear {
+    from { width: 30px; top: 0px; }
+    to { width: 0px; top: 30px; }
+}
+
 @keyframes bar-container-appear {
     from { width: 0px; }
     to { width: 27px; }
 }
+@keyframes bar-container-disappear {
+    from { width: 27px; }
+    to { width: 0px; }
+}
+
   
 .dilemma-location {
     position: relative;

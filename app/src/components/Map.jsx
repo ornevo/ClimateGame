@@ -36,7 +36,8 @@ class Map extends React.Component {
         const imgOffset = imgRect.x;
         this.setState({
             scale: imgHeight / baselineSize.h,
-            imageRightOffset: imgOffset
+            imageRightOffset: imgOffset,
+            imageTopOffset: imgRect.y
         });
     }
 

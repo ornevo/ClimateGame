@@ -12,7 +12,8 @@
 
 .area {
     position: fixed;
-    background-color: rgba(0, 0, 0, .02);
+    /* background-color: rgba(0, 0, 0, .02); */
+    background-color: rgba(0, 0, 0, 2);
 }
 
 @keyframes dilemma-time-progress {
@@ -76,4 +77,10 @@
     position: absolute;
     text-align: end;
     animation-name: dilemma-time-progress;
+}
+
+
+/* Menu */
+.top-menu {
+    padding: 50px;
 }

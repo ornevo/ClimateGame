@@ -1,10 +1,8 @@
 import React from 'react';
 import Map from './Map';
+import Menu from './menu/Menu';
 import './GameView.css';
-
-
-const GAME_TICK_SECONDS = 0.5;
-const DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME = 0.3;
+import Constants from "../constants";
 
 
 export default class GameView extends React.Component {
@@ -15,6 +13,10 @@ export default class GameView extends React.Component {
             dilemmas: [
                 {_id: "testid", lifetime: 15, placement: 2, isDeleted: false}
             ],
+            emissions: Constants.INITIAL_EMISSIONS,
+            money: Constants.INITIAL_MONEY,
+            qof: Constants.INITIAL_QUALITY_OF_LIFE,
+            year: Constants.INITIAL_YEAR,
         }
         setTimeout(() => {
             this.removeDilemma("testid")
@@ -39,13 +41,15 @@ export default class GameView extends React.Component {
             setTimeout(() => {
                 newDilemmasState = this.state.dilemmas.filter(d => d._id !== dilemmaId);
                 this.setState({dilemmas: newDilemmasState});
-            }, DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME * 1000);
+            }, Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME * 1000);
         })
     }
 
     render() {
         return (
             <div id="game-view-container">
+                <Menu emissions={this.state.emissions} money={this.state.money}
+                        qof={this.state.qof} year={this.state.year} />
                 <Map dilemmas={this.state.dilemmas}
                     onDilemmaLocationClick={this.onDilemmaLocationClick.bind(this)}/>
             </div>

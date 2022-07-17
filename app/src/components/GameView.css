@@ -4,7 +4,7 @@
 }
 
 #map-img {
-    height: 100%;
+    height: calc(100% - 116px);
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0%);
@@ -12,8 +12,7 @@
 
 .area {
     position: fixed;
-    /* background-color: rgba(0, 0, 0, .02); */
-    background-color: rgba(0, 0, 0, 2);
+    background-color: rgba(0, 0, 0, .02);
 }
 
 @keyframes dilemma-time-progress {
@@ -82,5 +81,51 @@
 
 /* Menu */
 .top-menu {
-    padding: 50px;
+    padding: 10px;
+    border-bottom: 4px solid rgba(0,0,0,.1);
+}
+
+.metric-bar-container {
+    box-sizing: content-box;
+    height: 15px; /* Can be anything */
+    position: relative;
+    background: #ebe7de;
+    border-radius: 25px;
+    padding: 5px;
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+.metric-container-small {
+    font-size: small;
+}
+.metric-bar-container > span {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-container-small > .metric-bar-container {
+    height: 10px; /* Can be anything */
+    padding: 3px;
+}
+
+.metric-title-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    direction: rtl;
+    text-align: center;
+    padding: 4px 10px;
+}
+
+.menu-sub-metrics-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+
 }

@@ -49,7 +49,7 @@ class Map extends React.Component {
                 {
                     AREAS.map((area, areaI) => 
                         <Area key={'map-area-' + areaI} area={area} scale={this.state.scale}
-                              rightOffset={this.state.imageRightOffset}>
+                              rightOffset={this.state.imageRightOffset} topOffset={this.state.imageTopOffset}>
                                   {
                                       this.props.dilemmas.map((dilemma, dilI) => 
                                         dilemma.placement - 1 === areaI &&

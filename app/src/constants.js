@@ -4,13 +4,22 @@ const DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME = 0.3;
 const INITIAL_EMISSIONS = 50;
 const INITIAL_MONEY = 50;
 const INITIAL_QUALITY_OF_LIFE = 50;
-const INITIAL_YEAR = 2022;
+const INITIAL_YEAR = 2042;
 
 const MAX_EMISSIONS = 100;
 const MAX_MONEY = 100;
 const MAX_QOF = 100;
 const MAX_YEAR = 2050;
 
+const MIN_YEAR = 2022;
+const MIN_QOF = 0;
+const MIN_MONEY = 0;
+const MIN_EMISSIONS = 0;
+
+const YEAR_HEB_NAME = "שנה";
+const QOF_HEB_NAME = "איכות חיים";
+const MONEY_HEB_NAME = "כסף";
+const EMISSIONS_HEB_NAME = "גזי חממה";
 
 export default {
     GAME_TICK_SECONDS,
@@ -23,4 +32,12 @@ export default {
     MAX_MONEY,
     MAX_QOF,
     MAX_YEAR,
+    MIN_YEAR,
+    MIN_EMISSIONS,
+    MIN_MONEY,
+    MIN_QOF,
+    YEAR_HEB_NAME,
+    QOF_HEB_NAME,
+    MONEY_HEB_NAME,
+    EMISSIONS_HEB_NAME
 }

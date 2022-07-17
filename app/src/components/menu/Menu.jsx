@@ -8,14 +8,18 @@ function Menu(props) {
     return (
         <div className="top-menu">
             <Metric max={Constants.MAX_YEAR} curr={props.year}
-                    name={Constants.YEAR_HEB_NAME} color="red" icon="$" min={Constants.MIN_YEAR} />
+                    name={Constants.YEAR_HEB_NAME} icon="$" min={Constants.MIN_YEAR}
+                    color={Constants.METRIC_TO_COLOR[Constants.YEAR_METRIC]}/>
             <div className="menu-sub-metrics-container">
                 <Metric max={Constants.MAX_QOF} curr={props.qof}
-                    name={Constants.QOF_HEB_NAME} color="blue" icon="♥" min={Constants.MIN_QOF} />
+                    name={Constants.QOF_HEB_NAME} icon="♥" min={Constants.MIN_QOF}
+                    color={Constants.METRIC_TO_COLOR[Constants.QOF_METRIC]}/>
                 <Metric max={Constants.MAX_EMISSIONS} curr={props.emissions}
-                    name={Constants.EMISSIONS_HEB_NAME} color="black" icon="🌎" min={Constants.MIN_EMISSIONS} />
+                    name={Constants.EMISSIONS_HEB_NAME} icon="🌎" min={Constants.MIN_EMISSIONS} 
+                    color={Constants.METRIC_TO_COLOR[Constants.EMISSIONS_METRIC]}/>
                 <Metric max={Constants.MAX_MONEY} curr={props.money}
-                    name={Constants.MONEY_HEB_NAME} color="green" icon="💵" min={Constants.MIN_MONEY} />
+                    name={Constants.MONEY_HEB_NAME} icon="💵" min={Constants.MIN_MONEY}
+                    color={Constants.METRIC_TO_COLOR[Constants.MONEY_METRIC]}/>
 
             </div>
         </div>

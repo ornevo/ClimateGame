@@ -38,7 +38,6 @@
     to { width: 0px; }
 }
 
-  
 .dilemma-location {
     position: relative;
     cursor: pointer;
@@ -128,4 +127,29 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
 
+}
+
+/* Effects */
+@keyframes effect-disappear {
+    0% {
+        top: 0px;
+        opacity: 0%;
+    }
+    20% { opacity: 100%; }
+    70% { opacity: 100%; }
+    100% {
+        top: -10px;
+        opacity: 0%;
+    }
+}
+
+
+.effect {
+    position: relative
+}
+
+.effect-inner {
+    position: relative;
+    opacity: 0%;
+    animation-name: effect-disappear;
 }

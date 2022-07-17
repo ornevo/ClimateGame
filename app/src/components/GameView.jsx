@@ -13,11 +13,16 @@ export default class GameView extends React.Component {
             dilemmas: [
                 {_id: "testid", lifetime: 15, placement: 2, isDeleted: false}
             ],
+            effects: [
+                {_id: "etestod", x: 10, y: 2, placement: 4, delay: 2 + 5 + Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME, amount: 4, metric: Constants.MONEY_METRIC}
+            ],
             emissions: Constants.INITIAL_EMISSIONS,
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
             year: Constants.INITIAL_YEAR,
         }
+
+        // for testing
         setTimeout(() => {
             this.removeDilemma("testid")
         }, 15000);
@@ -45,13 +50,21 @@ export default class GameView extends React.Component {
         })
     }
 
+    removeEffect(effectId) {
+        console.log('here');
+        var newEffectsState = this.state.effects.filter(e => e._id !== effectId);
+        this.setState({effects: newEffectsState});
+    }
+
     render() {
         return (
             <div id="game-view-container">
                 <Menu emissions={this.state.emissions} money={this.state.money}
                         qof={this.state.qof} year={this.state.year} />
-                <Map dilemmas={this.state.dilemmas}
-                    onDilemmaLocationClick={this.onDilemmaLocationClick.bind(this)}/>
+                <Map dilemmas={this.state.dilemmas} effects={this.state.effects}
+                    onDilemmaLocationClick={this.onDilemmaLocationClick.bind(this)}
+                    onEffectDone={this.removeEffect.bind(this)}
+                    />
             </div>
         );
     }

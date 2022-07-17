@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Area from './Area';
 import DilemmaLocation from './DilemmaLocation';
+import Effect from './Effect';
 
 
 const AREAS = [
@@ -57,6 +58,15 @@ class Map extends React.Component {
                                                         isDeleted={dilemma.isDeleted} onClick={dId => this.props.onDilemmaLocationClick(dId)} />
                                         )
                                   }
+                                  {
+                                      this.props.effects.map((effect, eI) => 
+                                        effect.placement - 1 === areaI &&
+                                        <Effect key={'effect_' + eI} x={effect.x} y={effect.y} id={effect._id}
+                                                        onFinish={this.props.onEffectDone} amount={effect.amount}
+                                                        metric={effect.metric} delay={effect.delay} />
+                                        )
+                                  }
+
                         </Area>
                     )
                 }
@@ -69,6 +79,8 @@ class Map extends React.Component {
 Map.propTypes = {
     dilemmas: PropTypes.array.isRequired, // An array of dilemma objects
     onDilemmaLocationClick: PropTypes.func.isRequired, // receives the dilemma id as a param
+    effects: PropTypes.array.isRequired,
+    onEffectDone: PropTypes.func.isRequired,
 }
 
 export default Map;

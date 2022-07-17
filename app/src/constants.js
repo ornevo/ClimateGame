@@ -21,6 +21,21 @@ const QOF_HEB_NAME = "איכות חיים";
 const MONEY_HEB_NAME = "כסף";
 const EMISSIONS_HEB_NAME = "גזי חממה";
 
+// To represent for effects which category
+const YEAR_METRIC = 1;
+const QOF_METRIC = 2;
+const MONEY_METRIC = 3;
+const EMISSIONS_METRIC = 4;
+
+
+const METRIC_TO_COLOR = {
+    [YEAR_METRIC]: "red",
+    [QOF_METRIC]: "blue",
+    [MONEY_METRIC]: "green",
+    [EMISSIONS_METRIC]: "black",
+}
+const EFFECT_ANIMATINO_TIME = 1.5;
+
 export default {
     GAME_TICK_SECONDS,
     DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME,
@@ -39,5 +54,11 @@ export default {
     YEAR_HEB_NAME,
     QOF_HEB_NAME,
     MONEY_HEB_NAME,
-    EMISSIONS_HEB_NAME
+    EMISSIONS_HEB_NAME,
+    YEAR_METRIC,
+    QOF_METRIC,
+    MONEY_METRIC,
+    EMISSIONS_METRIC,
+    METRIC_TO_COLOR,
+    EFFECT_ANIMATINO_TIME
 }

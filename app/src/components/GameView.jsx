@@ -2,7 +2,7 @@ import React from 'react';
 import Map from './Map';
 import Menu from './menu/Menu';
 import Popup from "./popups/Popup";
-import QuestionPopup from './popups/QuestionPopup';
+import DilemmaPopup from './popups/DilemmaPopup';
 import './GameView.css';
 import Constants from "../constants";
 
@@ -22,7 +22,7 @@ export default class GameView extends React.Component {
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
             year: Constants.INITIAL_YEAR,
-            openQuestion: Constants.QUESTIONS[0].ID
+            openDilemma: Constants.DILEMMAS[0].ID
         }
 
         // for testing
@@ -58,19 +58,19 @@ export default class GameView extends React.Component {
         this.setState({effects: newEffectsState});
     }
 
-    closeQuestion() {
-        this.setState({openQuestion: undefined})
+    closeDilemma() {
+        this.setState({openDilemma: undefined})
     }
 
     render() {
         var popup = '';
-        if(this.state.openQuestion) {
-            const question = Constants.QUESTIONS.find(q => q.ID === this.state.openQuestion);
+        if(this.state.openDilemma) {
+            const dilemma = Constants.DILEMMAS.find(q => q.ID === this.state.openDilemma);
             popup = (
-                <QuestionPopup event={question}
-                    onClose={this.closeQuestion.bind(this)}
+                <DilemmaPopup event={dilemma}
+                    onClose={this.closeDilemma.bind(this)}
                     onChooseOption={id => alert("Chose option id " + id)}
-                >test</QuestionPopup>
+                >test</DilemmaPopup>
             )
         }
         const popupOpen = popup !== '';

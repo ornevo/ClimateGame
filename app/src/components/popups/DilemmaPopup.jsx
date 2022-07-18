@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Popup from './Popup';
 import Constants from "../../constants";
-import QuestionOption from './QuestionOption';
+import DilemmaOption from './DilemmaOption';
 
 
-function QuestionPopup(props) {
+function DilemmaPopup(props) {
     const q = props.event;
     return (
         <Popup onClose={props.onClose}>
@@ -25,14 +25,14 @@ function QuestionPopup(props) {
             {/* Options */}
             <div>
                 {props.event.options.map(option => 
-                    <QuestionOption option={option} onClick={props.onChooseOption}/>
+                    <DilemmaOption option={option} onClick={props.onChooseOption}/>
                 )}
             </div>
         </Popup>
     )
 }
 
-QuestionPopup.propTypes = {
+DilemmaPopup.propTypes = {
     onClose: PropTypes.func.isRequired,
     onChooseOption: PropTypes.func.isRequired, // called with option id
     children: PropTypes.object.isRequired,
@@ -40,4 +40,4 @@ QuestionPopup.propTypes = {
 }
 
 
-export default QuestionPopup;
+export default DilemmaPopup;

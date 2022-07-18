@@ -65,7 +65,7 @@ const DEMO_OPTION = {
     }
 };
 
-const QUESTIONS = [
+const DILEMMAS = [
     {
         is_good: false,
         ID: '2',
@@ -106,5 +106,5 @@ export default {
     METRIC_TO_COLOR,
     EFFECT_ANIMATINO_TIME,
     CATEGORY_TO_IMG,
-    QUESTIONS
+    DILEMMAS
 }

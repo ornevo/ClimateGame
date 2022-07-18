@@ -1,8 +1,36 @@
 import React from 'react';
 import Map from './Map';
 import Menu from './menu/Menu';
+import Popup from "./popups/Popup";
+import QuestionPopup from './popups/QuestionPopup';
 import './GameView.css';
 import Constants from "../constants";
+
+const DEMO_OPTION = {
+    ID: 2,
+    content: "תוכן האפשרות",
+    effect: {
+        money_delta: 100,
+        emissions_delta: 10,
+        life_quality_delta: 11,
+        money_delta_per_tick: 2,
+        emissions_delta_per_tick: 2,
+        life_quality_delta_per_tick: 2,
+        ticks_amount: 5
+    }
+};
+const DEMO_QUESTION = {
+    is_good: false,
+    ID: 2,
+    title: "כותרת השאלה",
+    description: "תיאור תיאור תיאור",
+    placement: 4,
+    category: 4,
+    unhandled_money_delta: 10,
+    unhandled_emissions_delta: 12,
+    unhandled_life_quality_delta: 14,
+    options: [DEMO_OPTION, {...DEMO_OPTION, ID: 3}, {...DEMO_OPTION, ID: 4}]
+}
 
 
 export default class GameView extends React.Component {
@@ -20,6 +48,7 @@ export default class GameView extends React.Component {
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
             year: Constants.INITIAL_YEAR,
+            popup: ''
         }
 
         // for testing
@@ -57,13 +86,19 @@ export default class GameView extends React.Component {
     }
 
     render() {
+        const popupOpen = this.state.popup !== undefined;
         return (
             <div id="game-view-container">
+                <QuestionPopup event={DEMO_QUESTION}
+                                onClose={_ => alert("Closed")}
+                                onChooseOption={id => alert("Chose option id " + id)}
+                >test</QuestionPopup>
                 <Menu emissions={this.state.emissions} money={this.state.money}
-                        qof={this.state.qof} year={this.state.year} />
+                    qof={this.state.qof} year={this.state.year} popupOpen={popupOpen} />
                 <Map dilemmas={this.state.dilemmas} effects={this.state.effects}
                     onDilemmaLocationClick={this.onDilemmaLocationClick.bind(this)}
                     onEffectDone={this.removeEffect.bind(this)}
+                    popupOpen={popupOpen}
                     />
             </div>
         );

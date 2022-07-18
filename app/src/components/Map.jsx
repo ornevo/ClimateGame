@@ -46,7 +46,8 @@ class Map extends React.Component {
         // Create areas
         return (
             <div>
-                <img src="israel-map.svg" id="map-img" useMap="#image-map" />
+                <img src="israel-map.svg" id="map-img" useMap="#image-map" 
+                    className={(this.props.popupOpen === true) && "blurred"}/>
                 {
                     AREAS.map((area, areaI) => 
                         <Area key={'map-area-' + areaI} area={area} scale={this.state.scale}
@@ -81,6 +82,7 @@ Map.propTypes = {
     onDilemmaLocationClick: PropTypes.func.isRequired, // receives the dilemma id as a param
     effects: PropTypes.array.isRequired,
     onEffectDone: PropTypes.func.isRequired,
+    popupOpen: PropTypes.bool,
 }
 
 export default Map;

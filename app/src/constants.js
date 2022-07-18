@@ -27,7 +27,6 @@ const QOF_METRIC = 2;
 const MONEY_METRIC = 3;
 const EMISSIONS_METRIC = 4;
 
-
 const METRIC_TO_COLOR = {
     [YEAR_METRIC]: "red",
     [QOF_METRIC]: "blue",
@@ -35,6 +34,22 @@ const METRIC_TO_COLOR = {
     [EMISSIONS_METRIC]: "black",
 }
 const EFFECT_ANIMATINO_TIME = 1.5;
+
+const NO_OPTIONS_CATEGORY = 0;
+const TRANSPORT_CATEGORY = 1;
+const AGRICULTURE_CATEGORY = 2;
+const ENERGY_CATEGORY = 3;
+const INDUSTRY_CATEGORY = 4;
+const HOME_CATEGORY = 5;
+
+const CATEGORY_TO_IMG = {
+    [NO_OPTIONS_CATEGORY]: "/qmark-icon.png",
+    [TRANSPORT_CATEGORY]: "/trans-icon.svg",
+    [AGRICULTURE_CATEGORY]: "/agri-icon.svg",
+    [ENERGY_CATEGORY]: "/elec-icon.svg",
+    [INDUSTRY_CATEGORY]: "/manu-icon.svg",
+    [HOME_CATEGORY]: "/home-icon.svg",
+}
 
 export default {
     GAME_TICK_SECONDS,
@@ -60,5 +75,6 @@ export default {
     MONEY_METRIC,
     EMISSIONS_METRIC,
     METRIC_TO_COLOR,
-    EFFECT_ANIMATINO_TIME
+    EFFECT_ANIMATINO_TIME,
+    CATEGORY_TO_IMG
 }

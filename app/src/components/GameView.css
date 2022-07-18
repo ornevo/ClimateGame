@@ -41,6 +41,11 @@
 .dilemma-location {
     position: relative;
     cursor: pointer;
+    z-index: 20;
+}
+
+.location-deleted {
+    width: 0px;
 }
 
 .location-pin-img {
@@ -145,7 +150,8 @@
 
 
 .effect {
-    position: relative
+    position: relative;
+    z-index: 10;
 }
 
 .effect-inner {

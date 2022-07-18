@@ -4,6 +4,7 @@ import Menu from './menu/Menu';
 import Popup from "./popups/Popup";
 import DilemmaPopup from './popups/DilemmaPopup';
 import './GameView.css';
+import Utils from "../utils";
 import Constants from "../constants";
 
 
@@ -12,9 +13,7 @@ export default class GameView extends React.Component {
         super(props);
 
         this.state = {
-            dilemmas: [
-                {ID: '2', isDeleted: false}
-            ],
+            dilemmas: [],
             effects: [
                 {ID: "etestod", x: 10, y: 2, placement: 4, delay: 2 + 5 + Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME, amount: 4, metric: Constants.MONEY_METRIC}
             ],
@@ -22,28 +21,35 @@ export default class GameView extends React.Component {
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
             year: Constants.INITIAL_YEAR,
-            openDilemma: Constants.DILEMMAS[0].ID
+            openDilemma: undefined // Constants.DILEMMAS[0].ID
         }
 
         // for testing
         setTimeout(() => {
-            this.removeDilemma("2")
-        }, 5000);
+            this.addDilemmas(["2"])
+        }, 2000);
+    }
 
+    addDilemmas(dilemmaIds) {
+        // TODO: Random locations
+        let newDilemmas = [...this.state.dilemmas, ...dilemmaIds.map(dId => ({ID: dId, isDeleted: false}))];
+        this.setState({dilemmas: newDilemmas}, () => {
+            // Now add timeouts
+            // TODO: Consider in the future doing this a scheduling mechanism based on ticks, linear
+            dilemmaIds.forEach(dId => {
+                const d = Utils.getDilemma(dId);
+                if(!d) return;
+                setTimeout(() => this.removeDilemma(dId), d.lifetime * 1000);
+            });
+        })
 
-        // setTimeout(() => {
-        //     this.setState({
-        //         dilemmas: [...this.state.dilemmas, {ID: "3", isDeleted: false}]
-        //     })
-        //     setTimeout(() => {
-        //         this.removeDilemma("testid2")
-        //     }, 3000);
-        // }, 3000);
     }
 
     removeDilemma(dilemmaId) {
         // We first change it to deleted, then wait for animation finish, then really delete
-        console.log('called removeDilemma with ' + dilemmaId);
+        // TODO Fix effect jumping app when location disappears
+        // TODO dont delete as long as dilemma in openDillema? just delete when unsetting it
+
         var newDilemmasState = this.state.dilemmas.map(d => d.ID === dilemmaId ? {...d, isDeleted: true} : d);
         this.setState({dilemmas: newDilemmasState}, () => {
             // Now wait for the destruction to finish
@@ -60,7 +66,13 @@ export default class GameView extends React.Component {
     }
 
     closeDilemma() {
-        this.setState({openDilemma: undefined})
+        // If deleted in the time of choice making, delete it now
+        // NOTE Be aware that here, dilemma may no longer be in the state.dilemmas list
+        this.setState({openDilemma: undefined});
+    }
+    
+    onDilemmaLocationClick(dId) {
+        this.setState({openDilemma: dId})
     }
 
     render() {
@@ -87,9 +99,5 @@ export default class GameView extends React.Component {
                     />
             </div>
         );
-    }
-
-    onDilemmaLocationClick(dId) {
-        alert("Clicked on dilemma " + dId);
     }
 }

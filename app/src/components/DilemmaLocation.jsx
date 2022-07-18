@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 
 
 function DilemmaLocation(props) {
+    console.log('rendered, props delted: ' + props.isDeleted);
     return (
         <div className="dilemma-location" onClick={_ => props.onClick(props.dilemmaId)} style={{
             top: props.y + "px",
             left: props.x + "px",
         }}>
-            <img className='location-pin-img' src="location-pin.svg" style={{
+            <img className={'location-pin-img' + (props.isDeleted ? ' location-deleted' : '')}
+                src="location-pin.svg" style={{
                 animationName: props.isDeleted ? "location-pin-disappear" : "location-pin-appear"
             }} />
-            <div className="progress-bar-container" style={{
+            <div className={'progress-bar-container' + (props.isDeleted ? ' location-deleted' : '')}
+                style={{
                 animationName: props.isDeleted ? "bar-container-disappear" : "bar-container-appear"
             }}>
                 <span className="progress-bar-inner" style={{

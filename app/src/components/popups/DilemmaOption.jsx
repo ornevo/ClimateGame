@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 
 function DilemmaOption(props) {
+    // TODO: icons and dynamic numbers
     return (
         <div className="dilemma-option-container" onClick={_ => props.onClick(props.option.ID)}>
             <div>{props.option.content}</div>

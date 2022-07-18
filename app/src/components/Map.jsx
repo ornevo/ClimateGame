@@ -47,7 +47,7 @@ class Map extends React.Component {
         return (
             <div>
                 <img src="israel-map.svg" id="map-img" useMap="#image-map" 
-                    className={(this.props.popupOpen === true) && "blurred"}/>
+                    className={(this.props.popupOpen === true) ? "blurred" : ""}/>
                 {
                     AREAS.map((area, areaI) => 
                         <Area key={'map-area-' + areaI} area={area} scale={this.state.scale}

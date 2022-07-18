@@ -6,7 +6,7 @@ import Metric from "./Metric";
 
 function Menu(props) {
     return (
-        <div className={"top-menu" + ((props.popupOpen === true) && " blurred")}>
+        <div className={"top-menu" + ((props.popupOpen === true) ? " blurred" : "")}>
             <Metric max={Constants.MAX_YEAR} curr={props.year}
                     name={Constants.YEAR_HEB_NAME} icon="$" min={Constants.MIN_YEAR}
                     color={Constants.METRIC_TO_COLOR[Constants.YEAR_METRIC]}/>

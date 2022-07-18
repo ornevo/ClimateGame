@@ -39,7 +39,7 @@ Effect.propTypes = {
     amount: PropTypes.number.isRequired,
     x: PropTypes.number.isRequired, // relative location
     y: PropTypes.number.isRequired, // relative location
-    metric: PropTypes.string.isRequired, // from constants
+    metric: PropTypes.number.isRequired, // from constants
     id: PropTypes.string,
     onFinish: PropTypes.func, // will be called with the id
     delay: PropTypes.number // 

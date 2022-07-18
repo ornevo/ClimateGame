@@ -48,7 +48,7 @@ export default class GameView extends React.Component {
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
             year: Constants.INITIAL_YEAR,
-            popup: ''
+            popup: undefined
         }
 
         // for testing
@@ -80,7 +80,6 @@ export default class GameView extends React.Component {
     }
 
     removeEffect(effectId) {
-        console.log('here');
         var newEffectsState = this.state.effects.filter(e => e._id !== effectId);
         this.setState({effects: newEffectsState});
     }
@@ -89,10 +88,10 @@ export default class GameView extends React.Component {
         const popupOpen = this.state.popup !== undefined;
         return (
             <div id="game-view-container">
-                <QuestionPopup event={DEMO_QUESTION}
+                {/* <QuestionPopup event={DEMO_QUESTION}
                                 onClose={_ => alert("Closed")}
                                 onChooseOption={id => alert("Chose option id " + id)}
-                >test</QuestionPopup>
+                >test</QuestionPopup> */}
                 <Menu emissions={this.state.emissions} money={this.state.money}
                     qof={this.state.qof} year={this.state.year} popupOpen={popupOpen} />
                 <Map dilemmas={this.state.dilemmas} effects={this.state.effects}

@@ -73,6 +73,7 @@ const DILEMMAS = [
         description: "תיאור תיאור תיאור",
         placement: 4,
         category: 4,
+        lifetime: 5, // for now here but maybe constant
         unhandled_money_delta: 10,
         unhandled_emissions_delta: 12,
         unhandled_life_quality_delta: 14,

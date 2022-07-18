@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Area from './Area';
 import DilemmaLocation from './DilemmaLocation';
 import Effect from './Effect';
+import Utils from '../utils'
 
 
 const AREAS = [
@@ -54,15 +55,16 @@ class Map extends React.Component {
                               rightOffset={this.state.imageRightOffset} topOffset={this.state.imageTopOffset}>
                                   {
                                       this.props.dilemmas.map((dilemma, dilI) => 
-                                        dilemma.placement - 1 === areaI &&
-                                        <DilemmaLocation key={'dilemma_' + dilI} x={10} y={10} lifetime={dilemma.lifetime} dilemmaId={dilemma._id}
+                                        Utils.getDilemma(dilemma.ID).placement - 1 === areaI &&
+                                        <DilemmaLocation key={'dilemma_' + dilI} x={10} y={10} lifetime={Utils.getDilemma(dilemma.ID).lifetime}
+                                                        dilemmaId={dilemma.ID}
                                                         isDeleted={dilemma.isDeleted} onClick={dId => this.props.onDilemmaLocationClick(dId)} />
                                         )
                                   }
                                   {
                                       this.props.effects.map((effect, eI) => 
                                         effect.placement - 1 === areaI &&
-                                        <Effect key={'effect_' + eI} x={effect.x} y={effect.y} id={effect._id}
+                                        <Effect key={'effect_' + eI} x={effect.x} y={effect.y} id={effect.ID}
                                                         onFinish={this.props.onEffectDone} amount={effect.amount}
                                                         metric={effect.metric} delay={effect.delay} />
                                         )
@@ -78,7 +80,7 @@ class Map extends React.Component {
 
 
 Map.propTypes = {
-    dilemmas: PropTypes.array.isRequired, // An array of dilemma objects
+    dilemmas: PropTypes.array.isRequired, // An array of dilemma {ID, isDeleted} objects
     onDilemmaLocationClick: PropTypes.func.isRequired, // receives the dilemma id as a param
     effects: PropTypes.array.isRequired,
     onEffectDone: PropTypes.func.isRequired,

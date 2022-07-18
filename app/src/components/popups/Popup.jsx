@@ -16,7 +16,6 @@ function Popup(props) {
 
 Popup.propTypes = {
     onClose: PropTypes.func.isRequired,
-    children: PropTypes.object.isRequired
 }
 
 

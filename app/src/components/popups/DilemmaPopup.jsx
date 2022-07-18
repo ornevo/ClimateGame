@@ -25,7 +25,7 @@ function DilemmaPopup(props) {
             {/* Options */}
             <div>
                 {props.event.options.map(option => 
-                    <DilemmaOption option={option} onClick={props.onChooseOption}/>
+                    <DilemmaOption key={'option_' + option.ID} option={option} onClick={props.onChooseOption}/>
                 )}
             </div>
         </Popup>
@@ -35,7 +35,6 @@ function DilemmaPopup(props) {
 DilemmaPopup.propTypes = {
     onClose: PropTypes.func.isRequired,
     onChooseOption: PropTypes.func.isRequired, // called with option id
-    children: PropTypes.object.isRequired,
     event: PropTypes.object.isRequired // the event obejct as described in JSON.txt file
 }
 

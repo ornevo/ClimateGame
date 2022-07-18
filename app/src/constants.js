@@ -51,6 +51,35 @@ const CATEGORY_TO_IMG = {
     [HOME_CATEGORY]: "/home-icon.svg",
 }
 
+const DEMO_OPTION = {
+    ID: '4',
+    content: "תוכן האפשרות",
+    effect: {
+        money_delta: 100,
+        emissions_delta: 10,
+        life_quality_delta: 11,
+        money_delta_per_tick: 2,
+        emissions_delta_per_tick: 2,
+        life_quality_delta_per_tick: 2,
+        ticks_amount: 5
+    }
+};
+
+const QUESTIONS = [
+    {
+        is_good: false,
+        ID: '2',
+        title: "כותרת השאלה",
+        description: "תיאור תיאור תיאור",
+        placement: 4,
+        category: 4,
+        unhandled_money_delta: 10,
+        unhandled_emissions_delta: 12,
+        unhandled_life_quality_delta: 14,
+        options: [DEMO_OPTION, {...DEMO_OPTION, ID: '6'}, {...DEMO_OPTION, ID: '11'}]
+    }
+]
+
 export default {
     GAME_TICK_SECONDS,
     DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME,
@@ -76,5 +105,6 @@ export default {
     EMISSIONS_METRIC,
     METRIC_TO_COLOR,
     EFFECT_ANIMATINO_TIME,
-    CATEGORY_TO_IMG
+    CATEGORY_TO_IMG,
+    QUESTIONS
 }

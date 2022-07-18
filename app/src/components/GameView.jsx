@@ -6,32 +6,6 @@ import QuestionPopup from './popups/QuestionPopup';
 import './GameView.css';
 import Constants from "../constants";
 
-const DEMO_OPTION = {
-    ID: 2,
-    content: "תוכן האפשרות",
-    effect: {
-        money_delta: 100,
-        emissions_delta: 10,
-        life_quality_delta: 11,
-        money_delta_per_tick: 2,
-        emissions_delta_per_tick: 2,
-        life_quality_delta_per_tick: 2,
-        ticks_amount: 5
-    }
-};
-const DEMO_QUESTION = {
-    is_good: false,
-    ID: 2,
-    title: "כותרת השאלה",
-    description: "תיאור תיאור תיאור",
-    placement: 4,
-    category: 4,
-    unhandled_money_delta: 10,
-    unhandled_emissions_delta: 12,
-    unhandled_life_quality_delta: 14,
-    options: [DEMO_OPTION, {...DEMO_OPTION, ID: 3}, {...DEMO_OPTION, ID: 4}]
-}
-
 
 export default class GameView extends React.Component {
     constructor(props) {
@@ -39,7 +13,7 @@ export default class GameView extends React.Component {
 
         this.state = {
             dilemmas: [
-                {_id: "testid", lifetime: 15, placement: 2, isDeleted: false}
+                {_id: '2', lifetime: 15, placement: 2, isDeleted: false}
             ],
             effects: [
                 {_id: "etestod", x: 10, y: 2, placement: 4, delay: 2 + 5 + Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME, amount: 4, metric: Constants.MONEY_METRIC}
@@ -48,7 +22,7 @@ export default class GameView extends React.Component {
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
             year: Constants.INITIAL_YEAR,
-            popup: undefined
+            openQuestion: Constants.QUESTIONS[0].ID
         }
 
         // for testing
@@ -84,14 +58,25 @@ export default class GameView extends React.Component {
         this.setState({effects: newEffectsState});
     }
 
+    closeQuestion() {
+        this.setState({openQuestion: undefined})
+    }
+
     render() {
-        const popupOpen = this.state.popup !== undefined;
+        var popup = '';
+        if(this.state.openQuestion) {
+            const question = Constants.QUESTIONS.find(q => q.ID === this.state.openQuestion);
+            popup = (
+                <QuestionPopup event={question}
+                    onClose={this.closeQuestion.bind(this)}
+                    onChooseOption={id => alert("Chose option id " + id)}
+                >test</QuestionPopup>
+            )
+        }
+        const popupOpen = popup !== '';
         return (
             <div id="game-view-container">
-                {/* <QuestionPopup event={DEMO_QUESTION}
-                                onClose={_ => alert("Closed")}
-                                onChooseOption={id => alert("Chose option id " + id)}
-                >test</QuestionPopup> */}
+                {popup}
                 <Menu emissions={this.state.emissions} money={this.state.money}
                     qof={this.state.qof} year={this.state.year} popupOpen={popupOpen} />
                 <Map dilemmas={this.state.dilemmas} effects={this.state.effects}

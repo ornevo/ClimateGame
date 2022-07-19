@@ -264,3 +264,19 @@ hr {
     border-right: 1px solid #bfbfbf;
     padding-right: 10px;
 }
+
+.metric-value {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin-bottom: 5px;
+}
+
+.metric-value > img {
+    width: 20px;
+    margin: 0px 4px;
+}
+
+.metric-value > div {
+    padding-top: 2px;
+    direction: ltr;
+}

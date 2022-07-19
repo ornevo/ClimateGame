@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Constants from "../../constants";
+import MetricValue from '../MetricValue';
 
 
 function DilemmaOption(props) {
-    // TODO: icons and dynamic numbers
+
     return (
         <div className="dilemma-option-container" onClick={_ => props.onClick(props.option.ID)}>
             <div>{props.option.content}</div>
             <div className='dilemma-option-effect-container'>
-                <div>+1</div>
-                <div>+1</div>
-                <div>+1</div>
+                <MetricValue value={props.option.effect.life_quality_delta}
+                            metric_const={Constants.QOF_METRIC}/>
+                <MetricValue value={props.option.effect.emissions_delta}
+                            metric_const={Constants.EMISSIONS_METRIC}/>
+                <MetricValue value={props.option.effect.money_delta}
+                            metric_const={Constants.MONEY_METRIC}/>
             </div>
         </div>
     )

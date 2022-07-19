@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Constants from "../../constants";
+import MetricValue from '../MetricValue';
 
 
 function Metric(props) {
@@ -14,9 +15,8 @@ function Metric(props) {
                 {
                     isSmall ? (
                         <div className="metric-title-container">
-                            <span>{props.name}</span>
-                            <span></span>
-                            <span>{props.icon} {props.curr}</span>
+                            <div></div>
+                            <div>{props.name}</div>
                         </div>
                     ) : (
                         <div className="metric-title-container">
@@ -28,7 +28,7 @@ function Metric(props) {
                 }
             </span>
             <div className="metric-bar-container">
-                <span style={{width: precent + "%", background: props.color}}></span>
+                <span style={{width: precent + "%", background: Constants.METRIC_TO_COLOR[props.metric_const]}}></span>
             </div>
         </div>
     )
@@ -40,8 +40,7 @@ Metric.propTypes = {
     curr: PropTypes.number.isRequired,
     min: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired
+    metric_const: PropTypes.number.isRequired, // e.g. Constants.QOF_METRIC
 }
 
 

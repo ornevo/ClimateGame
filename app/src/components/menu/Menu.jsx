@@ -9,16 +9,20 @@ function Menu(props) {
         <div className={"top-menu" + ((props.popupOpen === true) ? " blurred" : "")}>
             <Metric max={Constants.MAX_YEAR} curr={props.year}
                     name={Constants.YEAR_HEB_NAME} icon="$" min={Constants.MIN_YEAR}
+                    metric_const={Constants.YEAR_METRIC}
                     color={Constants.METRIC_TO_COLOR[Constants.YEAR_METRIC]}/>
             <div className="menu-sub-metrics-container">
                 <Metric max={Constants.MAX_QOF} curr={props.qof}
                     name={Constants.QOF_HEB_NAME} icon="♥" min={Constants.MIN_QOF}
+                    metric_const={Constants.QOF_METRIC}
                     color={Constants.METRIC_TO_COLOR[Constants.QOF_METRIC]}/>
                 <Metric max={Constants.MAX_EMISSIONS} curr={props.emissions}
                     name={Constants.EMISSIONS_HEB_NAME} icon="🌎" min={Constants.MIN_EMISSIONS} 
+                    metric_const={Constants.EMISSIONS_METRIC}
                     color={Constants.METRIC_TO_COLOR[Constants.EMISSIONS_METRIC]}/>
                 <Metric max={Constants.MAX_MONEY} curr={props.money}
                     name={Constants.MONEY_HEB_NAME} icon="💵" min={Constants.MIN_MONEY}
+                    metric_const={Constants.MONEY_METRIC}
                     color={Constants.METRIC_TO_COLOR[Constants.MONEY_METRIC]}/>
 
             </div>

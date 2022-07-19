@@ -33,6 +33,13 @@ const METRIC_TO_COLOR = {
     [MONEY_METRIC]: "green",
     [EMISSIONS_METRIC]: "black",
 }
+
+const METRIC_TO_IMG = {
+    [QOF_METRIC]: "/qof-icon.png",
+    [MONEY_METRIC]: "/money-icon.png",
+    [EMISSIONS_METRIC]: "/emissions-icon.png",
+}
+
 const EFFECT_ANIMATINO_TIME = 1.5;
 
 const NO_OPTIONS_CATEGORY = 0;
@@ -107,5 +114,6 @@ export default {
     METRIC_TO_COLOR,
     EFFECT_ANIMATINO_TIME,
     CATEGORY_TO_IMG,
-    DILEMMAS
+    DILEMMAS,
+    METRIC_TO_IMG
 }

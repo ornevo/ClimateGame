@@ -28,11 +28,31 @@ export default class GameView extends React.Component {
         setTimeout(() => {
             this.addDilemmas(["2"])
         }, 2000);
+        setTimeout(() => {
+            this.addDilemmas(["2"])
+        }, 3000);
+        setTimeout(() => {
+            this.addDilemmas(["2"])
+        }, 4000);
+        setTimeout(() => {
+            this.addDilemmas(["2"])
+        }, 5000);
+        setTimeout(() => {
+            this.addDilemmas(["2"])
+        }, 6000);
     }
 
     addDilemmas(dilemmaIds) {
         // TODO: Random locations
-        let newDilemmas = [...this.state.dilemmas, ...dilemmaIds.map(dId => ({ID: dId, isDeleted: false}))];
+        const dilemmasToAdd = dilemmaIds.map(dId => {
+            const dilemma = Constants.DILEMMAS.find(d => d.ID === dId);
+            const area = Constants.AREAS[dilemma.placement - 1];
+            // Calculate random location within area
+            const relativeX = Utils.random(0, area.w - Constants.DILEMMA_LOCATION_W);
+            const relativeY = Utils.random(0, area.y - Constants.DILEMMA_LOCATION_H);
+            return {ID: dId, x: relativeX, y: relativeY, isDeleted: false};
+        })
+        let newDilemmas = [...this.state.dilemmas, ...dilemmasToAdd];
         this.setState({dilemmas: newDilemmas}, () => {
             // Now add timeouts
             // TODO: Consider in the future doing this a scheduling mechanism based on ticks, linear

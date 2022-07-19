@@ -12,6 +12,7 @@
 
 .area {
     position: fixed;
+    text-align: initial;
     background-color: rgba(0, 0, 0, .02);
 }
 

@@ -58,6 +58,23 @@ const CATEGORY_TO_IMG = {
     [HOME_CATEGORY]: "/home-icon.svg",
 }
 
+const AREAS = [
+    {name: 'galil', x: 40, y: 130, w: 170, h: 170},
+    {name: 'ramat-hagolan', x: 210, y: 70, w: 80, h: 200},
+    {name: 'haifa-and-carmel', x: -20, y: 260, w: 100, h: 130},
+    {name: 'yehuda-veshomron', x: 0, y: 400, w: 170, h: 380},
+    {name: 'jerusalem', x: -60, y: 650, w: 120, h: 80},
+    {name: 'coastline', x: -70, y: 430, w: 70, h: 200},
+    {name: 'north-negev', x: -200, y: 860, w: 280, h: 300},
+    {name: 'south-negev', x: -100, y: 1160, w: 140, h: 300},
+    {name: 'dead-sea', x: 140, y: 670, w: 60, h: 190},
+    {name: 'mediterranean', x: -300, y: 200, w: 220, h: 420},
+    {name: 'eilat',  x: -60, y: 1560, w: 70, h: 60},
+]
+const BASELINE_SIZE = {w:1307.22, h:1708};
+const DILEMMA_LOCATION_H = 30;
+const DILEMMA_LOCATION_W = 30;
+
 const DEMO_OPTION = {
     ID: '4',
     content: "תוכן האפשרות",
@@ -78,9 +95,9 @@ const DILEMMAS = [
         ID: '2',
         title: "כותרת השאלה",
         description: "תיאור תיאור תיאור",
-        placement: 4,
+        placement: 10,
         category: 4,
-        lifetime: 5, // for now here but maybe constant
+        lifetime: 10000, // for now here but maybe constant
         unhandled_money_delta: 10,
         unhandled_emissions_delta: 12,
         unhandled_life_quality_delta: 14,
@@ -115,5 +132,9 @@ export default {
     EFFECT_ANIMATINO_TIME,
     CATEGORY_TO_IMG,
     DILEMMAS,
-    METRIC_TO_IMG
+    METRIC_TO_IMG,
+    BASELINE_SIZE,
+    AREAS,
+    DILEMMA_LOCATION_H,
+    DILEMMA_LOCATION_W,
 }

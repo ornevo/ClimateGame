@@ -6,8 +6,8 @@ function DilemmaLocation(props) {
     console.log('rendered, props delted: ' + props.isDeleted);
     return (
         <div className="dilemma-location" onClick={_ => props.onClick(props.dilemmaId)} style={{
-            top: props.y + "px",
-            left: props.x + "px",
+            top: (props.y * props.scale) + "px",
+            left: (props.x * props.scale) + "px",
         }}>
             <img className={'location-pin-img' + (props.isDeleted ? ' location-deleted' : '')}
                 src="location-pin.svg" style={{
@@ -29,6 +29,7 @@ function DilemmaLocation(props) {
 DilemmaLocation.propTypes = {
     x: PropTypes.number.isRequired, // The x offset from the parent area
     y: PropTypes.number.isRequired, // The y offset from the parent area
+    scale: PropTypes.number.isRequired,
     lifetime: PropTypes.number.isRequired, // The number of seconds until this dilemma expires
     dilemmaId: PropTypes.string.isRequired, // The dilemma id to be passed to callback
     isDeleted: PropTypes.bool.isRequired,

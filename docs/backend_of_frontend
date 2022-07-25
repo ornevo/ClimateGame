@@ -1,0 +1,17 @@
+def update_state_by_option(chosen_option_id)
+"""
+מעדכן את המדדים המתאימים ומוסיף EFFECT ומוסיף למערך אופציות את האופציה שנבחרה
+"""
+
+
+def get_updated_state()
+"""
+returns the current state as is
+"""
+
+
+
+def delete_event()
+"""
+move from active event to deletedevents and apply the measures
+"""

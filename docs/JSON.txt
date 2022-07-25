@@ -44,9 +44,10 @@ life_quality_delta_per_tick: int,
 ticks_amount: int
 
 === State ===
-active_events: Event list,
+active_events: ["id1", "id2"...],
+deleted_events: [],
+options
+effects: [ { position: ammount }, ... ],
 emissions: int,
 money: int,
 quality_of_life: int,
-Effects_and_placements: list of tuples,
-none_option_events: list of None Option events

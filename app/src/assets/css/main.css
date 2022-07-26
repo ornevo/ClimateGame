@@ -9,3 +9,7 @@
 /* pages */
 @import './pages/welcome-view.css';
 @import './pages/game-view.css';
+
+/* cmps */
+@import './cmps/app-footer.css';
+@import './cmps/about.css';

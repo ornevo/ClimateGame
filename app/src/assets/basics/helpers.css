@@ -1,4 +1,4 @@
-// Flex 
+ /* Flex  */
 .flex {
     display: flex;
 }
@@ -15,7 +15,7 @@
     display: inline-flex;
 }
 
-// List 
+/* List  */
 .clean-list {
     list-style-type: none;
     padding: 0;

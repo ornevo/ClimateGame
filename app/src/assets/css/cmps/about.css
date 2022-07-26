@@ -1,0 +1,5 @@
+.about-container {
+    min-height: calc(100vh - 135px); 
+    width: 100%;
+    text-align: center;
+}

@@ -43,7 +43,8 @@ class Map extends React.Component {
                                         Utils.getDilemma(dilemma.ID).placement - 1 === areaI &&
                                         <DilemmaLocation key={'dilemma_' + dilI} x={dilemma.x} y={dilemma.y} scale={this.state.scale}
                                                         lifetime={Utils.getDilemma(dilemma.ID).lifetime} dilemmaId={dilemma.ID}
-                                                        isDeleted={dilemma.isDeleted} onClick={dId => this.props.onDilemmaLocationClick(dId)} />
+                                                        isDeleted={dilemma.isDeleted} onClick={dId => this.props.onDilemmaLocationClick(dId)}
+                                                        popupOpen={this.props.popupOpen}/>
                                         )
                                   }
                                   {

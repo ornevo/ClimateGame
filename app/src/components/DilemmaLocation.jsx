@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 
 function DilemmaLocation(props) {
-    console.log('rendered, props delted: ' + props.isDeleted);
     return (
-        <div className="dilemma-location" onClick={_ => props.onClick(props.dilemmaId)} style={{
+        <div className={"dilemma-location " + (props.popupOpen ? "blurred" : "")}
+            onClick={_ => props.onClick(props.dilemmaId)} style={{
             top: (props.y * props.scale) + "px",
             left: (props.x * props.scale) + "px",
         }}>
@@ -34,6 +34,7 @@ DilemmaLocation.propTypes = {
     dilemmaId: PropTypes.string.isRequired, // The dilemma id to be passed to callback
     isDeleted: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired, // Parameter is dilemmaId
+    popupOpen: PropTypes.bool.isRequired, // Will blur if true
 }
 
 

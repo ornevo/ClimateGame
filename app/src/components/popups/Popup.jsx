@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 function Popup(props) {
     return (
         <div className="popup-container">
-            <div className="popup-back" onClick={props.onClose}></div>
+            {props.onClose && <div className="popup-back" onClick={props.onClose}></div>}
             <div className="popup" onClick={_=>{}}>
-                <img className="popup-x" src="/x-icon.png" onClick={props.onClose}/>
+                {props.onClose && <img className="popup-x" src="/x-icon.png" onClick={props.onClose}/>}
                 { props.children }
             </div>
         </div>
@@ -15,7 +15,7 @@ function Popup(props) {
 }
 
 Popup.propTypes = {
-    onClose: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
 }
 
 

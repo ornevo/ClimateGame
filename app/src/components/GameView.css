@@ -181,6 +181,10 @@
     }
 }
 
+.white-img {
+    filter: brightness(0) invert(1);
+}
+
 .blurred {
     filter:blur(3px);
     animation-name: blur-appear;
@@ -220,7 +224,7 @@
     height: 12px;
 }
 
-.q-category-icon {
+.q-category-icon, .surprise-icon {
     height: 20px;
     border-radius: 100%;
     border: 1px solid black;
@@ -246,6 +250,9 @@ hr {
     text-align: right;
     direction: rtl;
     padding: 10px;
+}
+.text-small {
+    font-size: 13px;
 }
 
 .dilemma-option-container {
@@ -280,4 +287,37 @@ hr {
 .metric-value > div {
     padding-top: 2px;
     direction: ltr;
+}
+
+.surprise-title {
+    text-align: center;
+    line-height: 30px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.surprise-icon {
+    margin-bottom: 0;
+}
+
+.surprise-accept-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #461c02;
+    color: white;
+    direction: rtl !important;
+    display: inline-block;
+}
+
+.surprise-accept-button > div {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.surprise-accept-button-text {
+    padding-top: 2px;
+    margin-left: 6px;
+}
+.metric-img-small {
+    width: 17px !important;
 }

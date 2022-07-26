@@ -3,6 +3,7 @@ import Map from './Map';
 import Menu from './menu/Menu';
 import Popup from "./popups/Popup";
 import DilemmaPopup from './popups/DilemmaPopup';
+import SurprisePopup from './popups/SurprisePopup';
 import './GameView.css';
 import Utils from "../utils";
 import Constants from "../constants";
@@ -24,26 +25,29 @@ export default class GameView extends React.Component {
             openDilemma: undefined // Constants.DILEMMAS[0].ID
         }
 
-        // for testing
+        // // for testing
         setTimeout(() => {
             this.addDilemmas(["2"])
         }, 2000);
+        // setTimeout(() => {
+        //     this.addDilemmas(["2"])
+        // }, 3000);
+        // setTimeout(() => {
+        //     this.addDilemmas(["2"])
+        // }, 4000);
+        // setTimeout(() => {
+        //     this.addDilemmas(["2"])
+        // }, 5000);
+        // setTimeout(() => {
+        //     this.addDilemmas(["2"])
+        // }, 6000);
         setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 3000);
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 4000);
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 5000);
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 6000);
+            this.addSurprise("3")
+        }, 1000);
+
     }
 
     addDilemmas(dilemmaIds) {
-        // TODO: Random locations
         const dilemmasToAdd = dilemmaIds.map(dId => {
             const dilemma = Constants.DILEMMAS.find(d => d.ID === dId);
             const area = Constants.AREAS[dilemma.placement - 1];
@@ -64,6 +68,20 @@ export default class GameView extends React.Component {
         })
 
     }
+
+    addSurprise(surpriseDilemmaId) {
+        // const surprise = Constants.DILEMMAS.find(d => d.ID === dId);
+        this.openDilemmaPopup(surpriseDilemmaId);
+    }
+
+    openDilemmaPopup(dilemmaId) {
+        if(this.state.openDilemma !== undefined) {
+            console.log("WARNING: tried to open a surprise while already has an open one. ignoring.");
+            return;
+        }
+        this.setState({openDilemma: dilemmaId});
+    }
+
 
     removeDilemma(dilemmaId) {
         // We first change it to deleted, then wait for animation finish, then really delete
@@ -92,19 +110,32 @@ export default class GameView extends React.Component {
     }
     
     onDilemmaLocationClick(dId) {
-        this.setState({openDilemma: dId})
+        this.openDilemmaPopup(dId);
+    }
+
+    onSurpriseDismiss(sId) {
+        this.closeDilemma();
     }
 
     render() {
         var popup = '';
         if(this.state.openDilemma) {
             const dilemma = Constants.DILEMMAS.find(q => q.ID === this.state.openDilemma);
-            popup = (
-                <DilemmaPopup event={dilemma}
-                    onClose={this.closeDilemma.bind(this)}
-                    onChooseOption={id => alert("Chose option id " + id)}
-                >test</DilemmaPopup>
-            )
+            // Check if dillema or surprise
+            if(dilemma.options.length > 0)
+                popup = (
+                    <DilemmaPopup event={dilemma}
+                        onClose={this.closeDilemma.bind(this)}
+                        onChooseOption={id => alert("Chose option id " + id)}
+                    >test</DilemmaPopup>
+                )
+            else
+                popup = (
+                    <SurprisePopup event={dilemma}
+                        onClose={this.closeDilemma.bind(this)}
+                        onDismiss={this.onSurpriseDismiss.bind(this)}
+                    >test</SurprisePopup>
+                )
         }
         const popupOpen = popup !== '';
         return (

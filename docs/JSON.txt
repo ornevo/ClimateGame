@@ -51,3 +51,4 @@ effects: [ { position: ammount }, ... ],
 emissions: int,
 money: int,
 quality_of_life: int,
+year

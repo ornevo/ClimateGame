@@ -1,29 +1,146 @@
 {
     "option":
-    {
-        "ID": "4",
-        "content": "תוכן האפשרות",
-        "effect": {
-            "money_delta": 100,
-            "emissions_delta": 10,
-            "life_quality_delta": 11,
-            "money_delta_per_tick": 2,
-            "emissions_delta_per_tick": 2,
-            "life_quality_delta_per_tick": 2,
-            "ticks_amount": 5
+    [    
+        {
+            "ID": "1",
+            "content": "תוכן האפשרות",
+            "effect": {
+                "money_delta": 100,
+                "emissions_delta": 10,
+                "life_quality_delta": 11,
+                "money_delta_per_tick": 2,
+                "emissions_delta_per_tick": 2,
+                "life_quality_delta_per_tick": 2,
+                "ticks_amount": 5
+            }
+        },
+        {
+            "ID": "2",
+            "content": "תוכן האפשרות",
+            "effect": {
+                "money_delta": 100,
+                "emissions_delta": 10,
+                "life_quality_delta": 11,
+                "money_delta_per_tick": 2,
+                "emissions_delta_per_tick": 2,
+                "life_quality_delta_per_tick": 2,
+                "ticks_amount": 5
+            }
+        },
+        {
+            "ID": "3",
+            "content": "תוכן האפשרות",
+            "effect": {
+                "money_delta": 100,
+                "emissions_delta": 10,
+                "life_quality_delta": 11,
+                "money_delta_per_tick": 2,
+                "emissions_delta_per_tick": 2,
+                "life_quality_delta_per_tick": 2,
+                "ticks_amount": 5
+            }
+        },
+        {
+            "ID": "4",
+            "content": "תוכן האפשרות",
+            "effect": {
+                "money_delta": 100,
+                "emissions_delta": 10,
+                "life_quality_delta": 11,
+                "money_delta_per_tick": 2,
+                "emissions_delta_per_tick": 2,
+                "life_quality_delta_per_tick": 2,
+                "ticks_amount": 5
+            }
+        },
+        {
+            "ID": "5",
+            "content": "תוכן האפשרות",
+            "effect": {
+                "money_delta": 100,
+                "emissions_delta": 10,
+                "life_quality_delta": 11,
+                "money_delta_per_tick": 2,
+                "emissions_delta_per_tick": 2,
+                "life_quality_delta_per_tick": 2,
+                "ticks_amount": 5
+            }
+        },
+        {
+            "ID": "6",
+            "content": "תוכן האפשרות",
+            "effect": {
+                "money_delta": 100,
+                "emissions_delta": 10,
+                "life_quality_delta": 11,
+                "money_delta_per_tick": 2,
+                "emissions_delta_per_tick": 2,
+                "life_quality_delta_per_tick": 2,
+                "ticks_amount": 5
+            }
+        },
+        {
+            "ID": "7",
+            "content": "תוכן האפשרות",
+            "effect": {
+                "money_delta": 100,
+                "emissions_delta": 10,
+                "life_quality_delta": 11,
+                "money_delta_per_tick": 2,
+                "emissions_delta_per_tick": 2,
+                "life_quality_delta_per_tick": 2,
+                "ticks_amount": 5
+            }
         }
-    },
-    "dilema":
-    {
-        "is_good": false,
-        "ID": "2",
-        "title": "כותרת השאלה",
-        "description": "תיאור תיאור תיאור",
-        "placement": 10,
-        "category": 4,
-        "unhandled_money_delta": 10,
-        "unhandled_emissions_delta": 12,
-        "unhandled_life_quality_delta": 14,
-        "options": ["4"]
-    }
+    ],
+    "dilema": [
+        {
+            "is_good": false,
+            "ID": "2",
+            "title": "כותרת השאלה",
+            "description": "תיאור תיאור תיאור",
+            "placement": 10,
+            "category": 4,
+            "unhandled_money_delta": 10,
+            "unhandled_emissions_delta": 12,
+            "unhandled_life_quality_delta": 14,
+            "options": ["1","2"]
+        },
+        {
+            "is_good": false,
+            "ID": "3",
+            "title": "השאלה של זמיר",
+            "description": "תיאור תיאור תיאור",
+            "placement": 9,
+            "category": 4,
+            "unhandled_money_delta": 15,
+            "unhandled_emissions_delta": 3,
+            "unhandled_life_quality_delta": 24,
+            "options": ["3"]
+        },
+        {
+            "is_good": false,
+            "ID": "4",
+            "title": "כותרת השאלה",
+            "description": "תיאור תיאור תיאור",
+            "placement": 8,
+            "category": 3,
+            "unhandled_money_delta": 8,
+            "unhandled_emissions_delta": 10,
+            "unhandled_life_quality_delta": 10,
+            "options": ["4","5"]
+        },
+        {
+            "is_good": false,
+            "ID": "5",
+            "title": "כותרת השאלה",
+            "description": "תיאור תיאור תיאור",
+            "placement": 3,
+            "category": 1,
+            "unhandled_money_delta": 2,
+            "unhandled_emissions_delta": 3,
+            "unhandled_life_quality_delta": 7,
+            "options": ["6","7"]
+        }
+    ]
 }

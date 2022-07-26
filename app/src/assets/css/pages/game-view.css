@@ -307,6 +307,7 @@ hr {
     color: white;
     direction: rtl !important;
     display: inline-block;
+    cursor: pointer;
 }
 
 .surprise-accept-button > div {

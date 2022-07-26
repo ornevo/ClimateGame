@@ -67,6 +67,7 @@ export const HighScore = () => {
 
     return (
         <div className="score-dashboard-container">
+            <h1>טבלת מובילים</h1>
             <section className="high-score-board-recap flex">
                 <div className='total-gamers'>
                     <p className='gamers-info'>מספר שחקנים</p>

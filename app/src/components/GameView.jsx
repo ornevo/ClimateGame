@@ -39,9 +39,9 @@ export default class GameView extends React.Component {
         // setTimeout(() => {
         //     this.addDilemmas(["2"])
         // }, 6000);
-        // setTimeout(() => {
-        //     this.addSurprise("3")
-        // }, 1000);
+        setTimeout(() => {
+            this.addSurprise("3")
+        }, 1000);
 
     }
 

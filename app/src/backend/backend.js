@@ -97,10 +97,28 @@ function getState() {
     // check if it didnt happen yet
 }
 
+<<<<<<< HEAD
 function deleteEvent(eventId) {
     this.state.active_events.filter(function (e) { return e != eventId });
+=======
+function deleteEvent(eventId){
+    this.state.active_events = this.state.active_events.filter(function(e) {return e!=eventId});
+>>>>>>> ecd59c949e850e1e2ef17707d339272e46881dbf
     this.state.deleted_events.push(eventId);
 
+
+}
+function applyOptionMeasures(optionId){
+
+}
+function applyEventMeasures(eventId, isSurprise){
+    if(isSurprise){
+        
+    }
+    else{
+        eventJson = getEvent(eventId);
+
+    }
 
 }
 

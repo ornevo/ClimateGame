@@ -53,9 +53,22 @@ function getUpdatedState()
 }
 
 function deleteEvent(eventId){
-    this.state.active_events.filter(function(e) {return e!=eventId});
+    this.state.active_events = this.state.active_events.filter(function(e) {return e!=eventId});
     this.state.deleted_events.push(eventId);
 
+
+}
+function applyOptionMeasures(optionId){
+
+}
+function applyEventMeasures(eventId, isSurprise){
+    if(isSurprise){
+        
+    }
+    else{
+        eventJson = getEvent(eventId);
+
+    }
 
 }
 

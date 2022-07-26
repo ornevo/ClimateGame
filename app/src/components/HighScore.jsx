@@ -1,6 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { useLocation, NavLink } from 'react-router-dom'
-
+import React from 'react'
 
 export const HighScore = () => {
 
@@ -69,20 +67,25 @@ export const HighScore = () => {
 
     return (
         <div className="score-dashboard-container">
-
-            <div className='total-gamers'>
-                <p className='gamers-amount'>מספר שחקנים</p>
-            </div>
-            <div className='high-score'>
-                <p className='highest'>הניקוד הגבוה ביותר</p>
-            </div>
-            <div className='high-score-gamer'>
-                <p className='best-gamer'>השחקן הטוב ביותר</p>
-            </div>
+            <section className="high-score-board-recap flex">
+                <div className='total-gamers'>
+                    <p className='gamers-info'>מספר שחקנים</p>
+                    <span className='gamers-info-details'>{scores.length}</span>
+                </div>
+                <div className='high-score'>
+                    <p className='gamers-info'>הניקוד הגבוה ביותר</p>
+                    <span className='gamers-info-details'>{scores[0].totalScore}</span>
+                </div>
+                <div className='high-score-gamer'>
+                    <p className='gamers-info'>השחקן הטוב ביותר</p>
+                    <span className='gamers-info-details'>{scores[0].name}</span>
+                </div>
+            </section>
 
             <table className='score-table' cellPadding="0" cellSpacing="0" border="0">
                 <thead className='score-table-header'>
                     <tr>
+                        <th className='score-th'>דירוג</th>
                         <th className='score-th'>שחקן</th>
                         <th className='score-th'>פליטות</th>
                         <th className='score-th'>איכות חיים</th>
@@ -90,13 +93,13 @@ export const HighScore = () => {
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody className='score-table-body'>
                     {scores.map((score, idx) => <tr key={idx}>
-                        <td data-label="RANK">{idx}</td>
-                        <td data-label="GAMER">{score.name}</td>
-                        <td data-label="EMISSIONS">{score.emissions}</td>
-                        <td data-label="QUALITY">{score.quality}</td>
-                        <td data-label="TOTAL SCORE">{score.totalScore}</td>
+                        <td className="score-td" data-label="RANK">{idx + 1}</td>
+                        <td className="score-td" data-label="GAMER">{score.name}</td>
+                        <td className="score-td" data-label="EMISSIONS">{score.emissions}</td>
+                        <td className="score-td" data-label="QUALITY">{score.quality}</td>
+                        <td className="score-td" data-label="TOTAL SCORE">{score.totalScore}</td>
                     </tr>)}
 
                 </tbody>

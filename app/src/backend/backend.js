@@ -1,4 +1,4 @@
-import db from "../components/db.json";
+import db from "./db.json";
 import Constants from "../constants";
 
 
@@ -14,6 +14,7 @@ var state = {
     tick: Constants.INITIAL_TICK
 }
 
+
 function getOption(optionId) {
     for (let i = 0; i < db.options.length; i++) {
         if (db.options[i].ID === optionId) {
@@ -22,6 +23,7 @@ function getOption(optionId) {
     }
     return NaN;
 }
+
 
 function getEvent(eventId) {
     for (let i = 0; i < db.events.length; i++) {
@@ -32,14 +34,17 @@ function getEvent(eventId) {
     return NaN;
 }
 
+
 function effectMeasuresByOption() {
 
 }
+
 
 function updateStateByOption(chosenOptionId) {
     var option = getOption(chosenOptionId)
     state.options.push(chosenOptionId)
 }
+
 
 function isMeasureCrossingThreshold(isMeasureMax, measureThreshold, measureState) {
     // what if measurethreshold doesnt exist
@@ -55,6 +60,7 @@ function isMeasureCrossingThreshold(isMeasureMax, measureThreshold, measureState
     return true
 }
 
+
 function isCrossingThreshold(eventId) {
     // Try to cancel the event and if not return true
     let event = getEvent(eventId)
@@ -67,6 +73,7 @@ function isCrossingThreshold(eventId) {
     }
     return false;
 }
+
 
 function getState() {
     var relevantEvents = [];
@@ -97,30 +104,29 @@ function getState() {
     // check if it didnt happen yet
 }
 
-<<<<<<< HEAD
+
 function deleteEvent(eventId) {
-    this.state.active_events.filter(function (e) { return e != eventId });
-=======
-function deleteEvent(eventId){
-    this.state.active_events = this.state.active_events.filter(function(e) {return e!=eventId});
->>>>>>> ecd59c949e850e1e2ef17707d339272e46881dbf
-    this.state.deleted_events.push(eventId);
-
-
+    state.active_events = state.active_events.filter(function(e) {return e != eventId});
+    state.deleted_events.push(eventId);
 }
+
+
 function applyOptionMeasures(optionId){
 
 }
+
+
 function applyEventMeasures(eventId, isSurprise){
-    if(isSurprise){
+    if(isSurprise)
+    {
         
     }
-    else{
+    else
+    {
         eventJson = getEvent(eventId);
-
     }
-
 }
+
 
 export default {
     state,
@@ -129,4 +135,4 @@ export default {
     deleteEvent,
     getOption,
     getEvent
-}       
+}

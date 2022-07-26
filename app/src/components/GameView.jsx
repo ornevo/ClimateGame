@@ -24,23 +24,6 @@ export default class GameView extends React.Component {
             year: Constants.INITIAL_YEAR,
             openDilemma: undefined // Constants.DILEMMAS[0].ID
         }
-
-        // for testing
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 2000);
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 3000);
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 4000);
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 5000);
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 6000);
     }
 
     addDilemmas(dilemmaIds) {

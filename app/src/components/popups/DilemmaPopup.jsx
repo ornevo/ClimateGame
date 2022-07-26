@@ -6,7 +6,6 @@ import DilemmaOption from './DilemmaOption';
 import ContentText from './ContentText';
 import Backend from '../../backend/backend'
 
-
 function DilemmaPopup(props) {
     const q = props.event;
     return (

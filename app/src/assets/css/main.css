@@ -13,3 +13,5 @@
 /* cmps */
 @import './cmps/app-footer.css';
 @import './cmps/about.css';
+@import './cmps/term-popup.css';
+@import './cmps/high-score.css';

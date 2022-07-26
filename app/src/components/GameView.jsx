@@ -8,14 +8,13 @@ import Constants from "../constants";
 import Backend from '../backend/backend';
 import DB from "./automation_output.json";
 
-
 export default class GameView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             dilemmas: [],
             effects: [
-                {ID: "etestod", x: 10, y: 2, placement: 4, delay: 2 + 5 + Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME, amount: 4, metric: Constants.MONEY_METRIC}
+                { ID: "etestod", x: 10, y: 2, placement: 4, delay: 2 + 5 + Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME, amount: 4, metric: Constants.MONEY_METRIC }
             ],
             emissions: Constants.INITIAL_EMISSIONS,
             money: Constants.INITIAL_MONEY,
@@ -69,10 +68,10 @@ export default class GameView extends React.Component {
             // Calculate random location within area
             const relativeX = Utils.random(0, area.w - Constants.DILEMMA_LOCATION_W);
             const relativeY = Utils.random(0, area.y - Constants.DILEMMA_LOCATION_H);
-            return {ID: dId, x: relativeX, y: relativeY, isDeleted: false};
+            return { ID: dId, x: relativeX, y: relativeY, isDeleted: false };
         })
         let newDilemmas = [...this.state.dilemmas, ...dilemmasToAdd];
-        this.setState({dilemmas: newDilemmas}, () => {
+        this.setState({ dilemmas: newDilemmas }, () => {
             // Now add timeouts
             // TODO: Consider in the future doing this a scheduling mechanism based on ticks, linear
             dilemmaIds.forEach(dId => {
@@ -81,7 +80,6 @@ export default class GameView extends React.Component {
                 this.schedule(() => this.removeDilemma(dId), Constants.DILEMMA_LIFETIME);
             });
         })
-
     }
 
     addSurprise(surpriseDilemmaId) {
@@ -89,11 +87,11 @@ export default class GameView extends React.Component {
     }
 
     openDilemmaPopup(dilemmaId) {
-        if(this.state.openDilemma !== undefined) {
+        if (this.state.openDilemma !== undefined) {
             console.log("WARNING: tried to open a surprise while already has an open one. ignoring.");
             return;
         }
-        this.setState({openDilemma: dilemmaId});
+        this.setState({ openDilemma: dilemmaId });
     }
 
     // TODO here because anywhere is good: fix bug of rejumping dilemmas
@@ -103,8 +101,8 @@ export default class GameView extends React.Component {
         // TODO Fix effect jumping app when location disappears
         // TODO dont delete as long as dilemma in openDillema? just delete when unsetting it
 
-        var newDilemmasState = this.state.dilemmas.map(d => d.ID === dilemmaId ? {...d, isDeleted: true} : d);
-        this.setState({dilemmas: newDilemmasState}, () => {
+        var newDilemmasState = this.state.dilemmas.map(d => d.ID === dilemmaId ? { ...d, isDeleted: true } : d);
+        this.setState({ dilemmas: newDilemmasState }, () => {
             // Now wait for the destruction to finish
             this.schedule(() => {
                 newDilemmasState = this.state.dilemmas.filter(d => d.ID !== dilemmaId);
@@ -136,15 +134,15 @@ export default class GameView extends React.Component {
 
     removeEffect(effectId) {
         var newEffectsState = this.state.effects.filter(e => e.ID !== effectId);
-        this.setState({effects: newEffectsState});
+        this.setState({ effects: newEffectsState });
     }
 
     closeDilemma() {
         // If deleted in the time of choice making, delete it now
         // NOTE Be aware that here, dilemma may no longer be in the state.dilemmas list
-        this.setState({openDilemma: undefined});
+        this.setState({ openDilemma: undefined });
     }
-    
+
     onDilemmaLocationClick(dId) {
         this.openDilemmaPopup(dId);
     }
@@ -183,7 +181,7 @@ export default class GameView extends React.Component {
                     onDilemmaLocationClick={this.onDilemmaLocationClick.bind(this)}
                     onEffectDone={this.removeEffect.bind(this)}
                     popupOpen={popupOpen}
-                    />
+                />
             </div>
         );
     }

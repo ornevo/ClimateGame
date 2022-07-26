@@ -5,11 +5,12 @@ import DilemmaPopup from './popups/DilemmaPopup';
 import SurprisePopup from './popups/SurprisePopup';
 import Utils from "../utils";
 import Constants from "../constants";
+import Backend from '../backend/backend';
+import DB from "./automation_output.json";
 
 export default class GameView extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             dilemmas: [],
             effects: [
@@ -19,34 +20,50 @@ export default class GameView extends React.Component {
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
             year: Constants.INITIAL_YEAR,
+            ticks: 0,
+            scheduled: [],
             openDilemma: undefined // Constants.DILEMMAS[0].ID
         }
+    }
 
-        // // for testing
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 2000);
-        // setTimeout(() => {
-        //     this.addDilemmas(["2"])
-        // }, 3000);
-        // setTimeout(() => {
-        //     this.addDilemmas(["2"])
-        // }, 4000);
-        // setTimeout(() => {
-        //     this.addDilemmas(["2"])
-        // }, 5000);
-        // setTimeout(() => {
-        //     this.addDilemmas(["2"])
-        // }, 6000);
-        setTimeout(() => {
-            this.addSurprise("3")
-        }, 1000);
+    componentDidMount() {
+        // Start game loop
+        if(this.intervalId === undefined)
+            this.intervalId = setInterval(this.gameLoopTick.bind(this), Constants.GAME_TICK_SECONDS * 1000);
+    }
+
+    // This is called every game tick
+    gameLoopTick() {
+        // TODO handle case if already has open popup
+        const newState = Backend.getState();
+
+        this.processScheduled(newState.ticks, () => {
+            const newEvents = newState.active_events.filter(
+                e => this.state.dilemmas.find(ee => ee.ID === e) === undefined
+            )
+    
+            let dilemmaEvents = newEvents.filter(eId => Backend.getEvent(eId).option_ids.length > 0);
+            this.addDilemmas(dilemmaEvents);
+    
+            let surprise = newEvents.find(eId => Backend.getEvent(eId).option_ids.length === 0);
+            // if(surprise !== undefined)
+            //     this.addSurprise(surprise);
+    
+            this.setState({
+                year: newState.year,
+                ticks: newState.ticks,
+                emissions: newState.emissions,
+                money: newState.money,
+                qof: newState.quality_of_life,
+            })
+        });
 
     }
 
     addDilemmas(dilemmaIds) {
+        // console.log("Adding dilemmas ", dilemmaIds);
         const dilemmasToAdd = dilemmaIds.map(dId => {
-            const dilemma = Constants.DILEMMAS.find(d => d.ID === dId);
+            const dilemma = Backend.getEvent(dId);
             const area = Constants.AREAS[dilemma.placement - 1];
             // Calculate random location within area
             const relativeX = Utils.random(0, area.w - Constants.DILEMMA_LOCATION_W);
@@ -58,15 +75,14 @@ export default class GameView extends React.Component {
             // Now add timeouts
             // TODO: Consider in the future doing this a scheduling mechanism based on ticks, linear
             dilemmaIds.forEach(dId => {
-                const d = Utils.getDilemma(dId);
-                if (!d) return;
-                setTimeout(() => this.removeDilemma(dId), d.lifetime * 1000);
+                const d = Backend.getEvent(dId);
+                if(!d) return;
+                this.schedule(() => this.removeDilemma(dId), Constants.DILEMMA_LIFETIME);
             });
         })
     }
 
     addSurprise(surpriseDilemmaId) {
-        // const surprise = Constants.DILEMMAS.find(d => d.ID === dId);
         this.openDilemmaPopup(surpriseDilemmaId);
     }
 
@@ -78,6 +94,8 @@ export default class GameView extends React.Component {
         this.setState({ openDilemma: dilemmaId });
     }
 
+    // TODO here because anywhere is good: fix bug of rejumping dilemmas
+
     removeDilemma(dilemmaId) {
         // We first change it to deleted, then wait for animation finish, then really delete
         // TODO Fix effect jumping app when location disappears
@@ -86,11 +104,32 @@ export default class GameView extends React.Component {
         var newDilemmasState = this.state.dilemmas.map(d => d.ID === dilemmaId ? { ...d, isDeleted: true } : d);
         this.setState({ dilemmas: newDilemmasState }, () => {
             // Now wait for the destruction to finish
-            setTimeout(() => {
+            this.schedule(() => {
                 newDilemmasState = this.state.dilemmas.filter(d => d.ID !== dilemmaId);
-                this.setState({ dilemmas: newDilemmasState });
-            }, Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME * 1000);
+                Backend.deleteEvent(dilemmaId);
+                // TODO Add effect for when missed event and call proper backend function to apply to metrics
+                this.setState({dilemmas: newDilemmasState});
+            }, Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME);
         })
+    }
+
+    schedule(callback, timeInSeconds) {
+        const task = {
+            callback,
+            tickTime: this.state.ticks + (timeInSeconds / Constants.GAME_TICK_SECONDS)
+        }
+        this.setState({scheduled: [...this.state.scheduled, task]});
+    }
+
+    processScheduled(currentTicks, callbackAfterFinished) {
+        let newScheduled = [];
+        this.state.scheduled.forEach(s => {
+            if(s.tickTime <= currentTicks)
+                s.callback();
+            else 
+                newScheduled.push(s);
+        })
+        this.setState({scheduled: newScheduled}, callbackAfterFinished);
     }
 
     removeEffect(effectId) {
@@ -114,10 +153,10 @@ export default class GameView extends React.Component {
 
     render() {
         var popup = '';
-        if (this.state.openDilemma) {
-            const dilemma = Constants.DILEMMAS.find(q => q.ID === this.state.openDilemma);
+        if(this.state.openDilemma) {
+            const dilemma = Backend.getEvent(this.state.openDilemma);
             // Check if dillema or surprise
-            if (dilemma.options.length > 0)
+            if(dilemma.option_ids.length > 0)
                 popup = (
                     <DilemmaPopup event={dilemma}
                         onClose={this.closeDilemma.bind(this)}

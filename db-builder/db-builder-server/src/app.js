@@ -84,7 +84,7 @@ router.route("/show").get((req, res) => {
 
   app.db.collection("options").find().toArray().then(options => {
     app.db.collection("events").find().toArray().then(events => {
-      console.log(events[2].title, JSON.stringify(events[2].title, null, 2));
+      // console.log(events[2].title, JSON.stringify(events[2].title, null, 2));
       // var result = "==== events ====<br />" + JSON.stringify(events, null, 2).replace(/\n/g, '<br/>') + "<br /><br />==== options ====<br />" + JSON.stringify(options, null, 2);
       var result = JSON.stringify({events, options}, null, 2);
       res.end(result);

@@ -3,7 +3,7 @@ const app = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://climate:ChangeMe2050@20.224.170.82:27017/";
 var server = undefined;
 
 MongoClient.connect(url, function(err, db) {

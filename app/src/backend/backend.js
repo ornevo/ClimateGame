@@ -83,8 +83,8 @@ function getState() {
             relevantEvents.push(eventId)
         }
     }
-    console.log("love u")
-    console.log(relevantEvents)
+    // console.log("love u")
+    // console.log(relevantEvents)
 
     // randomly choose event 
     var newEventId = relevantEvents[Math.floor(Math.random()*relevantEvents.length)];
@@ -117,6 +117,7 @@ function applyOptionMeasures(optionId){
 
 
 function applyEventMeasures(eventId, isSurprise){
+    var eventJson;
     if(isSurprise)
     {
         

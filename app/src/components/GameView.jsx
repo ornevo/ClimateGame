@@ -1,18 +1,16 @@
 import React from 'react';
 import Map from './Map';
 import Menu from './menu/Menu';
-import Popup from "./popups/Popup";
 import DilemmaPopup from './popups/DilemmaPopup';
 import './GameView.css';
 import Utils from "../utils";
 import Constants from "../constants";
-import backend from '../backend/backend';
+import Backend from '../backend/backend';
+
 
 export default class GameView extends React.Component {
     constructor(props) {
         super(props);
-        console.log(backend.getState())
-
         this.state = {
             dilemmas: [],
             effects: [
@@ -24,6 +22,17 @@ export default class GameView extends React.Component {
             year: Constants.INITIAL_YEAR,
             openDilemma: undefined // Constants.DILEMMAS[0].ID
         }
+    }
+
+    componentDidMount() {
+        // Start game loop
+        this.gameLoopTick();
+    }
+
+    // This is called every game tick
+    gameLoopTick() {
+        const newState = Backend.getState();
+        setTimeout(this.gameLoopTick.bind(this), Constants.GAME_TICK_SECONDS * 1000);
     }
 
     addDilemmas(dilemmaIds) {

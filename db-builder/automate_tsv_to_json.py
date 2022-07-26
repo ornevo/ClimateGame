@@ -150,6 +150,7 @@ def parse(relevant_lines):
     if len(options) == 1:
         options = []
     question = parse_question(relevant_lines, options, question_number_s)
+    return question, options
     
 
 def main():

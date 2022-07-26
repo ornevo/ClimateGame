@@ -1,22 +1,45 @@
 import db from "../components/db.json";
-import {INITIAL_EMISSIONS, INITIAL_MONEY, INIITIAL_QUALITY_OF_LIFE,
-    INITIAL_YEAR, INITIAL_TICK}
-     from '../constants'
+import Constants from "../constants";
 
 
-     state = {
-        active_events: [],
-        deleted_events: [],
-        options: [],
-        effects: [],
-        emmisions: INITIAL_EMISSIONS,
-        money: INITIAL_MONEY,
-        quality_of_life: INIITIAL_QUALITY_OF_LIFE,
-        year: INITIAL_YEAR,
-        tick: INITIAL_TICK
+var state = {
+    active_events: [],
+    deleted_events: [],
+    options: [],
+    effects: [],
+    emmisions: Constants.INITIAL_EMISSIONS,
+    money: Constants.INITIAL_MONEY,
+    quality_of_life: Constants.INIITIAL_QUALITY_OF_LIFE,
+    year: Constants.INITIAL_YEAR,
+    tick: Constants.INITIAL_TICK
+}
+
+function getOption(optionId)
+{
+    for (let i = 0; i < db.options.length; i++) {
+        if (db.options[i].ID === optionId)
+        {
+            return db.options[i] 
+        }
     }
+    return NaN;
+}
 
+function getEvent(eventId)
+{
+    for (let i = 0; i < db.events.length; i++) {
+        if (db.events[i].ID === eventId)
+        {
+            return db.events[i] 
+        }
+    }
+    return NaN;
+}
 
+function effectMeasuresByOption()
+{
+
+}
 
 function updateStateByOption(chosenOptionId)
 {
@@ -39,5 +62,7 @@ export default {
     state,
     updateStateByOption,
     getUpdatedState,
-    deleteEvent
+    deleteEvent,
+    getOption,
+    getEvent
 }       

@@ -6,11 +6,12 @@ import DilemmaPopup from './popups/DilemmaPopup';
 import './GameView.css';
 import Utils from "../utils";
 import Constants from "../constants";
-
+import backend from '../backend/backend';
 
 export default class GameView extends React.Component {
     constructor(props) {
         super(props);
+        console.log(backend.getEvent("2"))
 
         this.state = {
             dilemmas: [],

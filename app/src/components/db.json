@@ -1,5 +1,5 @@
 {
-    "option":
+    "options":
     [    
         {
             "ID": "1",
@@ -93,7 +93,7 @@
             }
         }
     ],
-    "dilema": [
+    "events": [
         {
             "is_good": false,
             "ID": "2",

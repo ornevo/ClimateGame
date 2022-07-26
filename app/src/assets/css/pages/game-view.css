@@ -181,6 +181,10 @@
     }
 }
 
+.white-img {
+    filter: brightness(0) invert(1);
+}
+
 .blurred {
     filter:blur(3px);
     animation-name: blur-appear;
@@ -220,7 +224,7 @@
     height: 12px;
 }
 
-.q-category-icon {
+.q-category-icon, .surprise-icon {
     height: 20px;
     border-radius: 100%;
     border: 1px solid black;
@@ -246,6 +250,9 @@ hr {
     text-align: right;
     direction: rtl;
     padding: 10px;
+}
+.text-small {
+    font-size: 13px;
 }
 
 .dilemma-option-container {

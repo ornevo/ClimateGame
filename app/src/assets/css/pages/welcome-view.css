@@ -1,0 +1,42 @@
+.app-homepage {
+    /* display: flex; */
+    /* align-items: center; */
+    height: 100%;
+    object-fit: fill;
+    object-fit: cover;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.map {
+    aspect-ratio: 1 / 2.5;
+}
+
+.logo {
+    width: 17.5rem;
+    position: absolute;
+}
+
+.start-game {
+    position: absolute;
+    bottom: 25%;
+    background-color:var(--clr1);
+    color: white;
+    width: 17.5rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-family: varela;
+    font-weight: bold;
+}
+
+.start-game:hover {
+    background-color:var(--clr8);
+    color: black;
+    cursor: pointer;
+}

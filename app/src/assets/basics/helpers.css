@@ -1,0 +1,23 @@
+// Flex 
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+// List 
+.clean-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}

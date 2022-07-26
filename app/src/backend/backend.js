@@ -1,7 +1,9 @@
 import db from "../components/db.json";
 import {INITIAL_EMISSIONS, INITIAL_MONEY, INIITIAL_QUALITY_OF_LIFE,
-    INITIAL_YEAR}
+    INITIAL_YEAR, INITIAL_TICK}
      from '../constants'
+
+
      state = {
         active_events: [],
         deleted_events: [],
@@ -10,7 +12,8 @@ import {INITIAL_EMISSIONS, INITIAL_MONEY, INIITIAL_QUALITY_OF_LIFE,
         emmisions: INITIAL_EMISSIONS,
         money: INITIAL_MONEY,
         quality_of_life: INIITIAL_QUALITY_OF_LIFE,
-    
+        year: INITIAL_YEAR,
+        tick: INITIAL_TICK
     }
 
 
@@ -28,6 +31,7 @@ function getUpdatedState()
 function deleteEvent(eventId){
     this.state.active_events.filter(function(e) {return e!=eventId});
     this.state.deleted_events.push(eventId);
+
 
 }
 

@@ -3,7 +3,7 @@ import Map from './Map';
 import Menu from './menu/Menu';
 import Popup from "./popups/Popup";
 import DilemmaPopup from './popups/DilemmaPopup';
-import './GameView.css';
+// import './GameView.css';
 import Utils from "../utils";
 import Constants from "../constants";
 

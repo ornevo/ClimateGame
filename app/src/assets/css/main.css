@@ -1,0 +1,11 @@
+/* setup */
+@import './setup/typography.css';
+@import './setup/variables.css';
+
+/* basics */
+@import '../basics/base.css';
+@import '../basics/helpers.css';
+
+/* pages */
+@import './pages/welcome-view.css';
+@import './pages/game-view.css';

@@ -1,0 +1,283 @@
+#game-view-container {
+    height: 100%;
+    background-color: #FAF8F0;
+}
+
+#map-img {
+    height: calc(100% - 116px);
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.area {
+    position: fixed;
+    text-align: initial;
+    background-color: rgba(0, 0, 0, .02);
+}
+
+@keyframes dilemma-time-progress {
+    from { width: 0px; }
+    to { width: 27px; }
+}
+
+@keyframes location-pin-appear {
+    from { width: 0px; top: 30px; }
+    to { width: 30px; top: 0px; }
+}
+@keyframes location-pin-disappear {
+    from { width: 30px; top: 0px; }
+    to { width: 0px; top: 30px; }
+}
+
+@keyframes bar-container-appear {
+    from { width: 0px; }
+    to { width: 27px; }
+}
+@keyframes bar-container-disappear {
+    from { width: 27px; }
+    to { width: 0px; }
+}
+
+.dilemma-location {
+    position: relative;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.location-deleted {
+    width: 0px;
+}
+
+.location-pin-img {
+    width: 30px;
+    display: inline;
+    position: absolute;
+    animation-name: location-pin-appear;
+    animation-duration: 0.3s;
+}
+
+.progress-bar-container {
+    width: 27px;
+    height: 2px;
+    border-radius: 2px;
+    border: 1px solid black;
+    overflow: hidden;
+    position: relative;
+    top: 10px;
+    background: white;
+    left: 0px;
+    animation-name: bar-container-appear;
+    animation-duration: 0.3s;
+    display: inline-block;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    display: block;
+    color: rgb(255, 251, 251);
+    background: #e0441d;
+    line-height: 8px;
+    position: absolute;
+    text-align: end;
+    animation-name: dilemma-time-progress;
+}
+
+
+/* Menu */
+.top-menu {
+    padding: 10px;
+    border-bottom: 4px solid rgba(0,0,0,.1);
+}
+
+.metric-bar-container {
+    box-sizing: content-box;
+    height: 15px; /* Can be anything */
+    position: relative;
+    background: #ebe7de;
+    border-radius: 25px;
+    padding: 5px;
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+.metric-container-small {
+    font-size: small;
+}
+.metric-bar-container > span {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-container-small > .metric-bar-container {
+    height: 10px; /* Can be anything */
+    padding: 3px;
+}
+
+.metric-title-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    direction: rtl;
+    text-align: center;
+    padding: 4px 10px;
+}
+
+.menu-sub-metrics-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+
+}
+
+/* Effects */
+@keyframes effect-disappear {
+    0% {
+        top: 0px;
+        opacity: 0%;
+    }
+    20% { opacity: 100%; }
+    70% { opacity: 100%; }
+    100% {
+        top: -10px;
+        opacity: 0%;
+    }
+}
+
+
+.effect {
+    position: relative;
+    z-index: 10;
+}
+
+.effect-inner {
+    position: relative;
+    opacity: 0%;
+    animation-name: effect-disappear;
+}
+
+
+/* Popups */
+@keyframes blur-appear {
+    0% {
+        filter:blur(0px);
+    }
+    100% {
+        filter:blur(3px);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+.blurred {
+    filter:blur(3px);
+    animation-name: blur-appear;
+    animation-duration: .2s;
+}
+.popup-container {
+    position: fixed;
+    z-index: 200;
+    height: 100%;
+    width: 100%;
+
+    animation-name: appear;
+    animation-duration: .2s;
+
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+}
+
+.popup-back {
+    grid-row: 1/-1;
+    grid-column: 1;
+    background: rgba(0, 0, 0, .05);
+}
+
+.popup {
+    grid-row: 2;
+    grid-column: 1;
+    background: rgba(255, 255, 255, 0.95);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.popup-x {
+    float: left;
+    cursor: pointer;
+    height: 12px;
+}
+
+.q-category-icon {
+    height: 20px;
+    border-radius: 100%;
+    border: 1px solid black;
+    display: inline;
+    margin: 10px;
+    padding: 5px;
+}
+
+.q-title {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    direction: rtl;
+    text-align: right;
+    line-height: 50px;
+    font-size: 1.2em;
+}
+
+hr {
+    margin: 0;
+}
+
+.text {
+    text-align: right;
+    direction: rtl;
+    padding: 10px;
+}
+
+.dilemma-option-container {
+    background: white;
+    box-shadow: 0 3px 7px rgb(0 0 0 / 15%);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    direction: rtl;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: right;
+}
+
+.dilemma-option-effect-container {
+    /* display: grid; */
+    /* grid-template-rows: 1fr 1fr 1fr; */
+    border-right: 1px solid #bfbfbf;
+    padding-right: 10px;
+}
+
+.metric-value {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin-bottom: 5px;
+}
+
+.metric-value > img {
+    width: 20px;
+    margin: 0px 4px;
+}
+
+.metric-value > div {
+    padding-top: 2px;
+    direction: ltr;
+}

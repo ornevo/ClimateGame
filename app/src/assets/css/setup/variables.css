@@ -1,0 +1,21 @@
+/* COLOR PALETTE */
+:root {
+    --background: white;
+    --header: #292929;
+    --header-fonts: rgb(255, 255, 255);
+    --hover: rgb(88, 201, 58);
+    --card-title: #4f4e4e;
+    --card-excerpt: #606060;
+    --btn-con-font: #c2c2c2;
+    --btn-con-read-hover: #58c93a;
+    --footer-background: #f8f8f8;
+    --clr1: #40DFEF;
+    --clr2: #fffdf1;
+    --clr3: #B9F8D3;
+    --clr4: darken($clr3, 40%);
+    --clr5: #7f9199;
+    --clr6: #E78EA9;
+    --clr7: #202020;
+    --clr8: #faf75f;
+}
+

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Area from './Area';
 import DilemmaLocation from './DilemmaLocation';
 import Effect from './Effect';
-import Utils from '../utils';
+import Backend from '../backend/backend';
 import Constants from '../constants'
 
 
@@ -40,9 +40,9 @@ class Map extends React.Component {
                               rightOffset={this.state.imageRightOffset} topOffset={this.state.imageTopOffset}>
                                   {
                                       this.props.dilemmas.map((dilemma, dilI) => 
-                                        Utils.getDilemma(dilemma.ID).placement - 1 === areaI &&
+                                        Backend.getEvent(dilemma.ID).placement - 1 === areaI &&
                                         <DilemmaLocation key={'dilemma_' + dilI} x={dilemma.x} y={dilemma.y} scale={this.state.scale}
-                                                        lifetime={Utils.getDilemma(dilemma.ID).lifetime} dilemmaId={dilemma.ID}
+                                                        lifetime={Constants.DILEMMA_LIFETIME} dilemmaId={dilemma.ID}
                                                         isDeleted={dilemma.isDeleted} onClick={dId => this.props.onDilemmaLocationClick(dId)}
                                                         popupOpen={this.props.popupOpen}/>
                                         )

@@ -1,12 +1,9 @@
-const GAME_TICK_SECONDS = 0.5;
-const DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME = 0.3;
-
-
 const INITIAL_EMISSIONS = 50;
 const INITIAL_MONEY = 50;
 const INITIAL_QUALITY_OF_LIFE = 50;
 const INITIAL_YEAR = 2020;
-const INITIAL_TICK = 0;
+const INITIAL_TICKS = 0;
+const DILEMMA_LIFETIME = 10;
 
 const MAX_EMISSIONS = 100;
 const MAX_MONEY = 100;
@@ -22,6 +19,14 @@ const YEAR_HEB_NAME = "שנה";
 const QOF_HEB_NAME = "איכות חיים";
 const MONEY_HEB_NAME = "כסף";
 const EMISSIONS_HEB_NAME = "גזי חממה";
+
+// TODO play around with it?
+const NEW_EVENT_RANDOM_THRESHOLD = 0.8;
+// TODO Play around with those?
+const GAME_TICK_SECONDS = 0.1;
+const MAX_GAME_TIME_IN_SECONDS = 3 * 60; 
+const TICKS_PER_YEAR = Math.floor((MAX_GAME_TIME_IN_SECONDS / (MAX_YEAR - MIN_YEAR)) / GAME_TICK_SECONDS);
+const DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME = 0.3;
 
 // To represent for effects which category
 const YEAR_METRIC = 1;
@@ -127,7 +132,7 @@ export default {
     INITIAL_MONEY,
     INITIAL_QUALITY_OF_LIFE,
     INITIAL_YEAR,
-    INITIAL_TICK,
+    INITIAL_TICKS,
     MAX_EMISSIONS,
     MAX_MONEY,
     MAX_QOF,
@@ -153,4 +158,7 @@ export default {
     AREAS,
     DILEMMA_LOCATION_H,
     DILEMMA_LOCATION_W,
+    NEW_EVENT_RANDOM_THRESHOLD,
+    TICKS_PER_YEAR,
+    DILEMMA_LIFETIME,
 }

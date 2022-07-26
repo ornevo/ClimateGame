@@ -4,6 +4,7 @@ import Popup from './Popup';
 import Constants from "../../constants";
 import DilemmaOption from './DilemmaOption';
 import ContentText from './ContentText';
+import Backend from '../../backend/backend'
 
 
 function DilemmaPopup(props) {
@@ -23,8 +24,8 @@ function DilemmaPopup(props) {
 
             {/* Options */}
             <div>
-                {props.event.options.map(option => 
-                    <DilemmaOption key={'option_' + option.ID} option={option} onClick={props.onChooseOption}/>
+                {props.event.option_ids.map(optionId => 
+                    <DilemmaOption key={'option_' + optionId} option={Backend.getOption(optionId)} onClick={props.onChooseOption}/>
                 )}
             </div>
         </Popup>

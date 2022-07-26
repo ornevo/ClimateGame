@@ -1,17 +1,18 @@
 import db from "./db.json";
 import Constants from "../constants";
 
+const DEBUG_BACKEND = false;
 
 var state = {
     active_events: [],
     deleted_events: [],
-    options: [],
-    effects: [],
-    emmisions: Constants.INITIAL_EMISSIONS,
+    chosen_options: [],
+    // effects: [],
+    emissions: Constants.INITIAL_EMISSIONS,
     money: Constants.INITIAL_MONEY,
-    quality_of_life: Constants.INIITIAL_QUALITY_OF_LIFE,
+    quality_of_life: Constants.INITIAL_QUALITY_OF_LIFE,
     year: Constants.INITIAL_YEAR,
-    tick: Constants.INITIAL_TICK
+    ticks: Constants.INITIAL_TICKS
 }
 
 
@@ -27,7 +28,7 @@ function getOption(optionId) {
 
 function getEvent(eventId) {
     for (let i = 0; i < db.events.length; i++) {
-        if (db.events[i]._id === eventId) {
+        if (db.events[i].ID === eventId) {
             return db.events[i]
         }
     }
@@ -42,13 +43,15 @@ function effectMeasuresByOption() {
 
 function updateStateByOption(chosenOptionId) {
     var option = getOption(chosenOptionId)
-    state.options.push(chosenOptionId)
+    state.chosen_options.push(chosenOptionId)
+    // TODO effects?
 }
 
 
 function isMeasureCrossingThreshold(isMeasureMax, measureThreshold, measureState) {
     // what if measurethreshold doesnt exist
-    console.log(measureState, isMeasureMax, measureThreshold)
+    if(DEBUG_BACKEND) console.log(measureState, isMeasureMax, measureThreshold)
+
     if (isMeasureMax) {
         if (measureThreshold < measureState) {
             return false;
@@ -64,44 +67,63 @@ function isMeasureCrossingThreshold(isMeasureMax, measureThreshold, measureState
 function isCrossingThreshold(eventId) {
     // Try to cancel the event and if not return true
     let event = getEvent(eventId)
-    console.log(isMeasureCrossingThreshold(event.threshold.is_year_max, event.threshold.year, state.year))
-    if (isMeasureCrossingThreshold(event.threshold.is_year_max, event.threshold.year, state.year)
-        && isMeasureCrossingThreshold(event.threshold.is_money_max, event.threshold.money, state.money)
-        && isMeasureCrossingThreshold(event.threshold.is_emissions_max, event.threshold.emmisions, state.emmisions)
-        && isMeasureCrossingThreshold(event.threshold.is_life_quality_max, event.threshold.life_quality, state.quality_of_life)) {
-        return true;
+    // Currently, only thresholds are the year and previous answer
+    if (isMeasureCrossingThreshold(event.threshold.is_year_max, event.threshold.year, state.year)) {
+        if(event.threshold.necessary_previous_choice === '' || state.chosen_options.includes(event.threshold.necessary_previous_choice))
+            return true;
     }
     return false;
 }
 
 
-function getState() {
+// Returns an event id if want to add a new event, else undefined
+function getEventToAdd() {
     var relevantEvents = [];
     for (let i = 0; i < db.events.length; i++) {
-        let eventId = db.events[i]._id
+        let eventId = db.events[i].ID;
+        // Already deleted
+        if(state.deleted_events.includes(eventId))
+            continue;
+
+        // Already actove
+        if(state.active_events.includes(eventId))
+            continue;
+
         if (isCrossingThreshold(eventId)) {
             relevantEvents.push(eventId)
         }
     }
-    // console.log("love u")
-    // console.log(relevantEvents)
+
+    if(relevantEvents.length === 0)
+        return undefined;
 
     // randomly choose event 
+    // TODO NOTE somehow give more chance to surprises maybe?
     var newEventId = relevantEvents[Math.floor(Math.random()*relevantEvents.length)];
 
-    
-    if (!state.active_events.includes(newEventId))
-    {
-        state.active_events.push(newEventId)
-    }
-    else
-    {
-        
-    }
+    return newEventId;
     // optional - decide how to return the new event
     // remember to update the year every x ticks 
     // make the ticks amount const
     // check if it didnt happen yet
+}
+
+
+function getState() {
+    // First of all, advance ticks and year.
+    state.ticks += 1;
+    state.year = Constants.INITIAL_YEAR + Math.floor(state.ticks / Constants.TICKS_PER_YEAR);
+
+    // Choose if should add event at all
+    if(Math.random() > Constants.NEW_EVENT_RANDOM_THRESHOLD) {
+        const eventIdToAdd = getEventToAdd();
+        console.log("Adding event ", eventIdToAdd);
+        if(eventIdToAdd !== undefined)
+            state.active_events.push(eventIdToAdd);
+    }
+
+    // Advance effects
+    return state;
 }
 
 

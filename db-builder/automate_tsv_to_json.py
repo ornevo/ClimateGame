@@ -89,7 +89,14 @@ def get_as_table():
 
 # Both should be 1-based
 def get_option_id(option_number, q_number):
-    return 'opt_{}_{}'.format(q_number, option_number),
+    return 'opt_{}_{}'.format(q_number, option_number)
+
+
+def strip_int_value(v):
+    ret = v.replace('(','').replace(')','').replace(' ','')
+    if ret == '':
+        return '0'
+    return ret
 
 
 def parse_options(relevant_lines, question_number_s):
@@ -102,9 +109,9 @@ def parse_options(relevant_lines, question_number_s):
             'ID': get_option_id(question_number_s, len(options) + 1),
             'content': desc,
             'effect': {
-                'money_delta': money,
-                'life_quality_delta': qof,
-                'emissions_delta': emi,
+                'money_delta': int(strip_int_value(money)),
+                'life_quality_delta': int(strip_int_value(qof)),
+                'emissions_delta': int(strip_int_value(emi))
             }
         })
     return options
@@ -172,7 +179,7 @@ def main():
         all_options.extend(options)
 
     with open(RES_FILE, 'wt') as f:
-        json.dump({'questions': questions, 'options': all_options}, f)
+        json.dump({'events': questions, 'options': all_options}, f)
 
 
 if __name__ == '__main__':

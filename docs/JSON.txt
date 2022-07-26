@@ -1,6 +1,4 @@
-
 == Event ==
-is_good: bool,
 ID: int,
 title: str,
 description: str,
@@ -52,4 +50,4 @@ emissions: int,
 money: int,
 quality_of_life: int,
 year
-ticks_amount
+tick

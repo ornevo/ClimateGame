@@ -102,6 +102,19 @@ const DILEMMAS = [
         unhandled_emissions_delta: 12,
         unhandled_life_quality_delta: 14,
         options: [DEMO_OPTION, {...DEMO_OPTION, ID: '6'}, {...DEMO_OPTION, ID: '11'}]
+    },
+    {
+        is_good: true,
+        ID: '3',
+        title: "כותרת האירוע המתפרץ",
+        description: "תיאור תיאור תיאור בלה בלה בלה",
+        placement: 0,
+        category: 2,
+        lifetime: 10, // for now here but maybe constant
+        unhandled_money_delta: 0,
+        unhandled_emissions_delta: 12,
+        unhandled_life_quality_delta: 14,
+        options: []
     }
 ]
 

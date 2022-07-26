@@ -11,9 +11,9 @@ function delta_to_string(v) {
 function MetricValue(props) {
 
     return (
-        <div className="metric-value">
-            <img src={Constants.METRIC_TO_IMG[props.metric_const]}/>
-            <div>{delta_to_string(props.value)}</div>
+        <div className={"metric-value " + (props.colorWhite ? "white-img" : "")}>
+            <img src={Constants.METRIC_TO_IMG[props.metric_const]} className={props.small ? 'metric-img-small' : ""}/>
+            <div className={props.small ? 'text-small' : ""}>{delta_to_string(props.value)}</div>
         </div>
     )
 }
@@ -21,6 +21,7 @@ function MetricValue(props) {
 MetricValue.propTypes = {
     value: PropTypes.number.isRequired,
     metric_const: PropTypes.number.isRequired, // e.g. Constants.QOF_METRIC
+    colorWhite: PropTypes.bool
 }
 
 

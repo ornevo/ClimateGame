@@ -150,7 +150,6 @@ def parse(relevant_lines):
     if len(options) == 1:
         options = []
     question = parse_question(relevant_lines, options, question_number_s)
-    print question['ID'], question['option_ids'], len(options)
     
 
 def main():

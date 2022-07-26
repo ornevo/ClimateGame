@@ -43,7 +43,8 @@ function effectMeasuresByOption()
 
 function updateStateByOption(chosenOptionId)
 {
-
+    var option = getOption(chosenOptionId)
+    state.options.push(chosenOptionId)
 }
 
 function getUpdatedState()

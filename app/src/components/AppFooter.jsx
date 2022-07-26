@@ -8,9 +8,8 @@ export const AppFooter = () => {
 
     return (
         <footer className="footer-container">
-            <div className="footer-links flex">
-
-                <ul className="footer-nav flex">
+            <div className="footer-links">
+                <ul className="footer-nav flex clean-list">
                     <li>{((pathname !== '/')) ?
                         <NavLink to="/" className="footer-nav-link"><HomeIcon /></NavLink>
                         : <NavLink to="/about" className="footer-nav-link"><AboutIcon /></NavLink>}</li>

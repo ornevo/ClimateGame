@@ -1,6 +1,8 @@
 #game-view-container {
     height: 100%;
     background-color: #FAF8F0;
+    position: relative;
+    width: 100%;
 }
 
 #map-img {
@@ -17,26 +19,57 @@
 }
 
 @keyframes dilemma-time-progress {
-    from { width: 0px; }
-    to { width: 27px; }
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 27px;
+    }
 }
 
 @keyframes location-pin-appear {
-    from { width: 0px; top: 30px; }
-    to { width: 30px; top: 0px; }
+    from {
+        width: 0px;
+        top: 30px;
+    }
+
+    to {
+        width: 30px;
+        top: 0px;
+    }
 }
+
 @keyframes location-pin-disappear {
-    from { width: 30px; top: 0px; }
-    to { width: 0px; top: 30px; }
+    from {
+        width: 30px;
+        top: 0px;
+    }
+
+    to {
+        width: 0px;
+        top: 30px;
+    }
 }
 
 @keyframes bar-container-appear {
-    from { width: 0px; }
-    to { width: 27px; }
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 27px;
+    }
 }
+
 @keyframes bar-container-disappear {
-    from { width: 27px; }
-    to { width: 0px; }
+    from {
+        width: 27px;
+    }
+
+    to {
+        width: 0px;
+    }
 }
 
 .dilemma-location {
@@ -87,22 +120,25 @@
 /* Menu */
 .top-menu {
     padding: 10px;
-    border-bottom: 4px solid rgba(0,0,0,.1);
+    border-bottom: 4px solid rgba(0, 0, 0, .1);
 }
 
 .metric-bar-container {
     box-sizing: content-box;
-    height: 15px; /* Can be anything */
+    height: 15px;
+    /* Can be anything */
     position: relative;
     background: #ebe7de;
     border-radius: 25px;
     padding: 5px;
     box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
 }
+
 .metric-container-small {
     font-size: small;
 }
-.metric-bar-container > span {
+
+.metric-bar-container>span {
     display: block;
     height: 100%;
     border-top-right-radius: 8px;
@@ -110,13 +146,14 @@
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.15),
-    inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+        inset 0 -2px 6px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
 }
 
-.metric-container-small > .metric-bar-container {
-    height: 10px; /* Can be anything */
+.metric-container-small>.metric-bar-container {
+    height: 10px;
+    /* Can be anything */
     padding: 3px;
 }
 
@@ -141,8 +178,15 @@
         top: 0px;
         opacity: 0%;
     }
-    20% { opacity: 100%; }
-    70% { opacity: 100%; }
+
+    20% {
+        opacity: 100%;
+    }
+
+    70% {
+        opacity: 100%;
+    }
+
     100% {
         top: -10px;
         opacity: 0%;
@@ -165,10 +209,11 @@
 /* Popups */
 @keyframes blur-appear {
     0% {
-        filter:blur(0px);
+        filter: blur(0px);
     }
+
     100% {
-        filter:blur(3px);
+        filter: blur(3px);
     }
 }
 
@@ -176,6 +221,7 @@
     0% {
         opacity: 0%;
     }
+
     100% {
         opacity: 100%;
     }
@@ -186,10 +232,11 @@
 }
 
 .blurred {
-    filter:blur(3px);
+    filter: blur(3px);
     animation-name: blur-appear;
     animation-duration: .2s;
 }
+
 .popup-container {
     position: fixed;
     z-index: 200;
@@ -251,6 +298,7 @@ hr {
     direction: rtl;
     padding: 10px;
 }
+
 .text-small {
     font-size: 13px;
 }
@@ -279,12 +327,12 @@ hr {
     margin-bottom: 5px;
 }
 
-.metric-value > img {
+.metric-value>img {
     width: 20px;
     margin: 0px 4px;
 }
 
-.metric-value > div {
+.metric-value>div {
     padding-top: 2px;
     direction: ltr;
 }
@@ -310,7 +358,7 @@ hr {
     cursor: pointer;
 }
 
-.surprise-accept-button > div {
+.surprise-accept-button>div {
     display: grid;
     grid-template-columns: auto auto;
 }
@@ -319,6 +367,7 @@ hr {
     padding-top: 2px;
     margin-left: 6px;
 }
+
 .metric-img-small {
     width: 17px !important;
 }

@@ -1,8 +1,13 @@
 import WelcomeView from '../src/components/WelcomeView.jsx'
 import GameView from '../src/components/GameView.jsx'
 import About from '../src/components/About.jsx'
+import {HighScore} from '../src/components/HighScore.jsx'
 
 const routes = [
+    {
+        path: '/score',
+        component: <HighScore />,
+    },
     {
         path: '/about',
         component: <About />,

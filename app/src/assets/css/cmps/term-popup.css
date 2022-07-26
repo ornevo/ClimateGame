@@ -1,0 +1,72 @@
+.term-bar {
+    background-color: white;
+    max-width: 100%;
+    position: absolute;
+    left: 0;
+    padding: 40px;
+    margin: 0 auto;
+    transition: all 0.8s ease;
+    box-shadow: 0.1px 0 2px grey;
+    transition: all 0.8s ease;
+}
+
+.term-bar.open {
+    bottom: 95px;
+}
+
+.term-header {
+    font-size: 2em;
+    text-align: right;
+    direction: rtl;
+}
+
+.close-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: absolute;
+    left: 40px;
+}
+.term-list {
+    text-align: right;
+    direction: rtl;
+}
+
+.term-list-item h2 {
+    font-size: 2em;
+    margin: 0 5px;
+}
+
+.term-list-item:first-of-type {
+    margin-top: 35px;
+}
+
+.term-list-item:last-of-type {
+    margin-bottom: -25px;
+}
+
+.term-list-item h4 {
+    font-size: 1.3em;
+    margin-top: 5px;
+    line-height: 1.2em;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.visible {
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    transition: opacity 0.4s;
+}

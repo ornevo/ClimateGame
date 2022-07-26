@@ -31,7 +31,7 @@ export class App extends React.Component {
                 element={route.component}
                 path={route.path} />)}
           </Routes>
-          <div className="footer  flex flex-column">
+          <div className="footer">
             <AppFooter />
           </div>
         </main>

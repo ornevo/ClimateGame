@@ -4,7 +4,6 @@ import Popup from './Popup';
 import Constants from "../../constants";
 import DilemmaOption from './DilemmaOption';
 
-
 function DilemmaPopup(props) {
     const q = props.event;
     return (

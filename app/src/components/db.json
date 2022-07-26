@@ -24,11 +24,11 @@
             "money": 5,
             "emissions": -4,
             "life_quality": 4,
-            "previous_choice": "",
-            "time_since_previous_choice": "",
             "is_money_max": false,
             "is_emissions_max": false,
-            "is_life_quality_max": false
+            "is_life_quality_max": false,
+            "previous_choice": "",
+            "time_since_previous_choice": ""           
         },
         "title": "איך קוראים לאמא שלך?",
         "description": "",
@@ -45,7 +45,7 @@
         {
         "_id": "62dfcfc9940bc34e35a7917f",
         "threshold": {
-            "year": 2022,
+            "year": 2012,
             "is_year_max": true,
             "money": 10,
             "emissions": "",

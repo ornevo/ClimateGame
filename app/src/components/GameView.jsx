@@ -11,7 +11,7 @@ import backend from '../backend/backend';
 export default class GameView extends React.Component {
     constructor(props) {
         super(props);
-        console.log(backend.getEvent("2"))
+        console.log(backend.getState())
 
         this.state = {
             dilemmas: [],

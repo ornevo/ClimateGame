@@ -46,8 +46,10 @@ ticks_amount: int
 === State ===
 active_events: ["id1", "id2"...],
 deleted_events: [],
-options
+options: [],
 effects: [ { position: ammount }, ... ],
 emissions: int,
 money: int,
 quality_of_life: int,
+year
+ticks_amount

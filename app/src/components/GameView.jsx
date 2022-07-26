@@ -5,12 +5,12 @@ import DilemmaPopup from './popups/DilemmaPopup';
 import SurprisePopup from './popups/SurprisePopup';
 import Utils from "../utils";
 import Constants from "../constants";
+import Backend from '../backend/backend';
 
 
 export default class GameView extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             dilemmas: [],
             effects: [
@@ -22,27 +22,17 @@ export default class GameView extends React.Component {
             year: Constants.INITIAL_YEAR,
             openDilemma: undefined // Constants.DILEMMAS[0].ID
         }
+    }
 
-        // // for testing
-        setTimeout(() => {
-            this.addDilemmas(["2"])
-        }, 2000);
-        // setTimeout(() => {
-        //     this.addDilemmas(["2"])
-        // }, 3000);
-        // setTimeout(() => {
-        //     this.addDilemmas(["2"])
-        // }, 4000);
-        // setTimeout(() => {
-        //     this.addDilemmas(["2"])
-        // }, 5000);
-        // setTimeout(() => {
-        //     this.addDilemmas(["2"])
-        // }, 6000);
-        setTimeout(() => {
-            this.addSurprise("3")
-        }, 1000);
+    componentDidMount() {
+        // Start game loop
+        this.gameLoopTick();
+    }
 
+    // This is called every game tick
+    gameLoopTick() {
+        const newState = Backend.getState();
+        setTimeout(this.gameLoopTick.bind(this), Constants.GAME_TICK_SECONDS * 1000);
     }
 
     addDilemmas(dilemmaIds) {

@@ -1,0 +1,70 @@
+{
+    "options":
+    [    
+        {
+            "_id": "62dfc496940bc34e35a7917c",
+            "effect": {
+              "money_delta": 5,
+              "emissions_delta": 5,
+              "emissions_per_tick_delta": -5,
+              "life_quality_delta": 5,
+              "life_quality_per_tick_delta": -5,
+              "money_per_tick_delta": -5,
+              "ticks": -5
+            },
+            "content": "איילה "
+          }
+    ],
+    "events": [
+    {
+        "_id": "62dfc496940bc34e35a7917d",
+        "threshold": {
+            "year": 2023,
+            "is_year_max": true,
+            "money": 5,
+            "emissions": -4,
+            "life_quality": 4,
+            "is_money_max": false,
+            "is_emissions_max": false,
+            "is_life_quality_max": false,
+            "previous_choice": "",
+            "time_since_previous_choice": ""           
+        },
+        "title": "איך קוראים לאמא שלך?",
+        "description": "",
+        "placement": 6,
+        "category": 1,
+        "unhandled_money_delta": 8,
+        "unhandled_emissions_delta": 5,
+        "unhandled_life_quality_delta": -6,
+        "is_surprise": false,
+        "options": [
+            "62dfc496940bc34e35a7917c"
+        ]
+        },
+        {
+        "_id": "62dfcfc9940bc34e35a7917f",
+        "threshold": {
+            "year": 2012,
+            "is_year_max": true,
+            "money": 10,
+            "emissions": "",
+            "life_quality": "",
+            "previous_choice": "",
+            "time_since_previous_choice": "",
+            "is_money_max": false,
+            "is_emissions_max": false,
+            "is_life_quality_max": false
+        },
+        "title": "קיבלתם כסף מהדוד מאמריקה! ",
+        "description": "",
+        "placement": 1,
+        "category": 4,
+        "is_surprise": true,
+        "unhandled_money_delta": 10,
+        "unhandled_emissions_delta": "",
+        "unhandled_life_quality_delta": "",
+        "options": []
+        }
+    ]
+}

@@ -65,6 +65,7 @@ if (config.env === 'production') {
 // v1 api routes
 const router = express.Router();
 router.route("/").get((req, res) => {
+  res.set('Content-Security-Policy', "script-src 'unsafe-inline'");
   res.sendFile(path.join(__dirname, '/../../index.html'));
 });
 router.route("/tailwind.js").get((req, res) => {

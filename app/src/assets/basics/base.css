@@ -1,29 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    height: 100vh;
-    width: 100%;
-    margin: 0;
-    text-rendering: optimizeSpeed;
-    font-family: varela;
-}
-
 .App {
     text-align: center;
     height: 100vh;
     font-family: varela;
-}
-
-img {
-    width: 100%;
-}
-
-a {
-    text-decoration: none;
 }

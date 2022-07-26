@@ -38,7 +38,7 @@ export const AppFooter = () => {
                             {isShowTerm && <TermPopup showTerm={isShowTerm} closeTerm={onCloseTerm} />}
                         <TermIcon />
                     </li>
-                    <li><StatisticsIcon /></li>
+                    <li><NavLink to="/stats" className="footer-nav-link"><StatisticsIcon /></NavLink></li>
                     <li><NavLink to="/score" className="footer-nav-link"><HighScoreIcon /></NavLink></li>
                 </ul>
             </div>

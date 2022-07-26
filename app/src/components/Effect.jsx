@@ -19,7 +19,7 @@ function Effect(props) {
         amount = "+" + amount;
 
     return (
-        <div className="effect" style={{
+        <div className={"effect " + (props.popupOpen ? "blurred" : "")} style={{
             color: color,
             left: props.x + "px",
             top: props.y + "px",
@@ -42,7 +42,8 @@ Effect.propTypes = {
     metric: PropTypes.number.isRequired, // from constants
     id: PropTypes.string,
     onFinish: PropTypes.func, // will be called with the id
-    delay: PropTypes.number // 
+    delay: PropTypes.number,
+    popupOpen: PropTypes.bool
 }
 
 Effect.defaultProps = {

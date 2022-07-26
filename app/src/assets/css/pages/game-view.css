@@ -249,10 +249,33 @@ hr {
 .text {
     text-align: right;
     direction: rtl;
-    padding: 10px;
+    margin: 10px 0 20px 0;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
 }
 .text-small {
     font-size: 13px;
+}
+
+.text-content {
+    background-color: #efefef;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.text-triangle {
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-left: 8px solid #efefef;
+    height: 0px;
+}
+
+.avatar {
+    width: 80px;
+    margin-left: 10px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    border-radius: 4px;
 }
 
 .dilemma-option-container {

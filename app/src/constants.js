@@ -59,17 +59,17 @@ const CATEGORY_TO_IMG = {
 }
 
 const AREAS = [
-    {name: 'galil', x: 40, y: 130, w: 170, h: 170},
-    {name: 'ramat-hagolan', x: 210, y: 70, w: 80, h: 200},
+    {name: 'galil', x: 50, y: 130, w: 210, h: 190},
+    {name: 'ramat-hagolan', x: 290, y: 70, w: 80, h: 200},
     {name: 'haifa-and-carmel', x: -20, y: 260, w: 100, h: 130},
-    {name: 'yehuda-veshomron', x: 0, y: 400, w: 170, h: 380},
+    {name: 'yehuda-veshomron', x: 0, y: 400, w: 200, h: 380},
     {name: 'jerusalem', x: -60, y: 650, w: 120, h: 80},
     {name: 'coastline', x: -70, y: 430, w: 70, h: 200},
-    {name: 'north-negev', x: -200, y: 860, w: 280, h: 300},
-    {name: 'south-negev', x: -100, y: 1160, w: 140, h: 300},
-    {name: 'dead-sea', x: 140, y: 670, w: 60, h: 190},
+    {name: 'north-negev', x: -180, y: 980, w: 320, h: 200},
+    {name: 'south-negev', x: -100, y: 1160, w: 140, h: 350},
+    {name: 'dead-sea', x: 200, y: 730, w: 80, h: 250},
     {name: 'mediterranean', x: -300, y: 200, w: 220, h: 420},
-    {name: 'eilat',  x: -60, y: 1560, w: 70, h: 60},
+    {name: 'eilat',  x: -60, y: 1620, w: 70, h: 60},
 ]
 const BASELINE_SIZE = {w:1307.22, h:1708};
 const DILEMMA_LOCATION_H = 30;

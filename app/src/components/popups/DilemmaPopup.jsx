@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Popup from './Popup';
 import Constants from "../../constants";
 import DilemmaOption from './DilemmaOption';
+import ContentText from './ContentText';
 
 function DilemmaPopup(props) {
     const q = props.event;
@@ -17,9 +18,7 @@ function DilemmaPopup(props) {
             <hr/>
 
             {/* Content */}
-            <div className="text">
-                {q.description}
-            </div>
+            <ContentText qId={q.ID}>{q.description}</ContentText>
 
             {/* Options */}
             <div>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Popup from './Popup';
 import Constants from "../../constants";
 import MetricValue from "../MetricValue";
+import ContentText from './ContentText';
+
 
 function SurprisePopup(props) {
     const q = props.event;
@@ -29,9 +31,7 @@ function SurprisePopup(props) {
             <hr/>
 
             {/* Content */}
-            <div className="text">
-                {q.description}
-            </div>
+            <ContentText qId={q.ID}>{q.description}</ContentText>
 
             <div className="surprise-accept-button" onClick={props.onDismiss}>
                 <div>

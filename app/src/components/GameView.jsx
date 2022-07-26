@@ -6,22 +6,23 @@ import DilemmaPopup from './popups/DilemmaPopup';
 import './GameView.css';
 import Utils from "../utils";
 import Constants from "../constants";
-
+import data from './db.json';
 
 export default class GameView extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            dilemmas: [],
+            active_events: [],
+            deleted_events: [],
+            options: [],
             effects: [
                 {ID: "etestod", x: 10, y: 2, placement: 4, delay: 2 + 5 + Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME, amount: 4, metric: Constants.MONEY_METRIC}
             ],
             emissions: Constants.INITIAL_EMISSIONS,
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
-            year: Constants.INITIAL_YEAR,
-            openDilemma: undefined // Constants.DILEMMAS[0].ID
+            year: Constants.INITIAL_YEAR
         }
 
         // for testing
@@ -40,10 +41,15 @@ export default class GameView extends React.Component {
         setTimeout(() => {
             this.addDilemmas(["2"])
         }, 6000);
+    } 
+
+    updateStateByOption(optionId) {
+        this.state.options.push(optionId)
+        
     }
 
     addDilemmas(dilemmaIds) {
-        // TODO: Random locations
+  /*      // TODO: Random locations
         const dilemmasToAdd = dilemmaIds.map(dId => {
             const dilemma = Constants.DILEMMAS.find(d => d.ID === dId);
             const area = Constants.AREAS[dilemma.placement - 1];
@@ -62,7 +68,7 @@ export default class GameView extends React.Component {
                 setTimeout(() => this.removeDilemma(dId), d.lifetime * 1000);
             });
         })
-
+*/
     }
 
     removeDilemma(dilemmaId) {

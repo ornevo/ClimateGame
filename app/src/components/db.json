@@ -1,0 +1,29 @@
+{
+    "option":
+    {
+        "ID": "4",
+        "content": "תוכן האפשרות",
+        "effect": {
+            "money_delta": 100,
+            "emissions_delta": 10,
+            "life_quality_delta": 11,
+            "money_delta_per_tick": 2,
+            "emissions_delta_per_tick": 2,
+            "life_quality_delta_per_tick": 2,
+            "ticks_amount": 5
+        }
+    },
+    "dilema":
+    {
+        "is_good": false,
+        "ID": "2",
+        "title": "כותרת השאלה",
+        "description": "תיאור תיאור תיאור",
+        "placement": 10,
+        "category": 4,
+        "unhandled_money_delta": 10,
+        "unhandled_emissions_delta": 12,
+        "unhandled_life_quality_delta": 14,
+        "options": ["4"]
+    }
+}

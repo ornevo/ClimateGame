@@ -33,7 +33,7 @@ function SurprisePopup(props) {
             {/* Content */}
             <ContentText qId={q.ID}>{q.description}</ContentText>
 
-            <div className="surprise-accept-button" onClick={props.onDismiss}>
+            <div className="surprise-accept-button" onClick={_ => props.onDismiss(props.event.ID)}>
                 <div>
                     <div className="surprise-accept-button-text">
                         קיבלתי

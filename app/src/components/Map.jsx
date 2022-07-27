@@ -52,7 +52,7 @@ class Map extends React.Component {
                                         effect.placement - 1 === areaI &&
                                         <Effect key={'effect_' + eI} x={effect.x} y={effect.y} id={effect.ID}
                                                         onFinish={this.props.onEffectDone} amount={effect.amount}
-                                                        metric={effect.metric} delay={effect.delay} />
+                                                        metric={effect.metric} delay={effect.delay} scale={this.state.scale} />
                                         )
                                   }
 

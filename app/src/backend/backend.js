@@ -151,25 +151,6 @@ function deleteEvent(eventId) {
     state.deleted_events.push(eventId);
 }
 
-
-function applyOptionMeasures(optionId){
-
-}
-
-
-function applyEventMeasures(eventId, isSurprise){
-    var eventJson;
-    if(isSurprise)
-    {
-        
-    }
-    else
-    {
-        eventJson = getEvent(eventId);
-    }
-}
-
-
 export default {
     state,
     updateStateByOption,

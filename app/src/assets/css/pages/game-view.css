@@ -200,7 +200,7 @@
 }
 
 .effect-inner {
-    position: relative;
+    position: absolute;
     opacity: 0%;
     animation-name: effect-disappear;
 }

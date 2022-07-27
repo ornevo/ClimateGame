@@ -13,9 +13,7 @@ export default class GameView extends React.Component {
         super(props);
         this.state = {
             dilemmas: [],
-            effects: [
-                { ID: "etestod", x: 10, y: 2, placement: 4, delay: 2 + 5 + Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME, amount: 4, metric: Constants.MONEY_METRIC }
-            ],
+            effects: [],
             emissions: Constants.INITIAL_EMISSIONS,
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
@@ -38,16 +36,16 @@ export default class GameView extends React.Component {
         const newState = Backend.getState();
         this.processScheduled(newState.ticks, () => {
             const newEvents = newState.active_events.filter(
-                e => this.state.dilemmas.find(ee => ee.ID === e) === undefined
+                e => (this.state.dilemmas.find(ee => ee.ID === e) === undefined) && e != this.state.openDilemma
             )
     
-            let dilemmaEvents = newEvents.filter(eId => Backend.getEvent(eId).option_ids.length > 0);
+            let surprise = newEvents.find(Backend.isEventSurprise);
+            if(surprise !== undefined)
+                this.addSurprise(surprise);
+
+            let dilemmaEvents = newEvents.filter(eId => !Backend.isEventSurprise(eId));
             this.addDilemmas(dilemmaEvents);
-    
-            let surprise = newEvents.find(eId => Backend.getEvent(eId).option_ids.length === 0);
-            // if(surprise !== undefined)
-            //     this.addSurprise(surprise);
-    
+        
             this.setState({
                 year: newState.year,
                 ticks: newState.ticks,
@@ -60,7 +58,6 @@ export default class GameView extends React.Component {
     }
 
     addDilemmas(dilemmaIds) {
-        // console.log("Adding dilemmas ", dilemmaIds);
         const dilemmasToAdd = dilemmaIds.map(dId => {
             const dilemma = Backend.getEvent(dId);
             const area = Constants.AREAS[dilemma.placement - 1];
@@ -90,6 +87,7 @@ export default class GameView extends React.Component {
             console.log("WARNING: tried to open a surprise while already has an open one. ignoring.");
             return;
         }
+        Backend.setPopupOpen(true);
         this.setState({ openDilemma: dilemmaId });
     }
 
@@ -99,6 +97,8 @@ export default class GameView extends React.Component {
         // We first change it to deleted, then wait for animation finish, then really delete
         // TODO Fix effect jumping app when location disappears
         // TODO dont delete as long as dilemma in openDillema? just delete when unsetting it
+        if(!Backend.isEventSurprise(dilemmaId))
+            this.addEffect(this.state.dilemmas.find(d => d.ID === dilemmaId));
 
         var newDilemmasState = this.state.dilemmas.map(d => d.ID === dilemmaId ? { ...d, isDeleted: true } : d);
         this.setState({ dilemmas: newDilemmasState }, () => {
@@ -134,6 +134,42 @@ export default class GameView extends React.Component {
             callbackAfterFinished();
     }
 
+    addEffect(questionObject) {
+        let newEffects = [];
+        let originalQuestionObject = Backend.getEvent(questionObject.ID);
+        const base = {
+            x: questionObject.x,
+            y: questionObject.y,
+            placement: originalQuestionObject.placement,
+        }
+
+        newEffects.push({
+            ...base,
+            ID: "em_" + questionObject.ID,
+            delay: Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME + 1,
+            amount: originalQuestionObject.unhandled_money_delta,
+            metric: Constants.MONEY_METRIC
+        })
+
+        newEffects.push({
+            ...base,
+            ID: "ee_" + questionObject.ID,
+            delay: Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME + 2,
+            amount: originalQuestionObject.unhandled_emissions_delta,
+            metric: Constants.EMISSIONS_METRIC
+        })
+
+        newEffects.push({
+            ...base,
+            ID: "eq_" + questionObject.ID,
+            delay: Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME + 3,
+            amount: originalQuestionObject.unhandled_life_quality_delta,
+            metric: Constants.QOF_METRIC
+        })
+
+        this.setState({ effects: [...this.state.effects, ...newEffects] });
+    }
+
     removeEffect(effectId) {
         var newEffectsState = this.state.effects.filter(e => e.ID !== effectId);
         this.setState({ effects: newEffectsState });
@@ -142,6 +178,7 @@ export default class GameView extends React.Component {
     closeDilemma() {
         // If deleted in the time of choice making, delete it now
         // NOTE Be aware that here, dilemma may no longer be in the state.dilemmas list
+        Backend.setPopupOpen(false);
         this.setState({ openDilemma: undefined });
     }
 
@@ -150,7 +187,15 @@ export default class GameView extends React.Component {
     }
 
     onSurpriseDismiss(sId) {
+        Backend.deleteEvent(sId);
+        Backend.applyEffectEvent(sId);
         this.closeDilemma();
+    }
+
+    onChooseOption(optId) {
+        Backend.applyEffectByOption(optId);
+        this.closeDilemma();
+        this.removeDilemma(this.state.openDilemma);
     }
 
     render() {
@@ -162,18 +207,15 @@ export default class GameView extends React.Component {
                 popup = (
                     <DilemmaPopup event={dilemma}
                         onClose={this.closeDilemma.bind(this)}
-                        onChooseOption={id => alert("Chose option id " + id)}
-                    >test</DilemmaPopup>
+                        onChooseOption={this.onChooseOption.bind(this)} />
                 )
             else
                 popup = (
-                    <SurprisePopup event={dilemma}
-                        onClose={this.closeDilemma.bind(this)}
-                        onDismiss={this.onSurpriseDismiss.bind(this)}
-                    >test</SurprisePopup>
+                    <SurprisePopup event={dilemma} onDismiss={this.onSurpriseDismiss.bind(this)} />
                 )
         }
         const popupOpen = popup !== '';
+
         return (
             <div id="game-view-container">
                 {popup}

@@ -21,8 +21,8 @@ function Effect(props) {
     return (
         <div className={"effect " + (props.popupOpen ? "blurred" : "")} style={{
             color: color,
-            left: props.x + "px",
-            top: props.y + "px",
+            left: (props.x * props.scale) + "px",
+            top:  (props.y * props.scale) + "px",
         }}>
             <div className="effect-inner" style={{
                 animationDelay: (props.delay | "0") + 's',

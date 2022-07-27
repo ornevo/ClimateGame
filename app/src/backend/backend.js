@@ -139,11 +139,14 @@ function getState() {
     state.ticks += 1;
     state.year = Constants.INITIAL_YEAR + Math.floor(state.ticks / Constants.TICKS_PER_YEAR);
 
-    // Choose if should add event at all
-    if(Math.random() > Constants.NEW_EVENT_RANDOM_THRESHOLD) {
-        const eventIdToAdd = getEventToAdd();
-        if(eventIdToAdd !== undefined)
-            state.active_events.push(eventIdToAdd);
+    // Do logic processing once in a while
+    if(state.ticks % Constants.GAME_TICKS_PER_LOGICAL_TICK === 0) {
+        // Choose if should add event at all
+        if(Math.random() > Constants.NEW_EVENT_RANDOM_THRESHOLD) {
+            const eventIdToAdd = getEventToAdd();
+            if(eventIdToAdd !== undefined)
+                state.active_events.push(eventIdToAdd);
+        }
     }
 
     // Advance effects

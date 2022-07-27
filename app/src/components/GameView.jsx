@@ -97,6 +97,11 @@ export default class GameView extends React.Component {
         // We first change it to deleted, then wait for animation finish, then really delete
         // TODO Fix effect jumping app when location disappears
         // TODO dont delete as long as dilemma in openDillema? just delete when unsetting it
+
+        // Make sure not already deleted
+        if(this.state.dilemmas.find(d => d.ID === dilemmaId) === undefined)
+            return;
+
         if(!Backend.isEventSurprise(dilemmaId))
             this.addEffect(this.state.dilemmas.find(d => d.ID === dilemmaId));
 
@@ -188,7 +193,7 @@ export default class GameView extends React.Component {
 
     onSurpriseDismiss(sId) {
         Backend.deleteEvent(sId);
-        Backend.applyEffectEvent(sId);
+        Backend.applyEffectbyEvent(sId);
         this.closeDilemma();
     }
 

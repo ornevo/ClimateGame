@@ -26,20 +26,21 @@ export const AppFooter = () => {
     }
 
     let classHover = (pathname === '/play' ) ? 'display-footer' : ''
+    let iconHover = !isShowTerm ? 'footer-nav-link' : ''
     
     return (
             <footer className={`footer-container flex flex-column ${classHover}`}>
             <div className="footer-links">
                 <ul className="footer-nav flex clean-list">
-                    <li>{((pathname !== '/')) ?
-                        <NavLink to="/" className="footer-nav-link"><HomeIcon /></NavLink>
-                        : <NavLink to="/about" className="footer-nav-link"><AboutIcon /></NavLink>}</li>
-                    <li ref={termRef} onClick={onToggleTerm}>
+                    <li className="footer-nav-link">{((pathname !== '/')) ?
+                        <NavLink to="/"><HomeIcon /></NavLink>
+                        : <NavLink to="/about"><AboutIcon /></NavLink>}</li>
+                    <li className={`${iconHover}`} ref={termRef} onClick={onToggleTerm}>
                             {isShowTerm && <TermPopup showTerm={isShowTerm} closeTerm={onCloseTerm} />}
                         <TermIcon />
                     </li>
-                    <li><NavLink to="/stats" className="footer-nav-link"><StatisticsIcon /></NavLink></li>
-                    <li><NavLink to="/score" className="footer-nav-link"><HighScoreIcon /></NavLink></li>
+                    <li className="footer-nav-link"><NavLink to="/stats"><StatisticsIcon /></NavLink></li>
+                    <li className="footer-nav-link"><NavLink to="/score"><HighScoreIcon /></NavLink></li>
                 </ul>
             </div>
         </footer>

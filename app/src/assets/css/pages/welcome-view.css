@@ -1,37 +1,39 @@
 .app-homepage {
-    position: relative;
-    min-height: calc(100vh - 95px); 
     justify-content: center;
     align-items: center;
-    width: 100%;
-}
-.map-homepage {
-    object-fit: cover;
+    min-height: 100vh; 
 }
 .map {
-    width: 100%;
+    object-fit: cover;
+    min-width: 100%;
+    height: 100vh; 
+}
+
+.homepage-content-container{
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    min-width: 100%;
+    min-height: calc(100vh - 75px); 
+    position: absolute;
 }
 
 .logo {
-    max-width: 18rem;
-    position: absolute;
+    max-width: 15rem;
 }
 
 .start-game {
-    position: absolute;
-    bottom: 20%;
-    background-color: var(--clr1);
-    color: white;
-    width: 17.5rem;
-    padding: 1rem 1.25rem;
+    background-color: var(--clr2);
+    max-width: 17.5rem;
+    padding: 0.75rem;
     border: 1px solid transparent;
     border-radius: 4px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     cursor: pointer;
 }
 
 .start-game a {
-    color: white;
+    color: black;
     font-size: 1.5em;
     cursor: pointer;
     font-family: varela;

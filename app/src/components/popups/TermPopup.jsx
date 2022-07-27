@@ -22,9 +22,9 @@ export const TermPopup = ({ showTerm, closeTerm }) => {
     return (
         <div className={`background-backdrop overlay ${showTerm ? 'visible' : ''}`}>
             <section className={`term-bar flex flex-column ${className}`} >
-                <div className="term-header">
-                    <button className="close-btn" onClick={() => closeTerm()}>X</button>
+                <div className="term-header flex">
                     <h1>מונחים חשובים</h1>
+                    <button className="close-btn" onClick={() => closeTerm()}>X</button>
                     <hr></hr>
                 </div>
                 <ul className="term-list clean-list">

@@ -2,22 +2,24 @@
     background-color: white;
     max-width: 100%;
     position: absolute;
-    left: 0;
-    padding: 40px;
-    margin: 0 auto;
+    padding: 20px;
     transition: all 0.8s ease;
     box-shadow: 0.1px 0 2px grey;
     transition: all 0.8s ease;
 }
 
 .term-bar.open {
-    bottom: 95px;
+    bottom: 65px;
 }
 
 .term-header {
-    font-size: 2em;
+    font-size: 1.2em;
     text-align: right;
     direction: rtl;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .close-btn {
@@ -27,29 +29,37 @@
     font-size: 1.2em;
     cursor: pointer;
     position: absolute;
-    left: 40px;
+    left: 20px;
 }
+
+.term-header h1 {
+    text-align: right;
+    direction: rtl;
+    margin: 0;
+    align-items: center;
+}
+
 .term-list {
     text-align: right;
     direction: rtl;
 }
 
 .term-list-item h2 {
-    font-size: 2em;
-    margin: 0 5px;
+    font-size: 1.2em;
+    margin: 0;
 }
 
 .term-list-item:first-of-type {
-    margin-top: 35px;
+    margin-top: 10px;
 }
 
 .term-list-item:last-of-type {
-    margin-bottom: -25px;
+    margin-bottom: 10px;
 }
 
 .term-list-item h4 {
-    font-size: 1.3em;
-    margin-top: 5px;
+    font-size: 0.8em;
+    margin: 0 5px;
     line-height: 1.2em;
 }
 

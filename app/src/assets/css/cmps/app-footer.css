@@ -3,6 +3,11 @@
     position: absolute;
     bottom: 0;
 }
+
+.display-footer{
+  display: none;
+}
+
 .footer-container {
     width: 100%;
     height: 95px;

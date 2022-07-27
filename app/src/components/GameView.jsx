@@ -7,6 +7,8 @@ import Utils from "../utils";
 import Constants from "../constants";
 import Backend from '../backend/backend';
 import DB from "./automation_output.json";
+import { Navigate } from "react-router-dom";
+
 
 export default class GameView extends React.Component {
     constructor(props) {
@@ -205,6 +207,10 @@ export default class GameView extends React.Component {
     }
 
     render() {
+        if(this.state.year >= Constants.MAX_YEAR) {
+            return <Navigate to="/game-over" state={{ win: true }} />; 
+        }
+
         var popup = '';
         if(this.state.openDilemma) {
             const dilemma = Backend.getEvent(this.state.openDilemma);

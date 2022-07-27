@@ -3,7 +3,6 @@ import { TermIcon, HomeIcon, StatisticsIcon, AboutIcon, HighScoreIcon } from '..
 import { useLocation, NavLink } from 'react-router-dom'
 import { TermPopup } from './popups/TermPopup.jsx'
 
-
 export const AppFooter = () => {
     const { pathname } = useLocation()
     const [isShowTerm, setIsShowTerm] = useState(false)
@@ -12,7 +11,6 @@ export const AppFooter = () => {
     useEffect(() => {
         document.addEventListener("click", handleTermClickOutside)
     }, [isShowTerm])
-
 
     const onCloseTerm = () => {
         setIsShowTerm(false)
@@ -27,8 +25,10 @@ export const AppFooter = () => {
         if (termRef.current && isShowTerm && !termRef.current.contains(e.target)) onToggleTerm()
     }
 
+    let classHover = (pathname === '/play' ) ? 'display-footer' : ''
+    
     return (
-        <footer className="footer-container flex flex-column">
+            <footer className={`footer-container flex flex-column ${classHover}`}>
             <div className="footer-links">
                 <ul className="footer-nav flex clean-list">
                     <li>{((pathname !== '/')) ?

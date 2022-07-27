@@ -6,14 +6,15 @@ import { AppFooter } from './components/AppFooter.jsx';
 import {
   // BrowserRouter,
   Routes,
-  Route,
+  Route
 } from "react-router-dom";
 import routes from './routes'
 import '../src/assets/css/main.css';
 
 export class App extends React.Component {
 
-  render() {
+   render() {
+    
     return (
       <div className="App">
         {/* <BrowserRouter>
@@ -31,9 +32,9 @@ export class App extends React.Component {
                 element={route.component}
                 path={route.path} />)}
           </Routes>
-          {/* <div className="footer  flex flex-column">
+          <div className="footer flex flex-column">
             <AppFooter />
-          </div> */}
+          </div> 
         </main>
       </div>
     );

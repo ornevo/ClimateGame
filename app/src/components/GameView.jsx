@@ -13,9 +13,7 @@ export default class GameView extends React.Component {
         super(props);
         this.state = {
             dilemmas: [],
-            effects: [
-                { ID: "etestod", x: 10, y: 2, placement: 4, delay: 2 + 5 + Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME, amount: 4, metric: Constants.MONEY_METRIC }
-            ],
+            effects: [],
             emissions: Constants.INITIAL_EMISSIONS,
             money: Constants.INITIAL_MONEY,
             qof: Constants.INITIAL_QUALITY_OF_LIFE,
@@ -189,7 +187,6 @@ export default class GameView extends React.Component {
     }
 
     onSurpriseDismiss(sId) {
-        console.log("Removed id ", sId);
         Backend.deleteEvent(sId);
         // TODO add effects
         this.closeDilemma();
@@ -219,8 +216,6 @@ export default class GameView extends React.Component {
                 )
         }
         const popupOpen = popup !== '';
-
-        console.log(this.state.effects);
 
         return (
             <div id="game-view-container">

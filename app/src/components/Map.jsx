@@ -50,7 +50,7 @@ class Map extends React.Component {
                                   {
                                       this.props.effects.map((effect, eI) => 
                                         effect.placement - 1 === areaI &&
-                                        <Effect key={'effect_' + eI} x={effect.x} y={effect.y} id={effect.ID}
+                                        <Effect key={'effect_' + effect.ID} x={effect.x} y={effect.y} id={effect.ID}
                                                         onFinish={this.props.onEffectDone} amount={effect.amount}
                                                         metric={effect.metric} delay={effect.delay} scale={this.state.scale} />
                                         )

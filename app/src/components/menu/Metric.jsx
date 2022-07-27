@@ -28,7 +28,15 @@ function Metric(props) {
                 }
             </span>
             <div className="metric-bar-container">
-                <span style={{width: precent + "%", background: Constants.METRIC_TO_COLOR[props.metric_const]}}></span>
+                {
+                    props.metric_const === Constants.EMISSIONS_METRIC ? 
+                    <span style={{
+                        width: precent + "%",
+                        background: "linear-gradient(90deg, rgba(43,184,18,1) 0%, rgba(249,234,60,1) " + (100 * 50 / precent) + "%, rgba(218,48,48,1) " + (100 * 100 / precent) + "%)"
+                    }}></span>
+                    :
+                    <span style={{width: precent + "%", background: Constants.METRIC_TO_COLOR[props.metric_const]}}></span>
+                }
             </div>
         </div>
     )

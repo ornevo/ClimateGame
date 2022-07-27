@@ -37,10 +37,10 @@ const MONEY_METRIC = 3;
 const EMISSIONS_METRIC = 4;
 
 const METRIC_TO_COLOR = {
-    [YEAR_METRIC]: "red",
-    [QOF_METRIC]: "blue",
-    [MONEY_METRIC]: "green",
-    [EMISSIONS_METRIC]: "black",
+    [YEAR_METRIC]: "#44bee0",
+    [QOF_METRIC]: "#e99f53",
+    [MONEY_METRIC]: "#3ab389",
+    [EMISSIONS_METRIC]: undefined,
 }
 
 const METRIC_TO_IMG = {

@@ -40,8 +40,8 @@ export default class GameView extends React.Component {
             )
     
             let surprise = newEvents.find(Backend.isEventSurprise);
-            if(surprise !== undefined)
-                this.addSurprise(surprise);
+            // if(surprise !== undefined)
+            //     this.addSurprise(surprise);
 
             let dilemmaEvents = newEvents.filter(eId => !Backend.isEventSurprise(eId));
             this.addDilemmas(dilemmaEvents);

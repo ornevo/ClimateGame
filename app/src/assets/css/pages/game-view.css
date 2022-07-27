@@ -394,3 +394,8 @@ hr {
 .metric-img-small {
     width: 17px !important;
 }
+
+.gradient-bar {
+    background: rgba(218,48,48,1);
+    background: linear-gradient(90deg, rgba(43,184,18,1) 0%, rgba(249,234,60,1) 50%, rgba(218,48,48,1) 100%);
+}

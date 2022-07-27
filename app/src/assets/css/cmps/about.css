@@ -1,5 +1,38 @@
 .about-container {
-    min-height: calc(100vh - 135px); 
+    min-height: calc(100vh - 95px); 
     width: 100%;
+}
+
+.about-title{
+    padding-inline-start: 40px;
+    padding-inline-end: 40px;
+    text-align: right;
+    direction: rtl;
+    margin-top: 100px;
+    font-size: 28px;
+    font-weight: bold;
     text-align: center;
+}
+
+.about-title:nth-of-type(1) {
+    font-size: 34px;
+    font-weight: bolder;
+}
+
+.about-title:nth-of-type(2) {
+    margin-top: 100px;
+}
+
+.about-title:nth-of-type(3) {
+    margin-top: 100px;
+}
+
+.about-explain{
+    padding-inline-start: 40px;
+    padding-inline-end: 40px;
+    text-align: right;
+    direction: rtl;
+    margin-top: 40px;
+    font-size: 24px;
+    line-height: 1.3em;
 }

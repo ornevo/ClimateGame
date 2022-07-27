@@ -60,11 +60,11 @@ const HOME_CATEGORY = 5;
 
 const CATEGORY_TO_IMG = {
     [NO_OPTIONS_CATEGORY]: "/qmark-icon.png",
-    [TRANSPORT_CATEGORY]: "/trans-icon.svg",
-    [AGRICULTURE_CATEGORY]: "/agri-icon.svg",
-    [ENERGY_CATEGORY]: "/elec-icon.svg",
-    [INDUSTRY_CATEGORY]: "/manu-icon.svg",
-    [HOME_CATEGORY]: "/home-icon.svg",
+    [TRANSPORT_CATEGORY]: "/energy-icon.png", /// 
+    [AGRICULTURE_CATEGORY]: "/agri-icon.png", ///// 
+    [ENERGY_CATEGORY]: "/industry-icon.png", //// 
+    [INDUSTRY_CATEGORY]: "/building-icon.png", ///
+    [HOME_CATEGORY]: "/economy-icon.png",
 }
 
 const AREAS = [

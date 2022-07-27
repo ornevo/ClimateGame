@@ -129,7 +129,7 @@
     height: 15px;
     /* Can be anything */
     position: relative;
-    background: #ebe7de;
+    background: #fbf8f1;
     border-radius: 25px;
     padding: 5px;
     box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
@@ -273,12 +273,9 @@
 }
 
 .q-category-icon, .surprise-icon {
-    height: 20px;
-    border-radius: 100%;
-    border: 1px solid black;
+    height: 50px;
     display: inline;
-    margin: 10px;
-    padding: 5px;
+    margin-left: 10px;
 }
 
 .q-title {
@@ -288,6 +285,7 @@
     text-align: right;
     line-height: 50px;
     font-size: 1.2em;
+    margin: 0 10px;
 }
 
 hr {
@@ -320,7 +318,7 @@ hr {
 }
 
 .avatar {
-    width: 80px;
+    width: 60px;
     margin-left: 10px;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);

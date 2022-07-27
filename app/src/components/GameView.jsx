@@ -36,7 +36,6 @@ export default class GameView extends React.Component {
     gameLoopTick() {
         // TODO handle case if already has open popup
         const newState = Backend.getState();
-
         this.processScheduled(newState.ticks, () => {
             const newEvents = newState.active_events.filter(
                 e => this.state.dilemmas.find(ee => ee.ID === e) === undefined
@@ -129,7 +128,10 @@ export default class GameView extends React.Component {
             else 
                 newScheduled.push(s);
         })
-        this.setState({scheduled: newScheduled}, callbackAfterFinished);
+        if(newScheduled.length !== this.state.scheduled)
+            this.setState({scheduled: newScheduled}, callbackAfterFinished);
+        else
+            callbackAfterFinished();
     }
 
     removeEffect(effectId) {

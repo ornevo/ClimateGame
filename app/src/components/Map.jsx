@@ -41,7 +41,7 @@ class Map extends React.Component {
                                   {
                                       this.props.dilemmas.map((dilemma, dilI) => 
                                         Backend.getEvent(dilemma.ID).placement - 1 === areaI &&
-                                        <DilemmaLocation key={'dilemma_' + dilI} x={dilemma.x} y={dilemma.y} scale={this.state.scale}
+                                        <DilemmaLocation key={'dilemma_' + dilemma.ID} x={dilemma.x} y={dilemma.y} scale={this.state.scale}
                                                         lifetime={Constants.DILEMMA_LIFETIME} dilemmaId={dilemma.ID}
                                                         isDeleted={dilemma.isDeleted} onClick={dId => this.props.onDilemmaLocationClick(dId)}
                                                         popupOpen={this.props.popupOpen}/>

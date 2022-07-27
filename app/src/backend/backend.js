@@ -117,7 +117,6 @@ function getState() {
     // Choose if should add event at all
     if(Math.random() > Constants.NEW_EVENT_RANDOM_THRESHOLD) {
         const eventIdToAdd = getEventToAdd();
-        console.log("Adding event ", eventIdToAdd);
         if(eventIdToAdd !== undefined)
             state.active_events.push(eventIdToAdd);
     }

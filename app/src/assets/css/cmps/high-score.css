@@ -4,7 +4,6 @@
     margin-inline-start: 40px;
     margin-inline-end: 40px;
     min-height: calc(100vh - 95px);
-    /* width: 100%; */
 }
 
 .score-table {
@@ -36,7 +35,6 @@
 
 .high-score-board-recap {
     justify-content: space-between;
-
 }
 
 .total-gamers,
@@ -49,10 +47,8 @@
 
 .gamers-info {
     margin-bottom: 10px;
-    /* padding: 30px; */
     text-align: center;
     font-size: 24px;
-    /* padding: 10px; */
 }
 
 .gamers-info-details {

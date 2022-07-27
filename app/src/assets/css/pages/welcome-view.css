@@ -1,11 +1,9 @@
 .app-homepage {
-    /* height: 100vh; */
     position: relative;
     min-height: calc(100vh - 95px); 
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* margin: 0; */
 }
 .map-homepage {
     object-fit: cover;

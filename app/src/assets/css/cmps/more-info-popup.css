@@ -6,17 +6,13 @@
     position: absolute;
     left: 0;
     padding: 10px 20px !important;
-    /* padding-bottom: 30px !important; */
-    /* margin: 0 auto; */
     transition: all 0.8s ease;
-    /* box-shadow: 0.1px 0 2px grey; */
     transition: all 0.8s ease;
     color: black;
 }
 
 .more-info-bar.open {
     bottom: 0;
-    /* bottom: 95px; */
 }
 
 .more-info-header {
@@ -33,15 +29,6 @@
     margin-top: 0.2em;
     word-wrap: break-word;
 }
-
-/* .more-info-list-item h4 {
-    font-size: 0.6em;
-    text-align: right;
-    direction: rtl;
-    margin-top: 0.4em;
-    word-wrap: break-word;
-} */
-
 
 .more-info-btn-container {
     margin-bottom: 10px !important;

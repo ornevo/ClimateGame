@@ -1,15 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Area from './Area';
-import DilemmaLocation from './DilemmaLocation';
-import Effect from './Effect';
-import Backend from '../backend/backend';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Area from './Area'
+import DilemmaLocation from './DilemmaLocation'
+import Effect from './Effect'
+import Backend from '../backend/backend'
 import Constants from '../constants'
-
 
 class Map extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             scale: 1,
             imageRightOffset: 0
@@ -18,14 +17,14 @@ class Map extends React.Component {
 
     // If for some reason the user resizes the window, this will not be called and will not adjust
     componentDidMount() {
-        const imgRect= document.getElementById('map-img').getBoundingClientRect();
-        const imgHeight = imgRect.height;
-        const imgOffset = imgRect.x;
+        const imgRect= document.getElementById('map-img').getBoundingClientRect()
+        const imgHeight = imgRect.height
+        const imgOffset = imgRect.x
         this.setState({
             scale: imgHeight / Constants.BASELINE_SIZE.h,
             imageRightOffset: imgOffset,
             imageTopOffset: imgRect.y
-        });
+        })
     }
 
     render() {
@@ -33,7 +32,7 @@ class Map extends React.Component {
         return (
             <div>
                 <img src="map-with-titles.png" id="map-img" useMap="#image-map" 
-                    className={(this.props.popupOpen === true) ? "blurred" : ""}/>
+                    className={(this.props.popupOpen === true) ? "blurred" : ""} alt=""/>
                 {
                     Constants.AREAS.map((area, areaI) => 
                         <Area key={'map-area-' + areaI} area={area} scale={this.state.scale}
@@ -55,15 +54,13 @@ class Map extends React.Component {
                                                         metric={effect.metric} delay={effect.delay} scale={this.state.scale} />
                                         )
                                   }
-
                         </Area>
                     )
                 }
             </div>
-        );
+        )
     }
 }
-
 
 Map.propTypes = {
     dilemmas: PropTypes.array.isRequired, // An array of dilemma {ID, isDeleted} objects
@@ -73,4 +70,4 @@ Map.propTypes = {
     popupOpen: PropTypes.bool,
 }
 
-export default Map;
+export default Map

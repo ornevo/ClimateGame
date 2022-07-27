@@ -22,7 +22,6 @@
     from {
         width: 0px;
     }
-
     to {
         width: 27px;
     }
@@ -33,7 +32,6 @@
         width: 0px;
         top: 30px;
     }
-
     to {
         width: 30px;
         top: 0px;
@@ -45,7 +43,6 @@
         width: 30px;
         top: 0px;
     }
-
     to {
         width: 0px;
         top: 30px;
@@ -56,7 +53,6 @@
     from {
         width: 0px;
     }
-
     to {
         width: 27px;
     }
@@ -66,7 +62,6 @@
     from {
         width: 27px;
     }
-
     to {
         width: 0px;
     }
@@ -115,7 +110,6 @@
     text-align: end;
     animation-name: dilemma-time-progress;
 }
-
 
 /* Menu */
 .top-menu {
@@ -179,7 +173,6 @@
         top: 0px;
         opacity: 0%;
     }
-
     20% {
         opacity: 100%;
     }
@@ -187,13 +180,11 @@
     70% {
         opacity: 100%;
     }
-
     100% {
         top: -10px;
         opacity: 0%;
     }
 }
-
 
 .effect {
     position: relative;
@@ -206,13 +197,11 @@
     animation-name: effect-disappear;
 }
 
-
 /* Popups */
 @keyframes blur-appear {
     0% {
         filter: blur(0px);
     }
-
     100% {
         filter: blur(3px);
     }
@@ -222,7 +211,6 @@
     0% {
         opacity: 0%;
     }
-
     100% {
         opacity: 100%;
     }
@@ -243,10 +231,8 @@
     z-index: 200;
     height: 100%;
     width: 100%;
-
     animation-name: appear;
     animation-duration: .2s;
-
     display: grid;
     grid-template-rows: 1fr auto 1fr;
 }
@@ -337,8 +323,6 @@ hr {
 }
 
 .dilemma-option-effect-container {
-    /* display: grid; */
-    /* grid-template-rows: 1fr 1fr 1fr; */
     border-right: 1px solid #bfbfbf;
     padding-right: 10px;
 }

@@ -53,7 +53,6 @@
     bottom: 50%;
     background-color: var(--clr1);
     background-color: white;
-    /* color: white; */
     width: 27.5rem;
     padding: 1rem 1.25rem;
     border: 1px solid transparent;
@@ -66,5 +65,4 @@
 .game-over-msg-container h1 {
     font-size: 2em;
     color: black;
-    /* color: white; */
 }

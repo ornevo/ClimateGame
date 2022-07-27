@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react'
-// import { Link } from "react-router-dom";
+import React from 'react'
 import { NavLink } from 'react-router-dom'
-// import {MoreInfo} from '../components/MoreInfo.jsx'
 
 export const GaveOver = () => {
     return (

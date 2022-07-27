@@ -1,22 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Constants from '../constants';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import Constants from '../constants'
 
 function Effect(props) {
-    var animationTime = Constants.EFFECT_ANIMATINO_TIME;
+    let animationTime = Constants.EFFECT_ANIMATINO_TIME
 
-    var color = Constants.METRIC_TO_COLOR[props.metric];
+    let color = Constants.METRIC_TO_COLOR[props.metric]
 
     if(props.delay)
-        animationTime += props.delay;
+        animationTime += props.delay
     
     if(props.onFinish)
-        setTimeout(() => props.onFinish(props.id), animationTime * 1000);
+        setTimeout(() => props.onFinish(props.id), animationTime * 1000)
 
-    var amount = props.amount;
+    let amount = props.amount
     if(props.amount > 0)
-        amount = "+" + amount;
+        amount = "+" + amount
 
     return (
         <div className={"effect " + (props.popupOpen ? "blurred" : "")} style={{
@@ -34,7 +33,6 @@ function Effect(props) {
     )
 }
 
-
 Effect.propTypes = {
     amount: PropTypes.number.isRequired,
     x: PropTypes.number.isRequired, // relative location
@@ -50,5 +48,4 @@ Effect.defaultProps = {
     delay: 0
 }
 
-
-export default Effect;
+export default Effect

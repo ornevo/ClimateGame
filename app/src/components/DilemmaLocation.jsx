@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import React from 'react'
+import PropTypes from 'prop-types'
 
 function DilemmaLocation(props) {
     return (
@@ -12,7 +11,7 @@ function DilemmaLocation(props) {
             <img className={'location-pin-img' + (props.isDeleted ? ' location-deleted' : '')}
                 src="location-pin.svg" style={{
                 animationName: props.isDeleted ? "location-pin-disappear" : "location-pin-appear"
-            }} />
+            }} alt="" />
             <div className={'progress-bar-container' + (props.isDeleted ? ' location-deleted' : '')}
                 style={{
                 animationName: props.isDeleted ? "bar-container-disappear" : "bar-container-appear"
@@ -25,7 +24,6 @@ function DilemmaLocation(props) {
     )
 }
 
-
 DilemmaLocation.propTypes = {
     x: PropTypes.number.isRequired, // The x offset from the parent area
     y: PropTypes.number.isRequired, // The y offset from the parent area
@@ -37,5 +35,4 @@ DilemmaLocation.propTypes = {
     popupOpen: PropTypes.bool.isRequired, // Will blur if true
 }
 
-
-export default DilemmaLocation;
+export default DilemmaLocation

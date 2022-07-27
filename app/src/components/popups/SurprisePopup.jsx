@@ -1,24 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Popup from './Popup';
-import Constants from "../../constants";
-import MetricValue from "../MetricValue";
-import ContentText from './ContentText';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import Popup from './Popup'
+import Constants from "../../constants"
+import MetricValue from "../MetricValue"
+import ContentText from './ContentText'
 
 function SurprisePopup(props) {
-    const q = props.event;
-    let value = 0;
-    let metric = -1;
+    const q = props.event
+    let value = 0
+    let metric = -1
     if(props.event.unhandled_money_delta) {
-        value = props.event.unhandled_money_delta;
-        metric = Constants.MONEY_METRIC;
+        value = props.event.unhandled_money_delta
+        metric = Constants.MONEY_METRIC
     } else if(props.event.unhandled_emissions_delta) {
-        value = props.event.unhandled_emissions_delta;
-        metric = Constants.EMISSIONS_METRIC;
+        value = props.event.unhandled_emissions_delta
+        metric = Constants.EMISSIONS_METRIC
     } else {
-        value = props.event.unhandled_life_quality_delta;
-        metric = Constants.QOF_METRIC;
+        value = props.event.unhandled_life_quality_delta
+        metric = Constants.QOF_METRIC
     }
     return (
         <Popup>
@@ -52,5 +51,4 @@ SurprisePopup.propTypes = {
     event: PropTypes.object.isRequired // the event obejct as described in JSON.txt file
 }
 
-
-export default SurprisePopup;
+export default SurprisePopup

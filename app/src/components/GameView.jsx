@@ -1,17 +1,17 @@
-import React from 'react';
-import Map from './Map';
-import Menu from './menu/Menu';
-import DilemmaPopup from './popups/DilemmaPopup';
-import SurprisePopup from './popups/SurprisePopup';
-import Utils from "../utils";
-import Constants from "../constants";
-import Backend from '../backend/backend';
-import DB from "./automation_output.json";
-import { Navigate } from "react-router-dom";
+import React from 'react'
+import Map from './Map'
+import Menu from './menu/Menu'
+import DilemmaPopup from './popups/DilemmaPopup'
+import SurprisePopup from './popups/SurprisePopup'
+import Utils from "../utils"
+import Constants from "../constants"
+import Backend from '../backend/backend'
+import DB from "./automation_output.json"
+import { Navigate } from "react-router-dom"
 
 export default class GameView extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             dilemmas: [],
             effects: [],
@@ -29,24 +29,24 @@ export default class GameView extends React.Component {
     componentDidMount() {
         // Start game loop
         if(this.intervalId === undefined)
-            this.intervalId = setInterval(this.gameLoopTick.bind(this), Constants.GAME_TICK_SECONDS * 1000);
+            this.intervalId = setInterval(this.gameLoopTick.bind(this), Constants.GAME_TICK_SECONDS * 1000)
     }
 
     // This is called every game tick
     gameLoopTick() {
         // TODO handle case if already has open popup
-        const newState = Backend.getState();
+        const newState = Backend.getState()
         this.processScheduled(newState.ticks, () => {
             const newEvents = newState.active_events.filter(
                 e => (this.state.dilemmas.find(ee => ee.ID === e) === undefined) && e != this.state.openDilemma
             )
     
-            let surprise = newEvents.find(Backend.isEventSurprise);
+            let surprise = newEvents.find(Backend.isEventSurprise)
             if(surprise !== undefined)
-                this.addSurprise(surprise);
+                this.addSurprise(surprise)
 
-            let dilemmaEvents = newEvents.filter(eId => !Backend.isEventSurprise(eId));
-            this.addDilemmas(dilemmaEvents);
+            let dilemmaEvents = newEvents.filter(eId => !Backend.isEventSurprise(eId))
+            this.addDilemmas(dilemmaEvents)
         
             this.setState({
                 year: newState.year,
@@ -55,41 +55,41 @@ export default class GameView extends React.Component {
                 money: newState.money,
                 qof: newState.quality_of_life,
             })
-        });
+        })
 
     }
 
     addDilemmas(dilemmaIds) {
         const dilemmasToAdd = dilemmaIds.map(dId => {
-            const dilemma = Backend.getEvent(dId);
-            const area = Constants.AREAS[dilemma.placement - 1];
+            const dilemma = Backend.getEvent(dId)
+            const area = Constants.AREAS[dilemma.placement - 1]
             // Calculate random location within area
-            const relativeX = Utils.random(0, area.w - Constants.DILEMMA_LOCATION_W);
-            const relativeY = Utils.random(0, area.y - Constants.DILEMMA_LOCATION_H);
-            return { ID: dId, x: relativeX, y: relativeY, isDeleted: false };
+            const relativeX = Utils.random(0, area.w - Constants.DILEMMA_LOCATION_W)
+            const relativeY = Utils.random(0, area.y - Constants.DILEMMA_LOCATION_H)
+            return { ID: dId, x: relativeX, y: relativeY, isDeleted: false }
         })
-        let newDilemmas = [...this.state.dilemmas, ...dilemmasToAdd];
+        let newDilemmas = [...this.state.dilemmas, ...dilemmasToAdd]
         this.setState({ dilemmas: newDilemmas }, () => {
             // Now add timeouts
             dilemmaIds.forEach(dId => {
-                const d = Backend.getEvent(dId);
-                if(!d) return;
-                this.schedule(() => this.removeDilemma(dId), Constants.DILEMMA_LIFETIME);
-            });
+                const d = Backend.getEvent(dId)
+                if(!d) return
+                this.schedule(() => this.removeDilemma(dId), Constants.DILEMMA_LIFETIME)
+            })
         })
     }
 
     addSurprise(surpriseDilemmaId) {
-        this.openDilemmaPopup(surpriseDilemmaId);
+        this.openDilemmaPopup(surpriseDilemmaId)
     }
 
     openDilemmaPopup(dilemmaId) {
         if (this.state.openDilemma !== undefined) {
-            console.log("WARNING: tried to open a surprise while already has an open one. ignoring.");
-            return;
+            console.log("WARNING: tried to open a surprise while already has an open one. ignoring.")
+            return
         }
-        Backend.setPopupOpen(true);
-        this.setState({ openDilemma: dilemmaId });
+        Backend.setPopupOpen(true)
+        this.setState({ openDilemma: dilemmaId })
     }
 
     // TODO here because anywhere is good: fix bug of rejumping dilemmas
@@ -101,21 +101,21 @@ export default class GameView extends React.Component {
 
         // Make sure not already deleted
         if(this.state.dilemmas.find(d => d.ID === dilemmaId) === undefined)
-            return;
+            return
 
         if(!Backend.isEventSurprise(dilemmaId))
-            this.addEffect(this.state.dilemmas.find(d => d.ID === dilemmaId));
+            this.addEffect(this.state.dilemmas.find(d => d.ID === dilemmaId))
 
-        var newDilemmasState = this.state.dilemmas.map(d => d.ID === dilemmaId ? { ...d, isDeleted: true } : d);
-        Backend.applyEffectByEvent(dilemmaId);
+        let newDilemmasState = this.state.dilemmas.map(d => d.ID === dilemmaId ? { ...d, isDeleted: true } : d)
+        Backend.applyEffectByEvent(dilemmaId)
         this.setState({ dilemmas: newDilemmasState }, () => {
             // Now wait for the destruction to finish
             this.schedule(() => {
-                newDilemmasState = this.state.dilemmas.filter(d => d.ID !== dilemmaId);
-                Backend.deleteEvent(dilemmaId);
+                newDilemmasState = this.state.dilemmas.filter(d => d.ID !== dilemmaId)
+                Backend.deleteEvent(dilemmaId)
                 // TODO Add effect for when missed event and call proper backend function to apply to metrics
-                this.setState({dilemmas: newDilemmasState});
-            }, Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME);
+                this.setState({dilemmas: newDilemmasState})
+            }, Constants.DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME)
         })
     }
 
@@ -124,26 +124,26 @@ export default class GameView extends React.Component {
             callback,
             tickTime: this.state.ticks + (timeInSeconds / Constants.GAME_TICK_SECONDS)
         }
-        this.setState({scheduled: [...this.state.scheduled, task]});
+        this.setState({scheduled: [...this.state.scheduled, task]})
     }
 
     processScheduled(currentTicks, callbackAfterFinished) {
-        let newScheduled = [];
+        let newScheduled = []
         this.state.scheduled.forEach(s => {
             if(s.tickTime <= currentTicks)
-                s.callback();
+                s.callback()
             else 
-                newScheduled.push(s);
+                newScheduled.push(s)
         })
         if(newScheduled.length !== this.state.scheduled)
-            this.setState({scheduled: newScheduled}, callbackAfterFinished);
+            this.setState({scheduled: newScheduled}, callbackAfterFinished)
         else
-            callbackAfterFinished();
+            callbackAfterFinished()
     }
 
     addEffect(questionObject) {
-        let newEffects = [];
-        let originalQuestionObject = Backend.getEvent(questionObject.ID);
+        let newEffects = []
+        let originalQuestionObject = Backend.getEvent(questionObject.ID)
         const base = {
             x: questionObject.x,
             y: questionObject.y,
@@ -174,57 +174,57 @@ export default class GameView extends React.Component {
             metric: Constants.QOF_METRIC
         })
 
-        this.setState({ effects: [...this.state.effects, ...newEffects] });
+        this.setState({ effects: [...this.state.effects, ...newEffects] })
     }
 
     removeEffect(effectId) {
-        var newEffectsState = this.state.effects.filter(e => e.ID !== effectId);
-        this.setState({ effects: newEffectsState });
+        let newEffectsState = this.state.effects.filter(e => e.ID !== effectId)
+        this.setState({ effects: newEffectsState })
     }
 
     closeDilemma() {
         // If deleted in the time of choice making, delete it now
         // NOTE Be aware that here, dilemma may no longer be in the state.dilemmas list
-        Backend.setPopupOpen(false);
-        this.setState({ openDilemma: undefined });
+        Backend.setPopupOpen(false)
+        this.setState({ openDilemma: undefined })
     }
 
     onDilemmaLocationClick(dId) {
-        this.openDilemmaPopup(dId);
+        this.openDilemmaPopup(dId)
     }
 
     onSurpriseDismiss(sId) {
-        Backend.deleteEvent(sId);
-        Backend.applyEffectByEvent(sId);
-        this.closeDilemma();
+        Backend.deleteEvent(sId)
+        Backend.applyEffectByEvent(sId)
+        this.closeDilemma()
     }
 
     onChooseOption(optId) {
-        Backend.applyEffectByOption(optId);
-        this.closeDilemma();
-        this.removeDilemma(this.state.openDilemma);
+        Backend.applyEffectByOption(optId)
+        this.closeDilemma()
+        this.removeDilemma(this.state.openDilemma)
     }
 
     getGameFinishStatus() {
         if(this.state.year >= Constants.MAX_YEAR)
-            return true;
+            return true
             if(this.state.emissions >= Constants.MAX_EMISSIONS)
-            return false;
+            return false
             if(this.state.money <= Constants.MIN_MONEY)
-            return false;
+            return false
             if(this.state.qof <= Constants.MIN_QOF)
-            return false;
-        return undefined;
+            return false
+        return undefined
     }
 
     render() {
         if(this.getGameFinishStatus() !== undefined) {
-            return <Navigate to="/game-over" state={{ win: this.getGameFinishStatus() }} />; 
+            return <Navigate to="/game-over" state={{ win: this.getGameFinishStatus() }} /> 
         }
 
-        var popup = '';
+        let popup = ''
         if(this.state.openDilemma) {
-            const dilemma = Backend.getEvent(this.state.openDilemma);
+            const dilemma = Backend.getEvent(this.state.openDilemma)
             // Check if dillema or surprise
             if(dilemma.option_ids.length > 0)
                 popup = (
@@ -237,7 +237,7 @@ export default class GameView extends React.Component {
                     <SurprisePopup event={dilemma} onDismiss={this.onSurpriseDismiss.bind(this)} />
                 )
         }
-        const popupOpen = popup !== '';
+        const popupOpen = popup !== ''
 
         return (
             <div id="game-view-container">
@@ -250,6 +250,6 @@ export default class GameView extends React.Component {
                     popupOpen={popupOpen}
                 />
             </div>
-        );
+        )
     }
 }

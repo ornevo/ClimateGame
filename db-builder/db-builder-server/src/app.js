@@ -85,16 +85,16 @@ router.route("/show").get((req, res) => {
   app.db.collection("options").find().toArray().then(options => {
     app.db.collection("events").find().toArray().then(events => {
       // console.log(events[2].title, JSON.stringify(events[2].title, null, 2));
-      // var result = "==== events ====<br />" + JSON.stringify(events, null, 2).replace(/\n/g, '<br/>') + "<br /><br />==== options ====<br />" + JSON.stringify(options, null, 2);
-      var result = JSON.stringify({events, options}, null, 2);
+      // let result = "==== events ====<br />" + JSON.stringify(events, null, 2).replace(/\n/g, '<br/>') + "<br /><br />==== options ====<br />" + JSON.stringify(options, null, 2);
+      let result = JSON.stringify({events, options}, null, 2);
       res.end(result);
     });
   });
 })
 
 router.route("/submit").post((req, res) => {
-  var event = {threshold: {}};
-  var options = {};
+  let event = {threshold: {}};
+  let options = {};
 
   // some checkbox fillups
   req.body['event-is-surprise'] = req.body.hasOwnProperty('event-is-surprise');
@@ -104,18 +104,18 @@ router.route("/submit").post((req, res) => {
   req.body['threshold-is-life-quality-max'] = req.body.hasOwnProperty('threshold-is-life-quality-max');
 
   Object.keys(req.body).forEach(key => {
-    var local_key = key.replace(/-/g, "_");
-    var value = req.body[key];
+    let local_key = key.replace(/-/g, "_");
+    let value = req.body[key];
     // will hopefully not cause too many bugs in the future
     if (isNumeric(value)) {
       value = parseFloat(value);
     }
 
     if (key.indexOf("option-") === 0) {
-      var opt_id = key.split("-")[1];
+      let opt_id = key.split("-")[1];
       if(!options.hasOwnProperty(opt_id))
         options[opt_id] = {effect: {}};
-      var options_key = local_key.substr("option-".length + 1 + opt_id.length);
+      let options_key = local_key.substr("option-".length + 1 + opt_id.length);
       if(options_key.indexOf("effect_") === 0)
         options[opt_id].effect[options_key.substr("effect_".length)] = value;
       else
@@ -130,8 +130,8 @@ router.route("/submit").post((req, res) => {
     }
   })
 
-  var num_of_options = Object.keys(options).length;
-  var options_arr = []
+  let num_of_options = Object.keys(options).length;
+  let options_arr = []
   for (let i = 0; i < num_of_options; i++) options_arr[i] = options[i + 1];
 
   app.db.collection("options").insertMany(options_arr).then(result => {

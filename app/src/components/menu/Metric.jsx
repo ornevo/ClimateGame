@@ -1,13 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Constants from "../../constants";
-import MetricValue from '../MetricValue';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import Constants from "../../constants"
 
 function Metric(props) {
-    const curr = Math.max(props.min, Math.min(props.max, props.curr));
-    var precent = Math.floor(100*((curr - props.min) / (props.max - props.min)));
-    const isSmall = props.name !== Constants.YEAR_HEB_NAME;
+    const curr = Math.max(props.min, Math.min(props.max, props.curr))
+    let percent = Math.floor(100*((curr - props.min) / (props.max - props.min)))
+    const isSmall = props.name !== Constants.YEAR_HEB_NAME
 
     return (
         <div className={"metric-container" + (isSmall && " metric-container-small")}>
@@ -31,17 +29,16 @@ function Metric(props) {
                 {
                     props.metric_const === Constants.EMISSIONS_METRIC ? 
                     <span style={{
-                        width: precent + "%",
-                        background: "linear-gradient(90deg, rgba(43,184,18,1) 0%, rgba(249,234,60,1) " + (100 * 50 / precent) + "%, rgba(218,48,48,1) " + (100 * 100 / precent) + "%)"
+                        width: percent + "%",
+                        background: "linear-gradient(90deg, rgba(43,184,18,1) 0%, rgba(249,234,60,1) " + (100 * 50 / percent) + "%, rgba(218,48,48,1) " + (100 * 100 / percent) + "%)"
                     }}></span>
                     :
-                    <span style={{width: precent + "%", background: Constants.METRIC_TO_COLOR[props.metric_const]}}></span>
+                    <span style={{width: percent + "%", background: Constants.METRIC_TO_COLOR[props.metric_const]}}></span>
                 }
             </div>
         </div>
     )
 }
-
 
 Metric.propTypes = {
     max: PropTypes.number.isRequired,
@@ -51,5 +48,4 @@ Metric.propTypes = {
     metric_const: PropTypes.number.isRequired, // e.g. Constants.QOF_METRIC
 }
 
-
-export default Metric;
+export default Metric

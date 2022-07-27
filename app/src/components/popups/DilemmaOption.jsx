@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Constants from "../../constants";
-import MetricValue from '../MetricValue';
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import Constants from "../../constants"
+import MetricValue from '../MetricValue'
 
 function DilemmaOption(props) {
 
@@ -23,8 +22,7 @@ function DilemmaOption(props) {
 
 DilemmaOption.propTypes = {
     onClick: PropTypes.func.isRequired, // Called with option.ID
-    option: PropTypes.object.isRequired, // option obejct as defined in json
+    option: PropTypes.object.isRequired, // option object as defined in json
 }
 
-
-export default DilemmaOption;
+export default DilemmaOption

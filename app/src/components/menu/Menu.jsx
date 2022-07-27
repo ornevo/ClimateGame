@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Constants from '../../constants';
-import Metric from "./Metric";
-
+import React from 'react'
+import PropTypes from 'prop-types'
+import Constants from '../../constants'
+import Metric from "./Metric"
 
 function Menu(props) {
     return (
@@ -26,7 +25,6 @@ function Menu(props) {
     )
 }
 
-
 Menu.propTypes = {
     emissions: PropTypes.number.isRequired,
     money: PropTypes.number.isRequired,
@@ -35,5 +33,4 @@ Menu.propTypes = {
     popupOpen: PropTypes.bool,
 }
 
-
-export default Menu;
+export default Menu

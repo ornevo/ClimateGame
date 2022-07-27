@@ -1,13 +1,4 @@
 @font-face {
-    font-family: awesome;
-    src: url(../../fonts/awesome/fontawesome-webfont.ttf); 
-}
-@font-face {
-    font-family: awesome brands;
-    src: url(../../fonts/awesome/fa-brands-400.ttf); 
-}
-
-@font-face {
     font-family: varela;
     src: url(../../fonts/Varela_Round/VarelaRound-Regular.ttf); 
 }

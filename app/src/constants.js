@@ -1,40 +1,40 @@
-const INITIAL_EMISSIONS = 50;
-const INITIAL_MONEY = 50;
-const INITIAL_QUALITY_OF_LIFE = 50;
-const INITIAL_YEAR = 2022;
-const INITIAL_TICKS = 0;
-const DILEMMA_LIFETIME = 17;
+const INITIAL_EMISSIONS = 50
+const INITIAL_MONEY = 50
+const INITIAL_QUALITY_OF_LIFE = 50
+const INITIAL_YEAR = 2022
+const INITIAL_TICKS = 0
+const DILEMMA_LIFETIME = 17
 
-const MAX_EMISSIONS = 100;
-const MAX_MONEY = 100;
-const MAX_QOF = 100;
-const MAX_YEAR = 2050;
+const MAX_EMISSIONS = 100
+const MAX_MONEY = 100
+const MAX_QOF = 100
+const MAX_YEAR = 2050
 
-const MIN_YEAR = 2022;
-const MIN_QOF = 0;
-const MIN_MONEY = 0;
-const MIN_EMISSIONS = 0;
+const MIN_YEAR = 2022
+const MIN_QOF = 0
+const MIN_MONEY = 0
+const MIN_EMISSIONS = 0
 
-const YEAR_HEB_NAME = "שנה";
-const QOF_HEB_NAME = "איכות חיים";
-const MONEY_HEB_NAME = "כסף";
-const EMISSIONS_HEB_NAME = "גזי חממה";
+const YEAR_HEB_NAME = "שנה"
+const QOF_HEB_NAME = "איכות חיים"
+const MONEY_HEB_NAME = "כסף"
+const EMISSIONS_HEB_NAME = "גזי חממה"
 
 // TODO play around with it?
-const NEW_EVENT_RANDOM_THRESHOLD = 0.7;
+const NEW_EVENT_RANDOM_THRESHOLD = 0.7
 // TODO Play around with those?
-const GAME_TICK_SECONDS = 0.1;
-const LOGICAL_TICK_SECONDS = 2;
-const GAME_TICKS_PER_LOGICAL_TICK = Math.floor(LOGICAL_TICK_SECONDS / GAME_TICK_SECONDS);
-const MAX_GAME_TIME_IN_SECONDS = 5 * 60; 
-const TICKS_PER_YEAR = Math.floor((MAX_GAME_TIME_IN_SECONDS / (MAX_YEAR - MIN_YEAR)) / GAME_TICK_SECONDS);
-const DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME = 0.3;
+const GAME_TICK_SECONDS = 0.1
+const LOGICAL_TICK_SECONDS = 2
+const GAME_TICKS_PER_LOGICAL_TICK = Math.floor(LOGICAL_TICK_SECONDS / GAME_TICK_SECONDS)
+const MAX_GAME_TIME_IN_SECONDS = 5 * 60 
+const TICKS_PER_YEAR = Math.floor((MAX_GAME_TIME_IN_SECONDS / (MAX_YEAR - MIN_YEAR)) / GAME_TICK_SECONDS)
+const DILEMMA_LOCATION_DESTRUCT_ANIMATION_TIME = 0.3
 
 // To represent for effects which category
-const YEAR_METRIC = 1;
-const QOF_METRIC = 2;
-const MONEY_METRIC = 3;
-const EMISSIONS_METRIC = 4;
+const YEAR_METRIC = 1
+const QOF_METRIC = 2
+const MONEY_METRIC = 3
+const EMISSIONS_METRIC = 4
 
 const METRIC_TO_COLOR = {
     [YEAR_METRIC]: "#44bee0",
@@ -49,14 +49,14 @@ const METRIC_TO_IMG = {
     [EMISSIONS_METRIC]: "/emissions-icon.png",
 }
 
-const EFFECT_ANIMATINO_TIME = 1.5;
+const EFFECT_ANIMATINO_TIME = 1.5
 
-const NO_OPTIONS_CATEGORY = 0;
-const TRANSPORT_CATEGORY = 1;
-const AGRICULTURE_CATEGORY = 2;
-const ENERGY_CATEGORY = 3;
-const INDUSTRY_CATEGORY = 4;
-const HOME_CATEGORY = 5;
+const NO_OPTIONS_CATEGORY = 0
+const TRANSPORT_CATEGORY = 1
+const AGRICULTURE_CATEGORY = 2
+const ENERGY_CATEGORY = 3
+const INDUSTRY_CATEGORY = 4
+const HOME_CATEGORY = 5
 
 const CATEGORY_TO_IMG = {
     [NO_OPTIONS_CATEGORY]: "/qmark-icon.png",
@@ -80,9 +80,9 @@ const AREAS = [
     {name: 'mediterranean', x: -300, y: 200, w: 220, h: 420},
     {name: 'eilat',  x: -60, y: 1620, w: 70, h: 60},
 ]
-const BASELINE_SIZE = {w:1307.22, h:1708};
-const DILEMMA_LOCATION_H = 30;
-const DILEMMA_LOCATION_W = 30;
+const BASELINE_SIZE = {w:1307.22, h:1708}
+const DILEMMA_LOCATION_H = 30
+const DILEMMA_LOCATION_W = 30
 
 const DEMO_OPTION = {
     ID: '4',
@@ -96,7 +96,7 @@ const DEMO_OPTION = {
         life_quality_delta_per_tick: 2,
         ticks_amount: 5
     }
-};
+}
 
 const DILEMMAS = [
     {

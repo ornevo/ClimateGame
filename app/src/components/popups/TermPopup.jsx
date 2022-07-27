@@ -1,5 +1,4 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
 
 export const TermPopup = ({ showTerm, closeTerm }) => {
     const className = (showTerm) ? 'open' : ''
@@ -31,10 +30,8 @@ export const TermPopup = ({ showTerm, closeTerm }) => {
                 <ul className="term-list clean-list">
                     {terms.map(term =>
                         <li key={term.id} className="term-list-item">
-                            {/* <hr></hr> */}
                             <h2>{term.title}</h2>
                             <h4>{term.meaning + '.'}</h4><br></br>
-                            {/* <hr></hr> */}
                             <div>
                             </div>
                         </li>)}

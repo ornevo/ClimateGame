@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://climate:ChangeMe2050@20.224.170.82:27017/";
-var server = undefined;
+let MongoClient = require('mongodb').MongoClient;
+let url = "mongodb://climate:ChangeMe2050@20.224.170.82:27017/";
+let server = undefined;
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("climate-game-db");
+  let dbo = db.db("climate-game-db");
   app.db = dbo;
   logger.info('Connected to MongoDB');
   server = app.listen(config.port, () => {

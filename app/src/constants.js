@@ -47,7 +47,8 @@ const METRIC_TO_IMG = {
     [EMISSIONS_METRIC]: "/emissions-icon.png",
 }
 
-const EFFECT_ANIMATINO_TIME = 1.5;
+// const EFFECT_ANIMATINO_TIME = 1.5;
+const EFFECT_ANIMATINO_TIME = 50;
 
 const NO_OPTIONS_CATEGORY = 0;
 const TRANSPORT_CATEGORY = 1;

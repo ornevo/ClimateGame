@@ -12,7 +12,8 @@ var state = {
     money: Constants.INITIAL_MONEY,
     quality_of_life: Constants.INITIAL_QUALITY_OF_LIFE,
     year: Constants.INITIAL_YEAR,
-    ticks: Constants.INITIAL_TICKS
+    ticks: Constants.INITIAL_TICKS,
+    popupOpen: false
 }
 
 
@@ -109,6 +110,10 @@ function getEventToAdd() {
         if(state.active_events.includes(eventId))
             continue;
 
+        // Don't allow surprise events when popup open
+        if(state.popupOpen && isEventSurprise(eventId))
+            continue;
+
         if (isCrossingThreshold(eventId)) {
             relevantEvents.push(eventId)
         }
@@ -148,12 +153,24 @@ function getState() {
 
 function deleteEvent(eventId) {
     state.active_events = state.active_events.filter(function(e) {return e != eventId});
-    state.deleted_events.push(eventId);
+    if(!state.deleted_events.includes(eventId))
+        state.deleted_events.push(eventId);
+    console.log("deleted events", eventId);
 }
 
 
 function applyOptionMeasures(optionId){
 
+}
+
+
+function setPopupOpen(isPopupOpen){
+    this.state.popupOpen = isPopupOpen;
+}
+
+
+function isEventSurprise(eId) {
+    return getEvent(eId).option_ids.length === 0
 }
 
 
@@ -170,11 +187,24 @@ function applyEventMeasures(eventId, isSurprise){
 }
 
 
+function applyEffectByOption(optionId){
+}
+
+
+function applyEffectByEvent(eventId){
+
+}
+
+
 export default {
     state,
     updateStateByOption,
     getState,
     deleteEvent,
     getOption,
-    getEvent
+    getEvent,
+    setPopupOpen,
+    isEventSurprise,
+    applyEffectByOption,
+    applyEffectByEvent
 }

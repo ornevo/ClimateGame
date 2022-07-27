@@ -9,9 +9,12 @@
 /* pages */
 @import './pages/welcome-view.css';
 @import './pages/game-view.css';
+@import './pages/game-over.css';
+@import './pages/more-info.css';
 
 /* cmps */
 @import './cmps/app-footer.css';
 @import './cmps/about.css';
 @import './cmps/term-popup.css';
+@import './cmps/more-info-popup.css';
 @import './cmps/high-score.css';

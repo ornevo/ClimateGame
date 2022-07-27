@@ -39,27 +39,15 @@ function getEvent(eventId) {
 
 function applyEffectByOption(optionId){
     var optionEffectJson = getOption(optionId)["effect"];
-    if(optionEffectJson["emissions_delta" != ""]){
-        this.state.emissions += optionEffectJson["emissions_delta"];
-    }
-    if(optionEffectJson["money_delta" != ""]){
-        this.state.emissions += optionEffectJson["money_delta"];
-    }
-    if(optionEffectJson["life_quality_delta" != ""]){
-        this.state.emissions += optionEffectJson["life_quality_delta"];
-    }
+    state.emissions += optionEffectJson["emissions_delta"];
+    state.money += optionEffectJson["money_delta"];
+    state.quality_of_life += optionEffectJson["life_quality_delta"];
 }
 function applyEffectByEvent(eventId){
     var eventJson = getEvent(eventId);
-    if(eventJson["unhandled_money_delta"] != ""){
-        this.state.money += eventJson["unhandled_money_delta"]
-    }
-    if(eventJson["unhandled_emissions_delta"] != ""){
-        this.state.money += eventJson["unhandled_emissions_delta"]
-    }
-    if(eventJson["unhandled_money_delta"] != ""){
-        this.state.money += eventJson["unhandled_life_quality_delta"]
-    }
+    state.money += eventJson["unhandled_money_delta"]
+    state.emissions += eventJson["unhandled_emissions_delta"]
+    state.quality_of_life += eventJson["unhandled_life_quality_delta"]
 }
 
 function updateStateByOption(chosenOptionId) {
@@ -167,7 +155,7 @@ function applyOptionMeasures(optionId){
 
 
 function setPopupOpen(isPopupOpen){
-    this.state.popupOpen = isPopupOpen;
+    state.popupOpen = isPopupOpen;
 }
 
 

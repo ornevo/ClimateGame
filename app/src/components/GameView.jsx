@@ -106,6 +106,7 @@ export default class GameView extends React.Component {
             this.addEffect(this.state.dilemmas.find(d => d.ID === dilemmaId));
 
         var newDilemmasState = this.state.dilemmas.map(d => d.ID === dilemmaId ? { ...d, isDeleted: true } : d);
+        Backend.applyEffectByEvent(dilemmaId);
         this.setState({ dilemmas: newDilemmasState }, () => {
             // Now wait for the destruction to finish
             this.schedule(() => {

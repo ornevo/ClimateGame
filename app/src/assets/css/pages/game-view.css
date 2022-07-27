@@ -121,6 +121,7 @@
 .top-menu {
     padding: 10px;
     border-bottom: 4px solid rgba(0, 0, 0, .1);
+    background-color: #79b7a59e;
 }
 
 .metric-bar-container {

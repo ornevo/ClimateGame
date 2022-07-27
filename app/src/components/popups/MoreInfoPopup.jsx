@@ -32,7 +32,7 @@ export const MoreInfoPopup = ({ showMoreInfo, closeMoreInfo }) => {
         </h4>
 
         <hr></hr>
-        <section className="more-info-btn-container flex flex-column">
+        <section className="more-info-btn-container flex">
           <button className="more-info-btn">
             <NavLink to="/play" className="btn-link">
               שחק שוב

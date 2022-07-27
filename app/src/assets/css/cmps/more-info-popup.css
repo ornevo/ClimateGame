@@ -2,51 +2,65 @@
     direction: rtl;
     background-color: white;
     max-width: 100%;
-    min-height: 100%;
-    position: absolute;
-    left: 0;
-    padding: 10px 20px !important;
-    transition: all 0.8s ease;
-    transition: all 0.8s ease;
     color: black;
+    max-width: 100%;
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0.1px 0 2px grey;
+    transition: all 0.8s ease;
+    min-height: calc(100vh - 75px); 
+}
+
+.more-info-bar h1 {
+    font-size: 0.7em;
+    margin: 10px 0 0 0;
+}
+
+.more-info-bar .more-info-list-item {
+    font-size: 0.5em;
+    margin-top: 10px;
+    line-height: 1.2em;
 }
 
 .more-info-bar.open {
-    bottom: 0;
+    bottom: 75px;
 }
 
-.more-info-header {
-    font-size: 1.5em;
+.more-info-bar .more-info-header {
+    font-size: 0.7em;
     text-align: center;
     direction: rtl;
-    margin: 0;
+    margin-top: 30px;
+    font-weight: bolder;
+    border-bottom: 2px solid black;
 }
 
 .more-info-list-item {
-    font-size: 0.7em;
     text-align: right;
     direction: rtl;
-    margin-top: 0.2em;
-    word-wrap: break-word;
+    /* margin-top: 10px; */
+    font-size: 1em;
+    /* line-height: 1.3em; */
 }
 
 .more-info-btn-container {
     margin-bottom: 10px !important;
     margin-top: 10px;
-    gap: 10px;
+    /* gap: 10px; */
+    width: 100%;
+    justify-content: space-between;
 }
+
 .more-info-btn {
     direction: rtl;
-    position: relative;
-    margin: auto 0;
     background-color: var(--clr1);
-    color: black;
     padding: 0.5rem 1.25rem;
     border: 1px solid transparent;
     border-radius: 4px;
-    font-size: 1em;
+    font-size: 0.6em;
     cursor: pointer;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .more-info-btn a {

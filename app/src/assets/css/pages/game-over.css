@@ -1,30 +1,23 @@
 .game-over-container {
-    position: relative;
-    min-height: calc(100vh - 95px);
     justify-content: center;
     align-items: center;
-    width: 100%;
-}
-
-.map-homepage {
-    object-fit: cover;
+    min-height: 100vh; 
 }
 
 .map {
-    width: 100%;
+    object-fit: cover;
+    min-width: 100%;
+    height: 100vh; 
 }
 
 .game-over-continue {
-    position: absolute;
-    bottom: 25%;
     background-color: var(--clr1);
     color: white;
-    width: 17.5rem;
     padding: 1rem 1.25rem;
     border: 1px solid transparent;
     border-radius: 4px;
-    font-size: 1.5em;
     cursor: pointer;
+    max-width: 15rem;
 }
 
 .game-over-continue a {
@@ -49,20 +42,17 @@
 }
 
 .game-over-msg-container {
-    position: absolute;
-    bottom: 50%;
     background-color: var(--clr1);
     background-color: white;
-    width: 27.5rem;
-    padding: 1rem 1.25rem;
+    padding: 1rem 1rem;
     border: 1px solid transparent;
     border-radius: 4px;
-    font-size: 1.5em;
     color: black;
     cursor: pointer;
+    max-width: 15rem;
 }
 
 .game-over-msg-container h1 {
-    font-size: 2em;
+    font-size: 1.2em;
     color: black;
 }

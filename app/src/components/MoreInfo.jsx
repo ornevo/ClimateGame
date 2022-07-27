@@ -36,6 +36,7 @@ export const MoreInfo = () => {
           alt="dead-sea"
         />
       </div>
+      <div className="homepage-content-container flex flex-column">
 
       <button
         className="more-info-continue"
@@ -50,6 +51,7 @@ export const MoreInfo = () => {
         )}
         ועכשיו מה?
       </button>
+      </div>
     </section>
   )
 }

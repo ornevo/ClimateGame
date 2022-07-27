@@ -1,9 +1,15 @@
 .score-dashboard-container {
+    min-height: calc(100vh - 75px); 
     direction: rtl;
-    padding-top: 50px;
-    margin-inline-start: 40px;
-    margin-inline-end: 40px;
-    min-height: calc(100vh - 95px);
+    margin-inline-start: 20px;
+    margin-inline-end: 20px;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-dashboard-container h1 {
+    margin: 5px 0 0 0;
 }
 
 .score-table {
@@ -12,50 +18,44 @@
     width: 100%;
     color: rgb(51, 51, 51);
     font-family: varela;
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 .score-table-header th {
     text-align: center;
-    padding: 10px 0;
+    padding: 5px;
     font-weight: bold;
-    font-size: 20px;
     border: 1px solid grey;
-    max-width: 40px;
 }
 
 .score-table-body .score-td {
-    padding: 10px 0;
+    padding: 5px;
     text-align: center;
     vertical-align: middle;
-    font-size: 18px;
     border: 1px solid grey;
-    max-width: 40px;
 }
 
 .high-score-board-recap {
     justify-content: space-between;
+    gap: 5px;
 }
 
 .total-gamers,
 .high-score,
 .high-score-gamer {
-    margin-top: 50px;
+    margin-top: 10px;
     color: grey;
 }
 
-
 .gamers-info {
-    margin-bottom: 10px;
+    margin-bottom: 0;
     text-align: center;
-    font-size: 24px;
+    font-size: 1em;
 }
 
 .gamers-info-details {
-    margin-bottom: 10px;
     text-align: center;
-    font-size: 28px;
-    padding: 10px;
+    font-size: 1.5em;
     color: var(--clr1);
     font-weight: bold;
 }

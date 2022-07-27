@@ -205,9 +205,21 @@ export default class GameView extends React.Component {
         this.removeDilemma(this.state.openDilemma);
     }
 
+    getGameFinishStatus() {
+        if(this.state.year >= Constants.MAX_YEAR)
+            return true;
+        if(this.state.emissions >= Constants.MAX_EMISSIONS)
+            return false;
+        if(this.state.money <= Constants.MIN_MONEY)
+            return false;
+        if(this.state.qof <= Constants.MIN_QOF)
+            return false;
+        return undefined;
+    }
+
     render() {
-        if(this.state.year >= Constants.MAX_YEAR) {
-            return <Navigate to="/game-over" state={{ win: true }} />; 
+        if(this.getGameFinishStatus() !== undefined) {
+            return <Navigate to="/game-over" state={{ win: this.getGameFinishStatus() }} />; 
         }
 
         var popup = '';

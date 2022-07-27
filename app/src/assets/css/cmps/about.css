@@ -1,6 +1,8 @@
 .about-container {
     min-height: calc(100vh - 95px); 
     width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .about-title{
@@ -8,7 +10,6 @@
     padding-inline-end: 40px;
     text-align: right;
     direction: rtl;
-    margin-top: 100px;
     font-size: 28px;
     font-weight: bold;
     text-align: center;

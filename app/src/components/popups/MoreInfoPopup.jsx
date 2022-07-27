@@ -13,14 +13,11 @@ export const MoreInfoPopup = ({ showMoreInfo, closeMoreInfo }) => {
         <h4 className="more-info-list-item">בין אם מדדי הסיום שלך מצוינים ובין אם יש לך עוד מה ללמוד, עכשיו מגיע החלק האמיתי.</h4>
         <h1 className="more-info-header">רוצה ללמוד?</h1>
         <hr></hr>
-    <ul className="more-info-list-item clean-list">
-<li className="more-info-list-item"><h3>מעלה וחצי - סדרת סרטונים סביב המדע והעובדות סביב משבר האקלים.<a href="https://degreeandahalf.huji.ac.il/"/></h3></li>
-
-
-<li className="more-info-list-item"><h3>פודקאסט ״האקלימיסטים״.<a href="https://in.bgu.ac.il/sscc/Pages/podcast.aspx"/></h3></li>
-<li className="more-info-list-item"><h3>אתר אקלים ישראל: <a href="https://climatechangeisrael.org/"/></h3></li>
-<li className="more-info-list-item"><h3>ועוד ועוד…</h3></li>
-</ul>
+    <h4 className="more-info-list-item">מעלה וחצי - סדרת סרטונים סביב המדע והעובדות סביב משבר האקלים.
+    פודקאסט ״האקלימיסטים״
+    אתר אקלים ישראל
+    ועוד ועוד…
+    </h4>
         <h1 className="more-info-header">רוצה לפעול?</h1>
         <hr></hr>
         <h4 className="more-info-list-item">בארץ יש ארגונים רבים ומגוונים שעוסקים במרץ בתחומים שונים סביב המאבק.

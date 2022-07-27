@@ -21,7 +21,7 @@
 
 .start-game {
     position: absolute;
-    bottom: 25%;
+    bottom: 20%;
     background-color: var(--clr1);
     color: white;
     width: 17.5rem;

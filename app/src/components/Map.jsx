@@ -32,7 +32,7 @@ class Map extends React.Component {
         // Create areas
         return (
             <div>
-                <img src="map.png" id="map-img" useMap="#image-map" 
+                <img src="map-with-titles.png" id="map-img" useMap="#image-map" 
                     className={(this.props.popupOpen === true) ? "blurred" : ""}/>
                 {
                     Constants.AREAS.map((area, areaI) => 

@@ -71,7 +71,6 @@ export default class GameView extends React.Component {
         let newDilemmas = [...this.state.dilemmas, ...dilemmasToAdd];
         this.setState({ dilemmas: newDilemmas }, () => {
             // Now add timeouts
-            // TODO: Consider in the future doing this a scheduling mechanism based on ticks, linear
             dilemmaIds.forEach(dId => {
                 const d = Backend.getEvent(dId);
                 if(!d) return;
@@ -196,7 +195,7 @@ export default class GameView extends React.Component {
 
     onSurpriseDismiss(sId) {
         Backend.deleteEvent(sId);
-        Backend.applyEffectbyEvent(sId);
+        Backend.applyEffectByEvent(sId);
         this.closeDilemma();
     }
 

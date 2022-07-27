@@ -38,28 +38,34 @@ function getEvent(eventId) {
 
 
 function applyEffectByOption(optionId){
-    // optionEffectJson = getOption(optionId)["effect"];
-    // if(optionEffectJson["emissions_delta" != ""]){
-    //     this.state.emissions += optionEffectJson["emissions_delta"];
-    // }
-    // if(optionEffectJson["money_delta" != ""]){
-    //     this.state.emissions += optionEffectJson["money_delta"];
-    // }
-    // if(optionEffectJson["life_quality_delta" != ""]){
-    //     this.state.emissions += optionEffectJson["life_quality_delta"];
-    // }
+    var optionEffectJson = getOption(optionId)["effect"];
+    if(optionEffectJson["emissions_delta" != ""]){
+        this.state.emissions += optionEffectJson["emissions_delta"];
+    }
+    if(optionEffectJson["money_delta" != ""]){
+        this.state.emissions += optionEffectJson["money_delta"];
+    }
+    if(optionEffectJson["life_quality_delta" != ""]){
+        this.state.emissions += optionEffectJson["life_quality_delta"];
+    }
 }
-function applyEffectbyEvent(eventId){
-    // eventJson = getEvent(eventId);
-    // if(eventJson["unhandled_money_delta"] != ""){
-    //     this.state.money += eventJson["unhandled_money_delta"]
-    // }
-    // if(eventJson["unhandled_emissions_delta"] != ""){
-    //     this.state.money += eventJson["unhandled_emissions_delta"]
-    // }
-    // if(eventJson["unhandled_money_delta"] != ""){
-    //     this.state.money += eventJson["unhandled_life_quality_delta"]
-    // }
+function applyEffectByEvent(eventId){
+    var eventJson = getEvent(eventId);
+    if(eventJson["unhandled_money_delta"] != ""){
+        this.state.money += eventJson["unhandled_money_delta"]
+    }
+    if(eventJson["unhandled_emissions_delta"] != ""){
+        this.state.money += eventJson["unhandled_emissions_delta"]
+    }
+    if(eventJson["unhandled_money_delta"] != ""){
+        this.state.money += eventJson["unhandled_life_quality_delta"]
+    }
+}
+
+function updateStateByOption(chosenOptionId) {
+    var option = getOption(chosenOptionId)
+    state.chosen_options.push(chosenOptionId)
+    // TODO effects?
 }
 
 function updateStateByOption(chosenOptionId) {
@@ -200,5 +206,5 @@ export default {
     setPopupOpen,
     isEventSurprise,
     applyEffectByOption,
-    applyEffectbyEvent
+    applyEffectByEvent
 }

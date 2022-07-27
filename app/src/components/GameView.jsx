@@ -39,9 +39,9 @@ export default class GameView extends React.Component {
                 e => (this.state.dilemmas.find(ee => ee.ID === e) === undefined) && e != this.state.openDilemma
             )
     
-            // let surprise = newEvents.find(Backend.isEventSurprise);
-            // if(surprise !== undefined)
-            //     this.addSurprise(surprise);
+            let surprise = newEvents.find(Backend.isEventSurprise);
+            if(surprise !== undefined)
+                this.addSurprise(surprise);
 
             let dilemmaEvents = newEvents.filter(eId => !Backend.isEventSurprise(eId));
             this.addDilemmas(dilemmaEvents);
@@ -188,13 +188,12 @@ export default class GameView extends React.Component {
 
     onSurpriseDismiss(sId) {
         Backend.deleteEvent(sId);
-        // TODO add effects
+        Backend.applyEffectEvent(sId);
         this.closeDilemma();
     }
 
     onChooseOption(optId) {
         Backend.applyEffectByOption(optId);
-        // TODO Add effects
         this.closeDilemma();
         this.removeDilemma(this.state.openDilemma);
     }

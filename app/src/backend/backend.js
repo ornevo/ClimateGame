@@ -68,13 +68,6 @@ function updateStateByOption(chosenOptionId) {
     // TODO effects?
 }
 
-function updateStateByOption(chosenOptionId) {
-    var option = getOption(chosenOptionId)
-    state.chosen_options.push(chosenOptionId)
-    // TODO effects?
-}
-
-
 function isMeasureCrossingThreshold(isMeasureMax, measureThreshold, measureState) {
     // what if measurethreshold doesnt exist
     if(DEBUG_BACKEND) console.log(measureState, isMeasureMax, measureThreshold)

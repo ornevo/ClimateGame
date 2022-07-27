@@ -1,22 +1,17 @@
 .app-homepage {
-    height: 100vh;
-    /* min-height: calc(100vh - 95px);  */
+    /* height: 100vh; */
     position: relative;
+    min-height: calc(100vh - 95px); 
     justify-content: center;
     align-items: center;
     width: 100%;
     /* margin: 0; */
-    /* object-fit: contain; */
 }
-
+.map-homepage {
+    object-fit: cover;
+}
 .map {
-    aspect-ratio: 1 / 2.4;
     width: 100%;
-    /* min-height: calc(100vh - 95px);  */
-    min-height: calc(100vh - 95px); 
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .logo {

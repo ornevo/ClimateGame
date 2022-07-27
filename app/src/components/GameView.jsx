@@ -9,7 +9,6 @@ import Backend from '../backend/backend';
 import DB from "./automation_output.json";
 import { Navigate } from "react-router-dom";
 
-
 export default class GameView extends React.Component {
     constructor(props) {
         super(props);
@@ -22,7 +21,8 @@ export default class GameView extends React.Component {
             year: Constants.INITIAL_YEAR,
             ticks: 0,
             scheduled: [],
-            openDilemma: undefined // Constants.DILEMMAS[0].ID
+            openDilemma: undefined, // Constants.DILEMMAS[0].ID
+            win: false
         }
     }
 
@@ -208,11 +208,11 @@ export default class GameView extends React.Component {
     getGameFinishStatus() {
         if(this.state.year >= Constants.MAX_YEAR)
             return true;
-        if(this.state.emissions >= Constants.MAX_EMISSIONS)
+            if(this.state.emissions >= Constants.MAX_EMISSIONS)
             return false;
-        if(this.state.money <= Constants.MIN_MONEY)
+            if(this.state.money <= Constants.MIN_MONEY)
             return false;
-        if(this.state.qof <= Constants.MIN_QOF)
+            if(this.state.qof <= Constants.MIN_QOF)
             return false;
         return undefined;
     }

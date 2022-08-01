@@ -4,8 +4,6 @@ As head of state, you must do what is right for us while still getting a high sc
 It is important to take into consideration all aspects of climate change, including economics, health, etc.
 There will be many dilemmas you will have to deal with and it is not as easy as it looks.
 
-I worked on this project during a short sprint at Microsoft's offices in conjunction with soldiers from Israeli Intelligence unit 8200: https://www.linkedin.com/company/unit8200/?originalSubdomain=il. Using technology, they aimed to solve complex environmental problems.
-
 ## Screenshots
 
 ![App Screenshot](https://res.cloudinary.com/dcbbqlssh/image/upload/v1658877634/ClimateGame/smartmockups_l62sw7lj_tgunto.png)
